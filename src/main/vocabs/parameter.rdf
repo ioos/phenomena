@@ -1,0 +1,1163 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:omv="http://omv.ontoware.org/2005/05/ontology#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:omvmmi="http://mmisw.org/ont/mmi/20081020/ontologyMetadata/"
+    xmlns="http://mmisw.org/ont/ioos/parameter/"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xml:base="http://mmisw.org/ont/ioos/parameter">
+    <owl:Ontology rdf:about="">
+        <omvmmi:contactRole>content manager</omvmmi:contactRole>
+        <omvmmi:creditRequired>not specified</omvmmi:creditRequired>
+        <dc:creator>Stephanie Watson</dc:creator>
+        <omvmmi:origVocDocumentationUri>http://seacoos.org/documents/seacoos-data-dictionary-v2dot0</omvmmi:origVocDocumentationUri>
+        <omv:acronym>parameter</omv:acronym>
+        <omv:usedOntologyEngineeringTool rdf:resource="http://mmisw.org/ont/mmi/20081020/ontologyMetadata/voc2rdf"/>
+        <omv:hasCreator>Stephanie Watson</omv:hasCreator>
+        <omvmmi:contact>Sara Haines (919-962-1253, sara_haines(at)unc.edu)</omvmmi:contact>
+        <omvmmi:temporaryMmiRole>ontology producer</omvmmi:temporaryMmiRole>
+        <omv:description>This is a vocabulary of the parameters used in IOOS.  It has been developed, in coordination with SEACOOS, from the SEACOOS Data Dictionary V.2.0, the COARDS Climate-Forecast Standard Names, and input from the 11 Regional Associations in IOOS and the NOAA IOOS Program Office.</omv:description>
+        <omvmmi:origVocManager>Sara Haines (919-962-1253, sara_haines(at)unc.edu)</omvmmi:origVocManager>
+        <omvmmi:origMaintainerCode>ioos</omvmmi:origMaintainerCode>
+        <omv:name>IOOS Parameter Vocabulary v2.0</omv:name>
+        <omv:uri>http://mmisw.org/ont/ioos/parameter</omv:uri>
+        <omvmmi:shortNameUri>http://mmisw.org/ont/mmi/resourcetype/parameter</omvmmi:shortNameUri>
+        <dc:description>This is a vocabulary of the parameters used in IOOS.  It has been developed, in coordination with SEACOOS, from the SEACOOS Data Dictionary V.2.0, the COARDS Climate-Forecast Standard Names, and input from the 11 Regional Associations in IOOS and the NOAA IOOS Program Office.</dc:description>
+        <omvmmi:hasResourceType>parameter</omvmmi:hasResourceType>
+        <omv:creationDate>2012-09-12T02:28:10+0000</omv:creationDate>
+        <omv:version>20120620T041425</omv:version>
+        <omvmmi:hasContentCreator>The 11 IOOS Regional Associations and the NOAA IOOS Program Office</omvmmi:hasContentCreator>
+        <dc:date>2012-06-20T04:14:25+0000</dc:date>
+    </owl:Ontology>
+    <owl:Class rdf:about="http://mmisw.org/ont/ioos/parameter/Parameter">
+        <rdfs:label>Parameter</rdfs:label>
+    </owl:Class>
+    <owl:DatatypeProperty rdf:about="http://mmisw.org/ont/ioos/parameter/Units">
+        <rdfs:domain rdf:resource="http://mmisw.org/ont/ioos/parameter/Parameter"/>
+        <rdfs:label>Units</rdfs:label>
+    </owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://mmisw.org/ont/ioos/parameter/Term">
+        <rdfs:domain rdf:resource="http://mmisw.org/ont/ioos/parameter/Parameter"/>
+        <rdfs:label>Term</rdfs:label>
+    </owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://mmisw.org/ont/ioos/parameter/Reference">
+        <rdfs:domain rdf:resource="http://mmisw.org/ont/ioos/parameter/Parameter"/>
+        <rdfs:label>Reference</rdfs:label>
+    </owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://mmisw.org/ont/ioos/parameter/Definition">
+        <rdfs:domain rdf:resource="http://mmisw.org/ont/ioos/parameter/Parameter"/>
+        <rdfs:label>Definition</rdfs:label>
+    </owl:DatatypeProperty>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/minimum">
+        <Definition>The lowest value or lowest limit of a quantity or measured value.</Definition>
+        <Term>minimum</Term>
+        <rdfs:label>minimum</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/relative_wind_speed">
+        <Units>m s-1</Units>
+        <Definition>Magnitude of wind velocity relative to a moving platform e.g. ship.</Definition>
+        <Term>relative_wind_speed</Term>
+        <rdfs:label>relative_wind_speed</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/wave">
+        <Reference>Manual on marine meteorological services (WMO-No. 558, App. 1.2)</Reference>
+        <Definition>An undulating ridge of water moving across the surface of a liquid.</Definition>
+        <Term>wave</Term>
+        <rdfs:label>wave</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/total_alkalinity">
+        <Units>mEq l-1</Units>
+        <Reference>Scripps Sea Water CO2 Program, http://scrippsco2.ucsd.edu/research/sea_water_co2.html</Reference>
+        <Definition>A measure of the buffering capacity of water or the ability of a solution to neutralize acid. Total alkalinity is a measure of the amount of negatively charged ions in a given amount of water. In the oceans, most of the negatively charged ions present are bicarbonate (HCO3-) and carbonate (CO3--).  Combined with DIC measurments, total alkalinity is used to calculate the pCO2 for a volume of water.</Definition>
+        <Term>total_alkalinity</Term>
+        <rdfs:label>total_alkalinity</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/dissolved_oxygen">
+        <Units>mg L-1</Units>
+        <Definition>Concentration of dissolved oxygen (DO) in water and can be measured by laboratory chemical analysis,  electrochemical or optical probes.   DO concentration is highly dependent on temperature and salinity.</Definition>
+        <Term>dissolved_oxygen</Term>
+        <rdfs:label>dissolved_oxygen</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/drifter_speed">
+        <Units>cm s-1</Units>
+        <Definition>Magnitude of velocity of a drifter. A drifter is an object that moves with the flow of current.</Definition>
+        <Term>drifter_speed</Term>
+        <rdfs:label>drifter_speed</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/scattering_coefficient">
+        <Units>1/(m*sr)</Units>
+        <Reference>AMS Glossary of Meterology, Second Edition, 2000, Cambridge, Massachusetts. http://amsglossary.allenpress.com/glossary</Reference>
+        <Definition>A measure of the fraction of incident radiation that is scattered directly back toward the source. [Also called backscatter coefficient, backscatter(ing) cross section.]</Definition>
+        <Term>scattering_coefficient</Term>
+        <rdfs:label>scattering_coefficient</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/mixing_ratio">
+        <Units>g kg-1</Units>
+        <Definition>The ratio of mass of water vapor to the mass of dry air in the sample.</Definition>
+        <Term>mixing_ratio</Term>
+        <rdfs:label>mixing_ratio</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/spectral_radiance">
+        <Units>W m-2 sr-1</Units>
+        <Definition>Light energy of specific wavelength from a set of directions (solid angle) at a point and time in space.</Definition>
+        <Term>spectral_radiance</Term>
+        <rdfs:label>spectral_radiance</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/time_continuity_threshold">
+        <Reference>Handbook of Automated Data Quality Control Checks and Procedures of the National Data Buoy Center, NDBC Technical Document 09-02, 2009, http://www.ndbc.noaa.gov/handbook.pdf</Reference>
+        <Definition>The maximum allowable change of a given parameter that can be defined for a specific time period (delta_t).  The Time Continuity Threshold (TCT) is used in the assessment of data quality for several common parameters and oceanographic settings, but the threshold can be locally defined.</Definition>
+        <Term>time_continuity_threshold</Term>
+        <rdfs:label>time_continuity_threshold</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/z">
+        <Units>meter</Units>
+        <Definition>Z-coordinate of observation. Zero (z=0) is defined by reference. Up is positive.</Definition>
+        <Term>z</Term>
+        <rdfs:label>z</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/averaging_interval">
+        <Units>seconds</Units>
+        <Definition>Time period over which several observations are averaged.</Definition>
+        <Term>averaging_interval</Term>
+        <rdfs:label>averaging_interval</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/sound_speed">
+        <Units>m s-1</Units>
+        <Definition>Magnitude of sound velocity in air, water or other medium.</Definition>
+        <Term>sound_speed</Term>
+        <rdfs:label>sound_speed</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/ammonia">
+        <Units>ug L-1 as N</Units>
+        <Definition>Concentration of ammonia (NH3) in a water sample.</Definition>
+        <Term>ammonia</Term>
+        <rdfs:label>ammonia</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/dissolved_inorganic_carbon">
+        <Units>umol kg-1</Units>
+        <Reference>Scripps Sea Water CO2 Program, http://scrippsco2.ucsd.edu/research/sea_water_co2.html</Reference>
+        <Definition>Total dissolved inorganic carbon (DIC) is the sum of gaseous CO2, bicarbonate and carbonate is the major carbon reservoir in the ocean.  DIC content is expressed as mole of Carbon to mass of seawater.</Definition>
+        <Term>dissolved_inorganic_carbon</Term>
+        <rdfs:label>dissolved_inorganic_carbon</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/northward_wind_stress">
+        <Units>N m-2</Units>
+        <Definition>North/South component of wind stress. Northward is positive. Wind is motion of air relative to the surface of the earth.  Wind stress is the force of wind imposed on a unit area.</Definition>
+        <Term>northward_wind_stress</Term>
+        <rdfs:label>northward_wind_stress</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/water_temperature">
+        <Units>celcius</Units>
+        <Definition>In situ temperature of the ocean.</Definition>
+        <Term>water_temperature</Term>
+        <rdfs:label>water_temperature</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/total_phosphorus">
+        <Units>ug L-1 as P</Units>
+        <Definition>Concentration of total phosphorus (TP) represents the sum of organic and inorganic phosphorus compounds in a water sample.</Definition>
+        <Term>total_phosphorus</Term>
+        <rdfs:label>total_phosphorus</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/dissolved_organic_carbon">
+        <Units>umol l-1</Units>
+        <Reference>Scripps Sea Water CO2 Program, http://scrippsco2.ucsd.edu/research/sea_water_co2.html</Reference>
+        <Definition>Dissolved Organic Carbon (DOC) is used to describe the thousands of dissolved compounds found in water that derive from organic materials. DOC mostly consists of long-chain organic molecules, but smaller species, such as methane, are also considered organic.</Definition>
+        <Term>dissolved_organic_carbon</Term>
+        <rdfs:label>dissolved_organic_carbon</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/significant_wave_height">
+        <Units>meter</Units>
+        <Definition>The mean height of highest third of the waves recorded during a sampling period.  It is also estimated from measured wave energy, as four times the square-root of the first moment of the wave spectrum.</Definition>
+        <Term>significant_wave_height</Term>
+        <rdfs:label>significant_wave_height</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/attenuation">
+        <Reference>AMS Glossary of Meterology, Second Edition, 2000, Cambridge, Massachusetts. http://amsglossary.allenpress.com/glossary</Reference>
+        <Definition>As waves propagate through a medium, the signal strength attenuates by absorption and scattering within the medium.</Definition>
+        <Term>attenuation</Term>
+        <rdfs:label>attenuation</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/top">
+        <Definition>Top of a layer. Also, upper most position or layer.</Definition>
+        <Term>top</Term>
+        <rdfs:label>top</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/echo_intensity">
+        <Reference>AMS Glossary of Meterology, Second Edition, 2000, Cambridge, Massachusetts. http://amsglossary.allenpress.com/glossary</Reference>
+        <Definition>Brightness or intensity of scattered or reflected radio signal from a target.</Definition>
+        <Term>echo_intensity</Term>
+        <rdfs:label>echo_intensity</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/water_leaving_radiance">
+        <Units>W m-2 m-1 sr-1</Units>
+        <Definition>Radiance from below - leaving the water surface.</Definition>
+        <Term>water_leaving_radiance</Term>
+        <rdfs:label>water_leaving_radiance</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/upwelling_radiance">
+        <Units>W m-2 m-1 sr-1</Units>
+        <Definition>Radiance from above.</Definition>
+        <Term>upwelling_radiance</Term>
+        <rdfs:label>upwelling_radiance</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/first_five_wave_terms">
+        <Units>Wave Sensor Technologies</Units>
+        <Reference>Alliance for Coastal Technologies (ACT)</Reference>
+        <Definition>First-five or First-5 refers to the first five terms of a two-dimensional wave spectrum as a function of frequency and direction, specifically the frequency wave spectrum (S(f)), and the first- and second-order Fourier coefficients (a1, b1, a2, b2) that estimate the directional wave spectrum at a given frequency.</Definition>
+        <Term>first_five_wave_terms</Term>
+        <rdfs:label>first_five_wave_terms</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/wavelength">
+        <Units>meter</Units>
+        <Definition>The distance between successive troughs or crests of a wave.</Definition>
+        <Term>wavelength</Term>
+        <rdfs:label>wavelength</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/albedo">
+        <Definition>Fraction of downward radiation that is reflected or scattered</Definition>
+        <Term>albedo</Term>
+        <rdfs:label>albedo</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/true_color">
+        <Definition>In satellite imagery, true color data and images are the composite of the normalized, measured reflected energy in the red, green, and blue bandwidths from a given surface area.</Definition>
+        <Term>true_color</Term>
+        <rdfs:label>true_color</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/cryptosporidium">
+        <Units>MPN ml-1</Units>
+        <Reference>EPA Basic Information about Pathogens and Indicators in Drinking Water, http://water.epa.gov/drink/contaminants/basicinformation/</Reference>
+        <Definition>A single-celled protozoan parasite commonly found in lakes and rivers, especially when the water is contaminated with sewage and animal waste.  Cryptosporidium can survive in the salt water for up to 12 weeks, primarily infecting filter feeders such as oysters. The occurrence of Cryptosporidium is increased in water with decreasing temperatures and increasing turbidity of the water. Most Probable Number (MPN) per unit volume.</Definition>
+        <Term>cryptosporidium</Term>
+        <rdfs:label>cryptosporidium</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/time">
+        <Units>sec since 1970-1-1 00:00:00</Units>
+        <Definition>Time coordinate of observation based on number of seconds since the defined reference time. (UDUNITS {sec | hr | day} since YYYY-MM-DD HH:MM:SS.xxx {+/- ZONE})</Definition>
+        <Term>time</Term>
+        <rdfs:label>time</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/bearing">
+        <Units>degree</Units>
+        <Definition>The direction towards an object usually from one's own frame of reference.</Definition>
+        <Term>bearing</Term>
+        <rdfs:label>bearing</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/total_velocity">
+        <Units>cm s-1</Units>
+        <Definition>Refers to the vector sum or combination of at least two spatially-overlapping radial velocities observed by two distinct observers.  For surface current mapping, it is the combination of two colocated radial velocity vectors measured by two independent  HF Radar sites.</Definition>
+        <Term>total_velocity</Term>
+        <rdfs:label>total_velocity</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/downwelling_longwave_irradiance">
+        <Units>W m-2</Units>
+        <Definition>Integrated downwelling irradiance for spectral wavelengths greater than 700nm.</Definition>
+        <Term>downwelling_longwave_irradiance</Term>
+        <rdfs:label>downwelling_longwave_irradiance</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/vertical_current">
+        <Units>cm s-1</Units>
+        <Definition>Upward/Downward component of ocean current. Upward is positive. Current is the steady flow of water along a cyclic or directional path relative to location and time.</Definition>
+        <Term>vertical_current</Term>
+        <rdfs:label>vertical_current</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/visibility">
+        <Units>m</Units>
+        <Definition>Greatest distance an object can be seen and identified. Usually refering to visibility in air - but could be other medium, such as diver visibility in water.</Definition>
+        <Term>visibility</Term>
+        <rdfs:label>visibility</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/fecal_coliform">
+        <Units>MPN ml-1</Units>
+        <Reference>EPA Basic Information about Pathogens and Indicators in Drinking Water, http://water.epa.gov/drink/contaminants/basicinformation/</Reference>
+        <Definition>Fecal coliform and E. coli are bacteria whose presence indicates that water may be contaminanted by human or animal wastes. Most Probable Number (MPN) per unit volume.</Definition>
+        <Term>fecal_coliform</Term>
+        <rdfs:label>fecal_coliform</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/wave_frequency">
+        <Units>s-1</Units>
+        <Definition>Frequency is the number of oscillations of a wave per unit time.  The inverse of wave_period.</Definition>
+        <Term>wave_frequency</Term>
+        <rdfs:label>wave_frequency</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/quantum_yield_of_photosynthesis">
+        <Units>ratio 0-1</Units>
+        <Reference>Annu. Rev. Plant. Physiol. 1958.9:1-24.</Reference>
+        <Definition>For a photochemical reaction such as photosynthesis, quantum yield or quantum efficiency is defined as the moles of product consumed or produced divided by the moles of photons absorbed.</Definition>
+        <Term>quantum_yield_of_photosynthesis</Term>
+        <rdfs:label>quantum_yield_of_photosynthesis</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/bottom">
+        <Definition>Bottom of a layer. Also, lowest position or layer.</Definition>
+        <Term>bottom</Term>
+        <rdfs:label>bottom</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/wave_to_direction">
+        <Units>degrees_true</Units>
+        <Definition>The direction toward which a wave propagates.</Definition>
+        <Term>wave_to_direction</Term>
+        <rdfs:label>wave_to_direction</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/sampling_interval">
+        <Units>seconds</Units>
+        <Definition>Time period between observations.</Definition>
+        <Term>sampling_interval</Term>
+        <rdfs:label>sampling_interval</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/surface">
+        <Units>meter</Units>
+        <Definition>Upper 1-2  meters of an interface between two layers - commonly the sea surface.</Definition>
+        <Term>surface</Term>
+        <rdfs:label>surface</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/height">
+        <Units>meter</Units>
+        <Definition>Z-coordinate of observation in vertical distance above reference. Up is positive. (sea surface | geiod | ellipsoid | MSL | MLLW | AGL )</Definition>
+        <Term>height</Term>
+        <rdfs:label>height</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/river_discharge">
+        <Units>m3 sec-1 | cfs</Units>
+        <Definition>The volumetric rate of water flow of a stream or river or pipe.  The measure of flow through a cross-sectional area per unit time.</Definition>
+        <Term>river_discharge</Term>
+        <rdfs:label>river_discharge</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/wave_period">
+        <Units>second</Units>
+        <Definition>Time between two successive wave crests or the time for one wavelength to pass a fixed point.</Definition>
+        <Term>wave_period</Term>
+        <rdfs:label>wave_period</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/photosynthetically_available_radiation">
+        <Units>W m-2</Units>
+        <Definition>Integrated downwelling irradiance for wavelengths from 400 to 700nm.  It is the energy from the visible portion of sunlight that is available for photosynthesis.</Definition>
+        <Term>photosynthetically_available_radiation</Term>
+        <rdfs:label>photosynthetically_available_radiation</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/wind_gust_from_direction">
+        <Units>degrees from N</Units>
+        <Definition>Direction from which wind gust is blowing when maximum wind speed is observed.  Meteorological Convention. Wind is motion of air relative to the surface of the earth.</Definition>
+        <Term>wind_gust_from_direction</Term>
+        <rdfs:label>wind_gust_from_direction</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/radial_velocity">
+        <Units>cm s-1</Units>
+        <Definition>For HF Radar surface current applications, it is the velocity of the scattering medium of a specific area defined by the bearing and distance from the sensing antenna.  Radial velocity is a vector quantity of range bin, radial speed, and radial direction.</Definition>
+        <Term>radial_velocity</Term>
+        <rdfs:label>radial_velocity</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/current_to_direction">
+        <Units>degrees_true</Units>
+        <Definition>Direction towards which ocean current is going. Oceanographic convention. Current is the steady flow of water along a cyclic or directional path relative to location and time.</Definition>
+        <Term>current_to_direction</Term>
+        <rdfs:label>current_to_direction</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/relative_wind_from_direction">
+        <Units>degrees_true</Units>
+        <Definition>Direction from which wind is blowing relative to a moving platform e.g. ship.</Definition>
+        <Term>relative_wind_from_direction</Term>
+        <rdfs:label>relative_wind_from_direction</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/water_pressure">
+        <Units>Pa</Units>
+        <Definition>Pressure exerted by overlying air and water.</Definition>
+        <Term>water_pressure</Term>
+        <rdfs:label>water_pressure</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/absorption_coefficient">
+        <Units>1/(m*sr)</Units>
+        <Reference>AMS Glossary of Meterology, Second Edition, 2000, Cambridge, Massachusetts. http://amsglossary.allenpress.com/glossary</Reference>
+        <Definition>The measure of extinction of a wavelength of light due to absorption as it traverses through the medium in which the incident radiant energy is taken up by the substance.  Attenuation of light in seawater is caused by absorption and scattering of the radiation of the volume.</Definition>
+        <Term>absorption_coefficient</Term>
+        <rdfs:label>absorption_coefficient</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/acidity">
+        <Definition>pH is defined as the negative decimal logarithm of the activity of the hydrogen ion in solution and is a measure of acidity.</Definition>
+        <Term>acidity</Term>
+        <rdfs:label>acidity</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/electromagnetic_wavelength">
+        <Units>m</Units>
+        <Definition>Specific frequency of energy within the electromagnetic spectrum.</Definition>
+        <Term>electromagnetic_wavelength</Term>
+        <rdfs:label>electromagnetic_wavelength</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/ammonium">
+        <Units>ug L-1 as N</Units>
+        <Definition>Concentration of ammonium (NH4+)  in a water sample.</Definition>
+        <Term>ammonium</Term>
+        <rdfs:label>ammonium</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/downwelling_uv_radiance">
+        <Units>W m-2 sr-1</Units>
+        <Definition>Integrated downwelling radiance for wavelengths in the ultraviolet region.</Definition>
+        <Term>downwelling_uv_radiance</Term>
+        <rdfs:label>downwelling_uv_radiance</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/wet_bulb_temperature">
+        <Units>celcius</Units>
+        <Definition>Temperature of evaporative cooling.</Definition>
+        <Term>wet_bulb_temperature</Term>
+        <rdfs:label>wet_bulb_temperature</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/enclosed_temperature">
+        <Units>deg C</Units>
+        <Definition>Inside temperature of an enclosure or housing for sensor, system electronics, or battery that is recorded to monitor sensor health and data reliability.  Some instruments may cease to operate or may perform poorly outside of manufacturer recommended operating temperatures.</Definition>
+        <Term>enclosed_temperature</Term>
+        <rdfs:label>enclosed_temperature</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/precipitation_accumulated">
+        <Units>mm</Units>
+        <Definition>Amount of liquid equivalent precipitation accumulated or totaled for a defined period of time, usually hourly, daily, or annually.</Definition>
+        <Term>precipitation_accumulated</Term>
+        <rdfs:label>precipitation_accumulated</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/nitrate">
+        <Units>ug L-1 as N</Units>
+        <Definition>Concentration of nitrate (NO3)  in a water sample.</Definition>
+        <Term>nitrate</Term>
+        <rdfs:label>nitrate</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/spectral_irradiance">
+        <Units>W m-2</Units>
+        <Definition>Light energy of specific wavelength from all directions at a point and time in space.</Definition>
+        <Term>spectral_irradiance</Term>
+        <rdfs:label>spectral_irradiance</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/skin">
+        <Units>meter</Units>
+        <Definition>Upper millimeter to centimeter of a surface.</Definition>
+        <Term>skin</Term>
+        <rdfs:label>skin</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/wave_directional_spread">
+        <Reference>CDIP</Reference>
+        <Definition>The quality or state of directional range shown by a wave spectrum directional distribution that is bunched together or spread out about the average. One property derived from low-order Fourier coefficients of a directional wave spectrum.</Definition>
+        <Term>wave_directional_spread</Term>
+        <rdfs:label>wave_directional_spread</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/pitch">
+        <Units>degree</Units>
+        <Definition>Rotation about the lateral axis of a sensor platform like a ship or buoy or bottom frame.</Definition>
+        <Term>pitch</Term>
+        <rdfs:label>pitch</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/air_density">
+        <Units>kg m-3</Units>
+        <Definition>Mass of air per unit volume.</Definition>
+        <Term>air_density</Term>
+        <rdfs:label>air_density</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/radial_cell">
+        <Definition>Refers to the patch of sea-surface determined by the range bin and radial direction of an HF Radar radial site.</Definition>
+        <Term>radial_cell</Term>
+        <rdfs:label>radial_cell</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/relative_humidity">
+        <Units>percent</Units>
+        <Definition>Amount of moisture in the air as vapor relative to how much it can possibly hold at the same temperature.</Definition>
+        <Term>relative_humidity</Term>
+        <rdfs:label>relative_humidity</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/wave_skewness">
+        <Reference>CDIP</Reference>
+        <Definition>The quality or state of asymmetry shown by a wave spectrum frequency distribution that is bunched on one side of the average and tails out on the other side. One property derived from low-order Fourier coefficients of a directional wave spectrum.</Definition>
+        <Term>wave_skewness</Term>
+        <rdfs:label>wave_skewness</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/eastward_wind">
+        <Units>m s-1</Units>
+        <Definition>East/West component of wind vector. Eastward wind is positive.  Wind is motion of air relative to the surface of the earth.</Definition>
+        <Term>eastward_wind</Term>
+        <rdfs:label>eastward_wind</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/heading">
+        <Units>degrees_true</Units>
+        <Definition>The direction towards an object relative to a fixed reference, usually a geographic frame of reference, such as True North.</Definition>
+        <Term>heading</Term>
+        <rdfs:label>heading</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/altitude">
+        <Units>meter</Units>
+        <Definition>Z-coordinate of observation in vertical distance above reference. Up is positive.  (sea surface | geiod | ellipsoid | MSL | MLLW | AGL)</Definition>
+        <Term>altitude</Term>
+        <rdfs:label>altitude</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/current_velocity">
+        <Units>cm s-1</Units>
+        <Definition>The vector quantity of speed and direction or geographic components of speed of current flow. Current is the steady flow of water along a cyclic or directional path relative to location and time.</Definition>
+        <Term>current_velocity</Term>
+        <rdfs:label>current_velocity</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/roll">
+        <Units>degree</Units>
+        <Definition>Rotation about the longitudinal axis of a sensor platform like a ship or buoy or bottom frame.</Definition>
+        <Term>roll</Term>
+        <rdfs:label>roll</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/eastward_wind_stress">
+        <Units>N m-2</Units>
+        <Definition>East/West component of wind stress. Eastward is positive.</Definition>
+        <Term>eastward_wind_stress</Term>
+        <rdfs:label>eastward_wind_stress</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/net_shortwave_radiation">
+        <Units>W m-2</Units>
+        <Definition>Net solar insolation considering albedo effects. Positive is downward.</Definition>
+        <Term>net_shortwave_radiation</Term>
+        <rdfs:label>net_shortwave_radiation</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/peak_wave_direction">
+        <Units>degrees_true</Units>
+        <Reference>CDIP</Reference>
+        <Definition>The wave direction at the wave frequency where the wave spectrum reaches its maximum.</Definition>
+        <Term>peak_wave_direction</Term>
+        <rdfs:label>peak_wave_direction</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/maximum">
+        <Definition>The largest value or upper limit of a quantity or measured value.</Definition>
+        <Term>maximum</Term>
+        <rdfs:label>maximum</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/surface_elevation">
+        <Units>meter</Units>
+        <Definition>Height or altitude of the sea surface above specified reference.</Definition>
+        <Term>surface_elevation</Term>
+        <rdfs:label>surface_elevation</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/reporting_interval">
+        <Units>seconds</Units>
+        <Definition>Time period between reports to local storage media local or transmitted to a remote location.</Definition>
+        <Term>reporting_interval</Term>
+        <rdfs:label>reporting_interval</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/wind_wave">
+        <Reference>CDIP</Reference>
+        <Definition>(1) Waves being locally formed and built up by the wind; SEAS. (2) Loosely, any wave generated by wind.</Definition>
+        <Term>wind_wave</Term>
+        <rdfs:label>wind_wave</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/wind_gust">
+        <Units>m s-1</Units>
+        <Definition>Maximum instantaneous wind speed (usually no more than but not limited to 10 seconds) within a sample averaging interval. Wind is motion of air relative to the surface of the earth.</Definition>
+        <Term>wind_gust</Term>
+        <rdfs:label>wind_gust</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/wave_height">
+        <Units>meter</Units>
+        <Definition>Height or vertical displacement from trough to crest of the wave.</Definition>
+        <Term>wave_height</Term>
+        <rdfs:label>wave_height</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/dew_point_temperature">
+        <Units>celcius</Units>
+        <Definition>Temperature at which water vapor in air begins to condense.</Definition>
+        <Term>dew_point_temperature</Term>
+        <rdfs:label>dew_point_temperature</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/battery_voltage">
+        <Units>volts</Units>
+        <Definition>Battery voltage of a sensor system or datalogger that is recorded as an indicator of sensor health and data reliability.</Definition>
+        <Term>battery_voltage</Term>
+        <rdfs:label>battery_voltage</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/downwelling_irradiance">
+        <Units>W m-2</Units>
+        <Definition>Irradiance from above.</Definition>
+        <Term>downwelling_irradiance</Term>
+        <rdfs:label>downwelling_irradiance</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/radial_direction">
+        <Units>degrees_true</Units>
+        <Definition>Bearing from an HF Radar site that defines the directional component of the radial velocity vector observed.  The final and third step in processng HF Radar returned signal is to determine the bearing angle or direction of the patch of scatterers based on each speed and each range found in the first two steps.</Definition>
+        <Term>radial_direction</Term>
+        <rdfs:label>radial_direction</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/wave_from_direction">
+        <Units>degrees_true</Units>
+        <Definition>The direction from which a wave approaches.</Definition>
+        <Term>wave_from_direction</Term>
+        <rdfs:label>wave_from_direction</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/mean_wave_period">
+        <Units>second</Units>
+        <Definition>The average time it takes for successive wave crests to pass a single point.  Mean wave period is estimated several ways from a measured wave spectrum.</Definition>
+        <Term>mean_wave_period</Term>
+        <rdfs:label>mean_wave_period</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/downward_shortwave_radiation">
+        <Units>W m-2</Units>
+        <Definition>Downward solar insolation. Positive is downward.</Definition>
+        <Term>downward_shortwave_radiation</Term>
+        <rdfs:label>downward_shortwave_radiation</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/voltage">
+        <Units>volts</Units>
+        <Definition>Low-level analog or digital output of a sensor and not yet converted to the engineering or scientific units for the sensor.</Definition>
+        <Term>voltage</Term>
+        <rdfs:label>voltage</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/total_nitrogen">
+        <Units>ug L-1 as N</Units>
+        <Definition>Total nitrogen (TN) represents the sum of organic and inorganic nitrogen compounds in a water sample.</Definition>
+        <Term>total_nitrogen</Term>
+        <rdfs:label>total_nitrogen</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/chlorophyll_flourescence">
+        <Definition>A relative measure of the abundance of phytoplankton in  sea water. It can be calibrated to give an estimate in mg/L or mg/g, though the relationship between fluorescence and biomass is quite complex.</Definition>
+        <Term>chlorophyll_flourescence</Term>
+        <rdfs:label>chlorophyll_flourescence</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/northward_wind">
+        <Units>m s-1</Units>
+        <Definition>North/South component of wind vector. Northward wind is positive. Wind is motion of air relative to the surface of the earth.</Definition>
+        <Term>northward_wind</Term>
+        <rdfs:label>northward_wind</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/number_of_transducer_beams">
+        <Definition>Number of directionally independent beams of the ADCP</Definition>
+        <Term>number_of_transducer_beams</Term>
+        <rdfs:label>number_of_transducer_beams</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/clostridium_perfringens">
+        <Units>MPN ml-1</Units>
+        <Reference>EPA Report of the Experts Scientific Workshop on Critical Research Needs for the Development of New or Revised Recreational Water Quality Criteria (EPA 823-R-07-006; June 2007)</Reference>
+        <Definition>Clostridium perfringens are spore-forming anaerobic bacteria excreted in human and animal fecal matter that do not appear to grow in the aquatic/soil environment.  Another indicator of fecal contamination.  E Coli and Enterococci have been found to multiply in aquatic soils. Most Probable Number (MPN) per unit volume</Definition>
+        <Term>clostridium_perfringens</Term>
+        <rdfs:label>clostridium_perfringens</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/air_pressure">
+        <Units>hPa</Units>
+        <Definition>Pressure exerted by overlying air</Definition>
+        <Term>air_pressure</Term>
+        <rdfs:label>air_pressure</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/chlorophyll_a">
+        <Reference>Alain Aminot and Francisco Rey, 2001</Reference>
+        <Definition>Concentration of chloropyll-a in a defined volume of water used to estimate phytoplanton mass.  Measurements using spectrographic or flourometry must be calibrated against discrete water sample measurements at a frequency appropriate to the local conditions.</Definition>
+        <Term>chlorophyll_a</Term>
+        <rdfs:label>chlorophyll_a</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/depth_cell">
+        <Definition>Division of a profile with depth into regularly spaced cells or bins.  ADCPs average the velocities over the entire range of each depth cell.</Definition>
+        <Term>depth_cell</Term>
+        <rdfs:label>depth_cell</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/wind_stress_to_direction">
+        <Units>degrees_true</Units>
+        <Definition>Direction toward which wind stress is acting. Wind is motion of air relative to the surface of the earth. Wind stress is the force of wind imposed on a unit area.</Definition>
+        <Term>wind_stress_to_direction</Term>
+        <rdfs:label>wind_stress_to_direction</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/transducer_height">
+        <Units>meter</Units>
+        <Definition>Height of transducer above bottom or from surface.</Definition>
+        <Term>transducer_height</Term>
+        <rdfs:label>transducer_height</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/precipitation_rate">
+        <Units>mm hr-1</Units>
+        <Definition>Amount of wet equivalent precipitation per unit time.</Definition>
+        <Term>precipitation_rate</Term>
+        <rdfs:label>precipitation_rate</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/transducer_frequency">
+        <Units>kHz</Units>
+        <Definition>Operating frequency of ADCP</Definition>
+        <Term>transducer_frequency</Term>
+        <rdfs:label>transducer_frequency</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/swell_wave">
+        <Reference>CDIP</Reference>
+        <Definition>Swell characteristically exhibits a more regular and longer period and has flatter crests than waves within their fetch.  Swell waves are wind-generated waves that are propagating away or are outside their generating area.</Definition>
+        <Term>swell_wave</Term>
+        <rdfs:label>swell_wave</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/spectral_reflectance">
+        <Units>1</Units>
+        <Definition>Upwelling irradiance (Eu) divided by downwelling radiance (Ed) at a specific spectral wavelength.</Definition>
+        <Term>spectral_reflectance</Term>
+        <rdfs:label>spectral_reflectance</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/error_velocity">
+        <Units>cm s-1</Units>
+        <Reference>Symonds, D.R. QA/QC Parameters for Acoustic Doppler Current Profilers, Teledyne RDI Application Note, June, 2006.</Reference>
+        <Definition>This parameter is the difference between the two independent estimates of vertical velocity at a given range bin.</Definition>
+        <Term>error_velocity</Term>
+        <rdfs:label>error_velocity</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/beam_velocity">
+        <Units>cm s-1</Units>
+        <Definition>For acoustic applications, it is the velocity of the scattering medium of a volume defined by the bearing or beam direction over a specific distance range from the sensing antenna.</Definition>
+        <Term>beam_velocity</Term>
+        <rdfs:label>beam_velocity</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/downward_longwave_radiation">
+        <Definition>Downward IR radiation. Positive is downward.</Definition>
+        <Term>downward_longwave_radiation</Term>
+        <rdfs:label>downward_longwave_radiation</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/wave_kurtosis">
+        <Reference>CDIP</Reference>
+        <Definition>The quality, state or condition of peakedness or flatness of the wave spectral distribution.  One property derived from low-order Fourier coefficients of a directional wave spectrum.</Definition>
+        <Term>wave_kurtosis</Term>
+        <rdfs:label>wave_kurtosis</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/downwelling_shortwave_irradiance">
+        <Units>W m-2</Units>
+        <Definition>Integrated downwelling irradiance for spectral wavelengths less than 700nm.</Definition>
+        <Term>downwelling_shortwave_irradiance</Term>
+        <rdfs:label>downwelling_shortwave_irradiance</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/pCO2">
+        <Units>uatm</Units>
+        <Reference>Contents taken from Glossary: Carbon Dioxide and Climate, 1990. ORNL/CDIAC-39, Carbon Dioxide Information Analysis Center, Oak Ridge National Laboratory, Oak Ridge, Tennessee. Edited by: Fred O'Hara Jr.  http://cdiac.ornl.gov/glossary.html</Reference>
+        <Definition>The partial pressure of carbon dioxide (pCO2) in the atmosphere or ocean.  In the atmosphere, the partial pressure of carbon dioxide (pCO2) is defined as the pressure the CO2 would exert if all other gases were removed. In the ocean, the pCO2 is determined by the amount of dissolved CO2 and H2CO3.</Definition>
+        <Term>pCO2</Term>
+        <rdfs:label>pCO2</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/eastward_current">
+        <Units>cm s-1</Units>
+        <Definition>East/West component of ocean current. Eastward is positive. Current is the steady flow of water along a cyclic or directional path relative to location and time.</Definition>
+        <Term>eastward_current</Term>
+        <rdfs:label>eastward_current</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/radial_speed">
+        <Units>cm s-1</Units>
+        <Definition>Magnitude of velocity of motion of a target toward or away from an observer. The second step of three in processing HF Radar returned signal is to extract from Doppler-shift frequency the speed of the motion of currents and waves for each range bin from the returned signal.</Definition>
+        <Term>radial_speed</Term>
+        <rdfs:label>radial_speed</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/wind_speed">
+        <Units>m s-1</Units>
+        <Definition>Magnitude of wind velocity. Wind is motion of air relative to the surface of the earth.</Definition>
+        <Term>wind_speed</Term>
+        <rdfs:label>wind_speed</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/light_attenuation_coefficient">
+        <Units>m-1</Units>
+        <Definition>Measure of combined effects on light caused by absorption and scattering over a defined distance for a specific wavelength of light.</Definition>
+        <Term>light_attenuation_coefficient</Term>
+        <rdfs:label>light_attenuation_coefficient</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/nitrite_plus_nitrate">
+        <Units>ug L-1 as N</Units>
+        <Definition>Concentration of nitrite and nitrate (NO2+NO3) in a water sample.</Definition>
+        <Term>nitrite_plus_nitrate</Term>
+        <rdfs:label>nitrite_plus_nitrate</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/longitude">
+        <Units>degrees_east</Units>
+        <Definition>X-coordinate of dependent observation in geographic coordinate. East is positive.</Definition>
+        <Term>longitude</Term>
+        <rdfs:label>longitude</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/current_speed">
+        <Units>cm s-1</Units>
+        <Definition>Magnitude of velocity of ocean current. Current is the steady flow of water along a cyclic or directional path relative to location and time.</Definition>
+        <Term>current_speed</Term>
+        <rdfs:label>current_speed</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/wind_stress">
+        <Units>N m-2</Units>
+        <Definition>Magnitude of wind stress. Wind is motion of air relative to the surface of the earth.  Wind stress is the force of wind imposed on a unit area.</Definition>
+        <Term>wind_stress</Term>
+        <rdfs:label>wind_stress</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/net_longwave_radiation">
+        <Units>W m-2</Units>
+        <Definition>Net IR radiation - includes reflected IR radiation. Positive is downward.</Definition>
+        <Term>net_longwave_radiation</Term>
+        <rdfs:label>net_longwave_radiation</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/drifter_to_direction">
+        <Units>degrees_true</Units>
+        <Definition>Direction towards which a drifter is going.   A drifter is an object that moves with the flow of current.</Definition>
+        <Term>drifter_to_direction</Term>
+        <rdfs:label>drifter_to_direction</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/northward_current">
+        <Units>cm s-1</Units>
+        <Definition>North/South component of ocean current. Northward is positive. Current is the steady flow of water along a cyclic or directional path relative to location and time.</Definition>
+        <Term>northward_current</Term>
+        <rdfs:label>northward_current</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/dissolved_oxygen_saturation">
+        <Units>%</Units>
+        <Definition>Dissolved Oxygen Saturation (DO%) is DO concentraion relative to DO saturation levels at the same temperature and salinity in a water sample.</Definition>
+        <Term>dissolved_oxygen_saturation</Term>
+        <rdfs:label>dissolved_oxygen_saturation</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/cloud_cover">
+        <Units>percent</Units>
+        <Definition>Percent of sky covered by clouds of all types.</Definition>
+        <Term>cloud_cover</Term>
+        <rdfs:label>cloud_cover</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/drifter_velocity">
+        <Units>cm s-1</Units>
+        <Definition>The velocity of an object that moves with the flow of current.  Speed and direction are determined from point-to-point geographic locations with time.</Definition>
+        <Term>drifter_velocity</Term>
+        <rdfs:label>drifter_velocity</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/absorption">
+        <Reference>AMS Glossary of Meterology, Second Edition, 2000, Cambridge, Massachusetts. http://amsglossary.allenpress.com/glossary</Reference>
+        <Definition>As waves propagate through a medium, the signal strength attenuates by absorption and scattering within the medium.</Definition>
+        <Term>absorption</Term>
+        <rdfs:label>absorption</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/correlation_magnitude">
+        <Reference>Symonds, D.R. QA/QC Parameters for Acoustic Doppler Current Profilers, Teledyne RDI Application Note, June, 2006.</Reference>
+        <Definition>This parameter is a measure of the pulse-to-pulse correlation in a returned signal.  Specifically for RDI ADCP, it is the magnitude of the normalized echo autocorrelation at the lag used for estimating the Doppler phase change.  As the correlation magnitude value decreases, so does data accuracy.</Definition>
+        <Term>correlation_magnitude</Term>
+        <rdfs:label>correlation_magnitude</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/conductivity">
+        <Units>siemens | uS</Units>
+        <Definition>Ability of a material to pass an electrical current.  Inverse of resistance. In water, it is a proxy from which salinity is derived for water quality or to further derive water density.</Definition>
+        <Term>conductivity</Term>
+        <rdfs:label>conductivity</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/depth_cell_size">
+        <Units>meter</Units>
+        <Definition>For an ADCP, the range of depth over which the current velocities are averaged.</Definition>
+        <Term>depth_cell_size</Term>
+        <rdfs:label>depth_cell_size</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/phosphate">
+        <Units>ug L-1 as P</Units>
+        <Definition>Concentration of orthophosphate (PO4) in a water sample.</Definition>
+        <Term>phosphate</Term>
+        <rdfs:label>phosphate</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/bottom_tracking_velocity">
+        <Units>degrees</Units>
+        <Definition>In vessel-mounted ADCP applications, bottom tracking can be used to accurately remove platform velocity from profile velocities. When the sea-floor bottom is within range of the ADCP, a special ping can be transmitted to measure the Doppler shift of the signal return from the bottom, providing a very accurate measurement of ship velocity.  When bottom-tracking is unavailable (too deep for ADCP to sense sea-floor), ship navigation data is used to estimate ship velocity.</Definition>
+        <Term>bottom_tracking_velocity</Term>
+        <rdfs:label>bottom_tracking_velocity</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/total_coliform">
+        <Units>MPN ml-1</Units>
+        <Reference>EPA Basic Information about Pathogens and Indicators in Drinking Water, http://water.epa.gov/drink/contaminants/basicinformation/</Reference>
+        <Definition>Coliforms are bacteria that are naturally present in the environment and used as an indicator that other, potentially harmful, bacteria may be present. Most Probable Number (MPN) per unit volume.</Definition>
+        <Term>total_coliform</Term>
+        <rdfs:label>total_coliform</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/air_temperature">
+        <Units>celcius</Units>
+        <Definition>Temperature of air in situ.</Definition>
+        <Term>air_temperature</Term>
+        <rdfs:label>air_temperature</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/pathogen">
+        <Definition>Disease-causing bacteria, virus, or protozoan.</Definition>
+        <Term>pathogen</Term>
+        <rdfs:label>pathogen</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/delta_t">
+        <Definition>The difference between the time of last acceptable measurement or value and the time of the measurement or value of interest.</Definition>
+        <Term>delta_t</Term>
+        <rdfs:label>delta_t</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/mean_wave_height">
+        <Units>meter</Units>
+        <Reference>CDIP</Reference>
+        <Definition>The statistical average of wave height recorded during a sampling period.</Definition>
+        <Term>mean_wave_height</Term>
+        <rdfs:label>mean_wave_height</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/quantum_yield_of_fluourescence">
+        <Units>ratio 0-1</Units>
+        <Reference>PAC, 2007, 79, 293 (Glossary of terms used in photochemistry, 3rd edition (IUPAC Recommendations 2006)) on page 406</Reference>
+        <Definition>In fluorescence, it is defined as the number of photons emitted divided by the number of photons absorbed.</Definition>
+        <Term>quantum_yield_of_fluourescence</Term>
+        <rdfs:label>quantum_yield_of_fluourescence</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/range_bin">
+        <Definition>Range-ring or annulus defined by the area between two distances about a central point.  The first step of three in processing HF Radar returned signal is to extract the distance or range from a patch of scatterers divided into bins (usually 32 to 64 bins).  Each range bin  includes signal returned from a range ring or annulus about the site.</Definition>
+        <Term>range_bin</Term>
+        <rdfs:label>range_bin</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/wind_from_direction">
+        <Units>degrees_true</Units>
+        <Definition>Direction from which wind is blowing.  Meteorological Convention. Wind is motion of air relative to the surface of the earth.</Definition>
+        <Term>wind_from_direction</Term>
+        <rdfs:label>wind_from_direction</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/black_white_radiance">
+        <Units>W m-2 sr-1</Units>
+        <Definition>Radiance for black body and white light source.</Definition>
+        <Term>black_white_radiance</Term>
+        <rdfs:label>black_white_radiance</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/e_coli">
+        <Units>MPN ml-1</Units>
+        <Reference>EPA Basic Information about Pathogens and Indicators in Drinking Water, http://water.epa.gov/drink/contaminants/basicinformation/</Reference>
+        <Definition>Fecal coliform and E. coli are bacteria whose presence indicates that water may be contaminanted by human or animal wastes. In marine/estuarine waters, E. coli is more readily inactivated than enterococci and appears to correlate less well to health risk than enterococci for saline water environments.  Most Probable Number (MPN) per unit volume.</Definition>
+        <Term>e_coli</Term>
+        <rdfs:label>e_coli</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/yaw">
+        <Units>degree</Units>
+        <Definition>Rotation about the vertical axis of a sensor platform like a ship or buoy or bottom frame.</Definition>
+        <Term>yaw</Term>
+        <rdfs:label>yaw</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/black_white_irradiance">
+        <Units>W m-2</Units>
+        <Definition>Irradiance for black body and white light source.</Definition>
+        <Term>black_white_irradiance</Term>
+        <rdfs:label>black_white_irradiance</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/river_level">
+        <Units>m3 sec-1 | cfs</Units>
+        <Definition>The volumetric rate of water flow of a stream or river or pipe.  The measure of flow through a cross-sectional area per unit time.</Definition>
+        <Term>river_level</Term>
+        <rdfs:label>river_level</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/latitude">
+        <Units>degrees_north</Units>
+        <Definition>Y-coordinate of dependent observation in geographic coordinate. North is positive.</Definition>
+        <Term>latitude</Term>
+        <rdfs:label>latitude</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/signal_strength">
+        <Units>dBm | mW</Units>
+        <Reference>AMS Glossary of Meterology, Second Edition, 2000, Cambridge, Massachusetts. http://amsglossary.allenpress.com/glossary</Reference>
+        <Definition>In radar, the power of the signal transmitted or received.   Signal strength is generally expressed in decibels relative to some standard value,  commonly 1 milliwatt or relative to power received at same distance of a signal transmitted in a vacuum.</Definition>
+        <Term>signal_strength</Term>
+        <rdfs:label>signal_strength</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/wind_to_direction">
+        <Units>degrees_true</Units>
+        <Definition>Direction toward which wind is blowing.  Oceanographic convention. Wind is motion of air relative to the surface of the earth.</Definition>
+        <Term>wind_to_direction</Term>
+        <rdfs:label>wind_to_direction</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/mean_wave_direction">
+        <Units>degrees_true</Units>
+        <Definition>The average direction from which waves approach or toward which they propagate.  Mean wave direction is estimated several ways from a measured wave spectrum.</Definition>
+        <Term>mean_wave_direction</Term>
+        <rdfs:label>mean_wave_direction</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/delta_m">
+        <Definition>The difference between the last acceptable measurement or value and the measurement or value of interest.</Definition>
+        <Term>delta_m</Term>
+        <rdfs:label>delta_m</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/blanking_height">
+        <Units>meter</Units>
+        <Definition>Distance from instrument to first depth cell measurement that is blanked to avoid ringing in the transducer head and flow disturbance of the ADCP and mount.</Definition>
+        <Term>blanking_height</Term>
+        <rdfs:label>blanking_height</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/sensor_accuracy">
+        <Definition>Sensor manufacturer stated accuracy.  Accuracy is closeness of measurement to the true value.</Definition>
+        <Term>sensor_accuracy</Term>
+        <rdfs:label>sensor_accuracy</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/precipitation_amount">
+        <Units>mm | ml  | kg m-2</Units>
+        <Reference>Manual on marine meteorological services (WMO-No. 558, App. 1.2)</Reference>
+        <Definition>The deposit of atmospheric moisture as rain, hail, sleet, snow, frost or dew.  Precipition amount is often measured as depth of liquid equivalent moisture at a point but also can be expressed as liquid volume or mass per unit area.</Definition>
+        <Term>precipitation_amount</Term>
+        <rdfs:label>precipitation_amount</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/echo_amplitude">
+        <Reference>AMS Glossary of Meterology, Second Edition, 2000, Cambridge, Massachusetts. http://amsglossary.allenpress.com/glossary</Reference>
+        <Definition>Amplitude of an echoed or returned signal received in radar.  Amplitude is vertical deflection or magnitude of radio wave and is a function of the signal strength.</Definition>
+        <Term>echo_amplitude</Term>
+        <rdfs:label>echo_amplitude</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/backscatter">
+        <Definition>Backscatter refers to the scattered part of returned or echoed signal received in radar.</Definition>
+        <Term>backscatter</Term>
+        <rdfs:label>backscatter</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/wind_gust_to_direction">
+        <Units>degrees from N</Units>
+        <Definition>Direction from which wind gust is blowing when maximum wind speed is observed.  Oceanographic Convention. Wind is motion of air relative to the surface of the earth.</Definition>
+        <Term>wind_gust_to_direction</Term>
+        <rdfs:label>wind_gust_to_direction</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/total_suspended_solids">
+        <Units>mg/L</Units>
+        <Definition>Total Suspended Solids (TSS) are organic and inorganic solids that suspend in the water.  They can be silt, phytoplankton, and waste.</Definition>
+        <Term>total_suspended_solids</Term>
+        <rdfs:label>total_suspended_solids</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/sensible_heat_flux">
+        <Units>W m-2</Units>
+        <Definition>Conductive or convective exchange of heat from the atmosphere to the ocean. Positive is downward.</Definition>
+        <Term>sensible_heat_flux</Term>
+        <rdfs:label>sensible_heat_flux</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/wave_steepness">
+        <Definition>The ratio of wave height to wavelength provides a measure of steepness.</Definition>
+        <Term>wave_steepness</Term>
+        <rdfs:label>wave_steepness</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/leak_detect">
+        <Units>%</Units>
+        <Definition>If relative humidity inside of an enclosure or housing for a sensor exceeds a specified tolerance, moisture may cause sensor damage or corrosion.  It is an indicator of sensor health and data reliability.</Definition>
+        <Term>leak_detect</Term>
+        <rdfs:label>leak_detect</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/threshold">
+        <Definition>An upper or lower limit that defines a point or level beyond which a measured value is valid or adequate or vice versa.</Definition>
+        <Term>threshold</Term>
+        <rdfs:label>threshold</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/sensor_resolution">
+        <Definition>Sensor manufacturer stated resolution.  Resolution is the fineness that an intrument can read a value.</Definition>
+        <Term>sensor_resolution</Term>
+        <rdfs:label>sensor_resolution</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/upward_wind">
+        <Units>m s-1</Units>
+        <Definition>Vertical wind velocity. Up/Down component of wind vector. Up is positive. Wind is motion of air relative to the surface of the earth.</Definition>
+        <Term>upward_wind</Term>
+        <rdfs:label>upward_wind</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/quantum_efficiency">
+        <Reference>Annu. Rev. Plant. Physiol. 1958.9:1-24.</Reference>
+        <Definition>See Quantum Yield of Photosynthesis</Definition>
+        <Term>quantum_efficiency</Term>
+        <rdfs:label>quantum_efficiency</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/giardia_lamblia">
+        <Units>MPN ml-1</Units>
+        <Reference>EPA Basic Information about Pathogens and Indicators in Drinking Water, http://water.epa.gov/drink/contaminants/basicinformation/</Reference>
+        <Definition>A single-celled protozoan parasite that lives in the intestine of infected humans or animals. It is found on surfaces or in soil, food, or water that has been contaminated with the feces from infected humans or animals. Giardia can survive in the saline waters for up to 12 weeks.  The occurrence of Giardia is increased in water with decreasing temperatures and increasing turbidity of the water. Most Probable Number (MPN) per unit volume.</Definition>
+        <Term>giardia_lamblia</Term>
+        <rdfs:label>giardia_lamblia</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/peak_wave_period">
+        <Units>s</Units>
+        <Reference>CDIP</Reference>
+        <Definition>The wave period as inverse of wave frequency at which the wave spectrum reaches its maximum.  Sometimes referred to as the dominant wave period.</Definition>
+        <Term>peak_wave_period</Term>
+        <rdfs:label>peak_wave_period</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/downwelling_uv_irradiance">
+        <Units>W m-2</Units>
+        <Definition>Integrated downwelling irradiance for wavelengths in the ultraviolet region.</Definition>
+        <Term>downwelling_uv_irradiance</Term>
+        <rdfs:label>downwelling_uv_irradiance</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/percent_good">
+        <Term>percent_good</Term>
+        <rdfs:label>percent_good</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/turbidity">
+        <Units>NTU</Units>
+        <Definition>Measure of light scattering due to suspended material in water. Measure of the cloudiness of water. Higher turbidity levels are often associated with higher levels of disease-causing microorganisms such as viruses, parasites and some bacteria.</Definition>
+        <Term>turbidity</Term>
+        <rdfs:label>turbidity</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/wave_spectrum">
+        <Units>m2 s | m2 s rad-1</Units>
+        <Definition>The distribution of wave energy sometimes described as a function of wave frequency or in two-dimensions as a function of wave frequency and wave direction.</Definition>
+        <Term>wave_spectrum</Term>
+        <rdfs:label>wave_spectrum</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/secchi_disk_depth">
+        <Units>m</Units>
+        <Definition>A measure of visibility or transparency in water. A Secchi Disk is a patterned disk that is lowered into the water and the depth at which the pattern is no longer visible is the called the Secchi Disk depth (SDD).</Definition>
+        <Term>secchi_disk_depth</Term>
+        <rdfs:label>secchi_disk_depth</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/net_heat_flux">
+        <Units>W m-2</Units>
+        <Definition>Combined net shortwave net longwave sensible and latent heat fluxes.  Positive is downward.</Definition>
+        <Term>net_heat_flux</Term>
+        <rdfs:label>net_heat_flux</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/upwelling_irradiance">
+        <Units>W m-2 m-1</Units>
+        <Definition>Irradiance from below.</Definition>
+        <Term>upwelling_irradiance</Term>
+        <rdfs:label>upwelling_irradiance</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/scattering">
+        <Reference>AMS Glossary of Meterology, Second Edition, 2000, Cambridge, Massachusetts. http://amsglossary.allenpress.com/glossary</Reference>
+        <Definition>Often the term scattered radiation is applied to that radiation observed in directions other than that of the source and may also be applied to acoustic and other waves. As waves propagate through a medium, the signal strength attenuates by absorption and scattering within the medium.</Definition>
+        <Term>scattering</Term>
+        <rdfs:label>scattering</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/cdom">
+        <Units>mg l-1 or ppm</Units>
+        <Definition>Colored (or chromophoric) dissolved organic matter (CDOM). Measurements using spectrographic or flourometry must be calibrated against discrete water sample measurements at a frequency appropriate to the local conditions.</Definition>
+        <Term>cdom</Term>
+        <rdfs:label>cdom</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/number_depth_cells">
+        <Definition>Number of uniformly spaced depth cells or bins that define the total profile range.</Definition>
+        <Term>number_depth_cells</Term>
+        <rdfs:label>number_depth_cells</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/phaeophytin">
+        <Units>ug l-1</Units>
+        <Reference>Yentsch.C.S. and Menzel.D. (1963), A method for the determination of phytoplankton chlorophyll and phaeophytin by fluorescence, Deep-Sea Res., 10, 221-231.</Reference>
+        <Definition>A pigment that occurs naturally or as a result of acidification and that is produced by digestion of chlorophyll-a.  In highly productive coastal waters, high levels of phaeophytin can be encountered, necessitating measurement and correction of Chlorophyll-a measurements.</Definition>
+        <Term>phaeophytin</Term>
+        <rdfs:label>phaeophytin</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/bottom_tracking_depth">
+        <Units>meter</Units>
+        <Definition>Distance to sea floor determined by travel time of a reflected pulses sent out from ship-mounted ADCP.</Definition>
+        <Term>bottom_tracking_depth</Term>
+        <rdfs:label>bottom_tracking_depth</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/enterococcus">
+        <Units>MPN ml-1</Units>
+        <Reference>EPA Report of the Experts Scientific Workshop on Critical Research Needs for the Development of New or Revised Recreational Water Quality Criteria (EPA 823-R-07-006; June 2007)</Reference>
+        <Definition>Enterococci are bacterial indicators of fecal contamination.  In marine/estuarine waters, E. coli is more readily inactivated than enterococci and appears to correlate less well to health risk than enterococci for saline water environments. Most Probable Number (MPN) per unit volume.</Definition>
+        <Term>enterococcus</Term>
+        <rdfs:label>enterococcus</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/remote_sensing_spectral_reflectance">
+        <Units>sr-1</Units>
+        <Definition>Upwelling radiance (Lu) divided by downwelling radiance (Ed) at a specific spectral wavelength.</Definition>
+        <Term>remote_sensing_spectral_reflectance</Term>
+        <rdfs:label>remote_sensing_spectral_reflectance</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/latent_heat_flux">
+        <Units>W m-2</Units>
+        <Definition>Evaporative exchange of heat from the atmosphere to the ocean.  Positive is downward.</Definition>
+        <Term>latent_heat_flux</Term>
+        <rdfs:label>latent_heat_flux</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/salinity">
+        <Reference>Unesco (1981b). Background papers and supporting data on the Practical Salinity Scale 1978. Tech. Pap. Mar. Sci., 37: 144 pp.</Reference>
+        <Definition>Salinity is to the salt content of a water sample or body of water.  The measure of salt content of a water sample follows UNESCO standards known as the Practical Salinity Scale (PSS) as the conductivity ratio of a sea water sample to a standard KCl solution.  PSS is a ratio and has no units.</Definition>
+        <Term>salinity</Term>
+        <rdfs:label>salinity</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/downwelling_radiance">
+        <Units>W m-2 sr-1</Units>
+        <Definition>Radiance from below.</Definition>
+        <Term>downwelling_radiance</Term>
+        <rdfs:label>downwelling_radiance</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/depth">
+        <Units>meter</Units>
+        <Definition>Z-coordinate of observation in vertical distance below reference. Down is positive. (sea surface | geiod | ellipsoid | MSL | MLLW | AGL )</Definition>
+        <Term>depth</Term>
+        <rdfs:label>depth</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/nitrite">
+        <Units>ug L-1 as N</Units>
+        <Definition>Concentration of nitrite (NO2)  in a water sample.</Definition>
+        <Term>nitrite</Term>
+        <rdfs:label>nitrite</rdfs:label>
+    </Parameter>
+    <Parameter rdf:about="http://mmisw.org/ont/ioos/parameter/water_density">
+        <Units>kg m-3</Units>
+        <Definition>Mass of water per unit volume.</Definition>
+        <Term>water_density</Term>
+        <rdfs:label>water_density</rdfs:label>
+    </Parameter>
+</rdf:RDF>

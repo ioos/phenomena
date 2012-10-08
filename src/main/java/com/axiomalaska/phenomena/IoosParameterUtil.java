@@ -1,4 +1,4 @@
-package com.axiomalaska.ioos.parameter;
+package com.axiomalaska.phenomena;
 
 import java.io.InputStream;
 
@@ -9,19 +9,19 @@ import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.util.FileManager;
 
-public class ParameterUtil {
+public class IoosParameterUtil {
 	private static final String PARAMETER_RDF = "src/main/vocabs/parameter.rdf";
 	
-	private static ParameterUtil instance;
+	private static IoosParameterUtil instance;
 	private OntModel model;
 	
-	protected ParameterUtil(){
+	protected IoosParameterUtil(){
 		model = loadModel();
 	}
 	
-	public static ParameterUtil getInstance(){
+	public static IoosParameterUtil getInstance(){
 		if( instance == null ){
-			instance = new ParameterUtil();
+			instance = new IoosParameterUtil();
 		}
 		return instance;
 	}

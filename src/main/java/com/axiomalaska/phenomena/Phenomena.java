@@ -9,6 +9,7 @@ import java.util.List;
 
 import org.apache.commons.lang3.text.WordUtils;
 
+import ucar.units.BaseUnit;
 import ucar.units.SI;
 import ucar.units.Unit;
 
@@ -151,7 +152,7 @@ public class Phenomena {
             throws UnitCreationException{
         String unitString = IoosParameterUtil.getInstance().getPropertyValue(
                 ioosParameter, IoosParameter.Units );
-        Unit unit = unitString != null ? unitResolver.resolveUnit( unitString ) : null;
+        Unit unit = unitString != null ? unitResolver.resolveUnit( unitString ) : BaseUnit.DIMENSIONLESS;
         return createPhenomenon(
              convertUnderscoredNameToTitleCase( ioosParameter.getLocalName() )
             ,ioosParameter.getURI()

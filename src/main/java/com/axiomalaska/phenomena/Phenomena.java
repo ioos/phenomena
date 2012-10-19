@@ -4,13 +4,13 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.lang3.text.WordUtils;
 
 import ucar.units.SI;
+import ucar.units.Unit;
 
 import com.axiomalaska.cf4j.CFStandardName;
 import com.axiomalaska.cf4j.CFStandardNames;
@@ -32,662 +32,614 @@ public class Phenomena {
         public String description();
         public String source();
     }
-    
-    @Target(ElementType.FIELD)
-    @Retention(RetentionPolicy.RUNTIME)
-    public @interface EnglishUnits {}
-    
+
     @Target(ElementType.FIELD)
     @Retention(RetentionPolicy.RUNTIME)
     public @interface NonStandardUnits {}
 
+    private static Phenomena instance;
+    private final UnitResolver unitResolver = UnitResolver.instance();
+    private final List<Phenomenon> allPhenomena = new ArrayList<Phenomenon>();
+
+    public Phenomena() throws UnitCreationException {}
+
+    public static Phenomena instance() throws UnitCreationException{
+        if( instance == null ){
+            instance = new Phenomena();
+        }
+        return instance;
+    }
+
     public static final String IOOS_MMI_URL_PREFIX = IoosParameter.NS;    
-    public static final String FAKE_MMI_URL_PREFIX = IOOS_MMI_URL_PREFIX;
+    public static final String FAKE_MMI_URL_PREFIX = "http://mmisw.org/ont/aoos/parameter/";
     public static final String CF_MMI_URL_PREFIX = "http://mmisw.org/ont/cf/parameter/";
 
-    public static final String DEGREE = "degree";
-    public static final String PERCENT = "%";
-    
+    public List<Phenomenon> getAllPhenomena(){
+        return allPhenomena;
+    }    
+
     private static final String convertUnderscoredNameToTitleCase( String underscoredName ){
         String lowercaseName = underscoredName.replace('_', ' ');
         return WordUtils.capitalize( lowercaseName );
     }
 
-    private static final Phenomenon createCfParameterWithAlternateName(
-            CFStandardName cfStandardName, String name ){
+    /**
+     * All other phenomenon creation methods should use this method so that the phenomenon
+     * gets added to the allPhenomena list. Note: this should be the only method in Phenomena
+     * to call PhenomenonImp's constructor
+     * 
+     * @param name
+     * @param id
+     * @param unit
+     * @return the created phenomenon
+     */
+
+    private final Phenomenon createPhenomenon( String name, String id, Unit unit ){
+        Phenomenon phenomenon = new PhenomenonImp( name, id, unit );
+        allPhenomena.add( phenomenon );
+        return phenomenon;
+    }
+
+    private final Phenomenon createPhenomenon( String name, String id ){
+        Phenomenon phenomenon = new PhenomenonImp( name, id, null );
+        allPhenomena.add( phenomenon );
+        return phenomenon;
+    }
+    
+    private final Phenomenon createPhenomenon( String name, String id, String unit )
+            throws UnitCreationException{
+        return createPhenomenon(
+             name
+            ,id
+            ,unitResolver.resolveUnit( unit )
+        );
+    }
+
+    private final Phenomenon createCfParameterWithAlternateName(
+            CFStandardName cfStandardName, String name ) throws UnitCreationException{
         PhenomenonImp sosPhen = (PhenomenonImp) createStandardCfParameter( cfStandardName );
         sosPhen.setName( name );
         return sosPhen;
     }
-    
-    private static final Phenomenon createCfParameterWithAlternateUnits(
-            CFStandardName cfStandardName, String units ){
-        PhenomenonImp sosPhen = (PhenomenonImp) createStandardCfParameter( cfStandardName );
-        sosPhen.setUnits( units );
-        return sosPhen;
-    }
-    
-    private static final Phenomenon createIoosParameterWithAlternateUnits(
-            Individual ioosParameter, String units ){
-        PhenomenonImp sosPhen = (PhenomenonImp) createStandardIoosParameter( ioosParameter );
-        sosPhen.setUnits( units );
-        return sosPhen;
-    }
 
-    private static final Phenomenon createStandardCfParameter( CFStandardName cfStandardName ){
-        return new PhenomenonImp(
+    private final Phenomenon createCfParameterWithAlternateUnits(
+            CFStandardName cfStandardName, String unitString ) throws UnitCreationException{
+        return createPhenomenon(
              convertUnderscoredNameToTitleCase( cfStandardName.getName() )
             ,CF_MMI_URL_PREFIX + cfStandardName.getName()
-            ,cfStandardName.getCanonicalUnits()
+            ,unitResolver.resolveUnit( unitString )
         );
     }
     
-    private static final Phenomenon createStandardIoosParameter( Individual ioosParameter ){
-        return new PhenomenonImp(
+    private final Phenomenon createCfParameterWithAlternateUnits(
+            CFStandardName cfStandardName, Unit unit ){
+        return createPhenomenon(
+             convertUnderscoredNameToTitleCase( cfStandardName.getName() )
+            ,CF_MMI_URL_PREFIX + cfStandardName.getName()
+            ,unit
+        );
+    }
+
+    private final Phenomenon createIoosParameterWithAlternateUnits(
+            Individual ioosParameter, String unitString ) throws UnitCreationException{
+        return createPhenomenon(
              convertUnderscoredNameToTitleCase( ioosParameter.getLocalName() )
             ,ioosParameter.getURI()
-            ,IoosParameterUtil.getInstance().getPropertyValue( ioosParameter, IoosParameter.Units )
+            ,unitResolver.resolveUnit( unitString )
         );
     }
     
-    public static final List<Phenomenon> getAllPhenomena(){
-    	List<Phenomenon> p = new ArrayList<Phenomenon>();
-    	
-    	p.add(AIR_PRESSURE);
-    	p.add(AIR_TEMPERATURE);
-    	p.add(AIR_TEMPERATURE_AVERAGE);
-    	p.add(AIR_TEMPERATURE_MAXIMUM);
-    	p.add(AIR_TEMPERATURE_MINIMUM);
-    	p.add(ALTITUDE);
-    	p.add(AMMONIUM);
-    	p.add(BATTERY_VOLTAGE);
-    	p.add(BATTERY_VOLTAGE_MAXIMUM);
-    	p.add(BATTERY_VOLTAGE_MINIMUM);
-    	p.add(CHLOROPHYLL_FLOURESCENCE);
-    	p.add(DEPTH_TO_WATER_LEVEL);
-    	p.add(DEW_POINT_TEMPERATURE);
-    	p.add(DIRECTION_OF_SEA_WATER_VELOCITY);
-    	p.add(DOMINANT_WAVE_PERIOD);
-    	p.add(DOWNWELLING_PHOTOSYNTHETIC_RADIATIVE_FLUX_IN_SEA_WATER);
-    	p.add(FRACTIONAL_SATURATION_OF_OXYGEN_IN_SEA_WATER);
-    	p.add(FUEL_MOISTURE);
-    	p.add(FUEL_TEMPERATURE);
-    	p.add(GRID_LATITUDE);
-    	p.add(GRID_LONGITUDE);
-    	p.add(HEIGHT);
-    	p.add(LWE_THICKNESS_OF_PRECIPITATION_AMOUNT);
-    	p.add(NITRATE);
-    	p.add(NITRITE);
-    	p.add(NITRITE_PLUS_NITRATE);
-    	p.add(MASS_CONCENTRATION_OF_CARBON_DIOXIDE_IN_AIR);
-    	p.add(MASS_CONCENTRATION_OF_CARBON_DIOXIDE_IN_SEA_WATER);
-    	p.add(MASS_CONCENTRATION_OF_CHLOROPHYLL_IN_SEA_WATER);
-    	p.add(MASS_CONCENTRATION_OF_OXYGEN_IN_SEA_WATER);
-    	p.add(PANEL_TEMPERATURE);
-    	p.add(PEAK_WAVE_DIRECTION);
-    	p.add(PEAK_WAVE_PERIOD);
-    	p.add(PHOSPHATE);
-    	p.add(PHOTOSYNTHETICALLY_ACTIVE_RADIATION);
-    	p.add(PHYCOERYTHRIN);
-    	p.add(PRECIPITATION_ACCUMULATED);
-    	p.add(PRECIPITATION_INCREMENT);
-    	p.add(PRODUCT_OF_AIR_TEMPERATURE_AND_SPECIFIC_HUMIDITY);
-    	p.add(RADIAL_SEA_WATER_VELOCITY_AWAY_FROM_INSTRUMENT);
-    	p.add(REAL_DIELECTRIC_CONSTANT);
-    	p.add(RELATIVE_HUMIDITY);
-    	p.add(RELATIVE_HUMIDITY_AVERAGE);
-    	p.add(RELATIVE_HUMIDITY_MAXIMUM);
-    	p.add(RELATIVE_HUMIDITY_MINIMUM);
-    	p.add(RELATIVE_PERMITTIVITY);
-    	p.add(RIVER_DISCHARGE);
-    	p.add(SEA_FLOOR_DEPTH_BELOW_SEA_SURFACE);
-    	p.add(SEA_SURFACE_HEIGHT_ABOVE_SEA_LEVEL);
-    	p.add(SEA_SURFACE_HEIGHT_ABOVE_SEA_LEVEL_PREDICTIONS);
-    	p.add(SEA_SURFACE_MAXIMUM_WAVE_HEIGHT);
-    	p.add(SEA_SURFACE_SWELL_WAVE_PERIOD);
-    	p.add(SEA_SURFACE_SWELL_WAVE_SIGNIFICANT_HEIGHT);
-    	p.add(SEA_SURFACE_SWELL_WAVE_TO_DIRECTION);
-    	p.add(SEA_SURFACE_DOMINANT_WAVE_TO_DIRECTION);
-    	p.add(SEA_SURFACE_WAVE_FROM_DIRECTION);
-    	p.add(SEA_SURFACE_WAVE_MEAN_PERIOD);
-    	p.add(SEA_SURFACE_WAVE_SIGNIFICANT_HEIGHT);
-    	p.add(SEA_SURFACE_WIND_WAVE_PERIOD);
-    	p.add(SEA_SURFACE_WIND_WAVE_SIGNIFICANT_HEIGHT);
-    	p.add(SEA_SURFACE_WIND_WAVE_TO_DIRECTION);
-    	p.add(SEA_WATER_ELECTRICAL_CONDUCTIVITY);
-    	p.add(SEA_WATER_PH_REPORTED_ON_TOTAL_SCALE);
-    	p.add(SEA_WATER_PRACTICAL_SALINITY);
-    	p.add(SEA_WATER_SPEED);
-    	p.add(SEA_WATER_TEMPERATURE);
-    	p.add(SNOW_DEPTH);
-    	p.add(SNOW_PILLOW);
-    	p.add(SNOW_WATER_EQUIVALENT);
-    	p.add(SOIL_MOISTURE_PERCENT);
-    	p.add(SOIL_TEMPERATURE);
-    	p.add(SOLAR_RADIATION);
-    	p.add(SOLAR_RADIATION_AVERAGE);
-    	p.add(SOLAR_RADIATION_MAXIMUM);
-    	p.add(SOLAR_RADIATION_MINIMUM);
-    	p.add(STREAMFLOW);
-    	p.add(STREAM_GAGE_HEIGHT);
-    	p.add(TOA_INCOMING_SHORTWAVE_FLUX);
-    	p.add(TOA_OUTGOING_SHORTWAVE_FLUX);
-    	p.add(TURBIDITY);
-    	p.add(VISIBILITY_IN_AIR);
-    	p.add(WATER_SURFACE_HEIGHT_ABOVE_REFERENCE_DATUM);
-    	p.add(WATER_TEMPERATURE_INTRAGRAVEL);
-    	p.add(WATER_VOLUME_TRANSPORT_INTO_SEA_WATER_FROM_RIVERS);
-    	p.add(WAVE_DIRECTIONAL_SPREAD);
-    	p.add(WEBCAM);
-    	p.add(WIND_FROM_DIRECTION);
-    	p.add(WIND_GENERATOR_CURRENT);
-    	p.add(WIND_GUST_FROM_DIRECTION);
-    	p.add(WIND_SPEED);
-    	p.add(WIND_SPEED_OF_GUST);
-    	p.add(WIND_VERTICAL_VELOCITY);
-    	
-    	return p;
+    private final Phenomenon createIoosParameterWithAlternateUnits(
+            Individual ioosParameter, Unit unit ){
+        return createPhenomenon(
+             convertUnderscoredNameToTitleCase( ioosParameter.getLocalName() )
+            ,ioosParameter.getURI()
+            ,unit
+        );
+    }
+
+    private final Phenomenon createStandardCfParameter( CFStandardName cfStandardName )
+            throws UnitCreationException{
+        return createPhenomenon(
+             convertUnderscoredNameToTitleCase( cfStandardName.getName() )
+            ,CF_MMI_URL_PREFIX + cfStandardName.getName()
+            ,unitResolver.resolveUnit( cfStandardName.getCanonicalUnits() )
+        );
     }
     
+    private final Phenomenon createStandardIoosParameter( Individual ioosParameter )
+            throws UnitCreationException{
+        String unitString = IoosParameterUtil.getInstance().getPropertyValue(
+                ioosParameter, IoosParameter.Units );
+        Unit unit = unitString != null ? unitResolver.resolveUnit( unitString ) : null;
+        return createPhenomenon(
+             convertUnderscoredNameToTitleCase( ioosParameter.getLocalName() )
+            ,ioosParameter.getURI()
+            ,unit
+        );
+    }    
+    
     @CFParameter
-    public static final Phenomenon AIR_PRESSURE = createStandardCfParameter( 
-    		CFStandardNames.AIR_PRESSURE );
+    public final Phenomenon AIR_PRESSURE = createStandardCfParameter( CFStandardNames.AIR_PRESSURE );
     
     @CFParameter
     @NonStandardUnits
-    public static final Phenomenon AIR_TEMPERATURE = createCfParameterWithAlternateUnits(
+    public final Phenomenon AIR_TEMPERATURE = createCfParameterWithAlternateUnits(
          CFStandardNames.AIR_TEMPERATURE
-        ,SI.DEGREE_CELSIUS.getSymbol()
+        ,CustomUnits.instance().DEGREES_CELSIUS
     );
     
+
     @HomelessParameter(description="",source="NERRS, RAWS, SnoTel")
-    public static final Phenomenon AIR_TEMPERATURE_AVERAGE = new PhenomenonImp(
+    public final Phenomenon AIR_TEMPERATURE_AVERAGE = createPhenomenon(
         "Air Temperature Average"
        ,FAKE_MMI_URL_PREFIX + "air_temperature_average"
-       ,SI.DEGREE_CELSIUS.getSymbol()
+       ,CustomUnits.instance().DEGREES_CELSIUS
     );
     
     @HomelessParameter(description="",source="HADS, RAWS, SnoTel")
-    public static final Phenomenon AIR_TEMPERATURE_MAXIMUM = new PhenomenonImp(
+    public final Phenomenon AIR_TEMPERATURE_MAXIMUM = createPhenomenon(
         "Air Temperature Maximum"
        ,FAKE_MMI_URL_PREFIX + "air_temperature_maximum"
-       ,SI.DEGREE_CELSIUS.getSymbol()
+       ,CustomUnits.instance().DEGREES_CELSIUS
     );
 
     @HomelessParameter(description="",source="HADS, RAWS, SnoTel")
-    public static final Phenomenon AIR_TEMPERATURE_MINIMUM = new PhenomenonImp(
+    public final Phenomenon AIR_TEMPERATURE_MINIMUM = createPhenomenon(
         "Air Temperature Minimum"
        ,FAKE_MMI_URL_PREFIX + "air_temperature_minimum"
-       ,SI.DEGREE_CELSIUS.getSymbol()
+       ,CustomUnits.instance().DEGREES_CELSIUS
     );
 
     @CFParameter
-    public static final Phenomenon ALTITUDE = createStandardCfParameter( CFStandardNames.ALTITUDE );
+    public final Phenomenon ALTITUDE = createStandardCfParameter( CFStandardNames.ALTITUDE );
     
     @IOOSParameter
-    public static final Phenomenon AMMONIUM =
+    public final Phenomenon AMMONIUM =
         createStandardIoosParameter( IoosParameter.ammonium );
     
     @IOOSParameter
-    public static final Phenomenon BATTERY_VOLTAGE =
+    public final Phenomenon BATTERY_VOLTAGE =
         createStandardIoosParameter( IoosParameter.battery_voltage );
 
     @HomelessParameter(description="",source="SnoTel")
-    public static final Phenomenon BATTERY_VOLTAGE_MAXIMUM = new PhenomenonImp(
+    public final Phenomenon BATTERY_VOLTAGE_MAXIMUM = createPhenomenon(
         "Battery Voltage Maximum"
        ,FAKE_MMI_URL_PREFIX + "battery_voltage_maximum"
-       ,SI.VOLT.getSymbol()
+       ,SI.VOLT       
     );
     
     @HomelessParameter(description="",source="SnoTel")
-    public static final Phenomenon BATTERY_VOLTAGE_MINIMUM = new PhenomenonImp(
+    public final Phenomenon BATTERY_VOLTAGE_MINIMUM = createPhenomenon(
         "Battery Voltage Maximum"
        ,FAKE_MMI_URL_PREFIX + "battery_voltage_minimum"
-       ,SI.VOLT.getSymbol()
+       ,SI.VOLT
     );
     
     @IOOSParameter
-    public static final Phenomenon CHLOROPHYLL_FLOURESCENCE =
+    public final Phenomenon CHLOROPHYLL_FLOURESCENCE =
         createStandardIoosParameter( IoosParameter.chlorophyll_flourescence );
 
     @HomelessParameter(description="",source="USGS")
-    public static final Phenomenon DEPTH_TO_WATER_LEVEL = new PhenomenonImp(
+    public final Phenomenon DEPTH_TO_WATER_LEVEL = createPhenomenon(
          "Depth to Water Level"
         ,FAKE_MMI_URL_PREFIX + "depth_to_water_level"
-        ,SI.METER.getSymbol()
+        ,SI.METER
     );
 
     @CFParameter
     @NonStandardUnits
-    public static final Phenomenon DEW_POINT_TEMPERATURE = createCfParameterWithAlternateUnits(
+    public final Phenomenon DEW_POINT_TEMPERATURE = createCfParameterWithAlternateUnits(
          CFStandardNames.DEW_POINT_TEMPERATURE
-        ,SI.DEGREE_CELSIUS.getSymbol()
+        ,CustomUnits.instance().DEGREES_CELSIUS
     );
 
     @CFParameter
-    public static final Phenomenon DIRECTION_OF_SEA_WATER_VELOCITY =
-        createStandardCfParameter( CFStandardNames.DIRECTION_OF_SEA_WATER_VELOCITY );
+    public final Phenomenon DIRECTION_OF_SEA_WATER_VELOCITY
+        = createStandardCfParameter( CFStandardNames.DIRECTION_OF_SEA_WATER_VELOCITY );
     
     @HomelessParameter(description="",source="NOAA NOS CO-OPS, NDBC")
-    public static final Phenomenon DOMINANT_WAVE_PERIOD = new PhenomenonImp(
+    public final Phenomenon DOMINANT_WAVE_PERIOD = createPhenomenon(
          "Sea Surface Dominant Wave Period"
         ,FAKE_MMI_URL_PREFIX + "sea_surface_dominant_wave_period"
-        ,SI.SECOND.getSymbol()
+        ,SI.SECOND
     );
     
     @CFParameter
-    public static final Phenomenon DOWNWELLING_PHOTOSYNTHETIC_RADIATIVE_FLUX_IN_SEA_WATER =
+    public final Phenomenon DOWNWELLING_PHOTOSYNTHETIC_RADIATIVE_FLUX_IN_SEA_WATER =
         createStandardCfParameter( CFStandardNames.DOWNWELLING_PHOTOSYNTHETIC_RADIATIVE_FLUX_IN_SEA_WATER );
     
     @CFParameter
-    public static final Phenomenon FRACTIONAL_SATURATION_OF_OXYGEN_IN_SEA_WATER =
+    public final Phenomenon FRACTIONAL_SATURATION_OF_OXYGEN_IN_SEA_WATER =
         createStandardCfParameter( CFStandardNames.FRACTIONAL_SATURATION_OF_OXYGEN_IN_SEA_WATER );
     
     @HomelessParameter(description="",source="HADS, RAWS")
-    public static final Phenomenon FUEL_MOISTURE = new PhenomenonImp(
+    public final Phenomenon FUEL_MOISTURE = createPhenomenon(
          "Fuel Moisture"
         ,FAKE_MMI_URL_PREFIX + "fuel_moisture"
-        ,PERCENT
+        ,CustomUnits.instance().PERCENTAGE
     );
 
     @HomelessParameter(description="",source="HADS, RAWS")
-    public static final Phenomenon FUEL_TEMPERATURE = new PhenomenonImp(
+    public final Phenomenon FUEL_TEMPERATURE = createPhenomenon(
          "Fuel Temperature"
         ,FAKE_MMI_URL_PREFIX + "fuel_temperature"
-        ,SI.DEGREE_CELSIUS.getSymbol()
+        ,CustomUnits.instance().DEGREES_CELSIUS
     );
 
     @CFParameter
-    public static final Phenomenon GRID_LATITUDE = createStandardCfParameter( CFStandardNames.GRID_LATITUDE );
+    public final Phenomenon GRID_LATITUDE = createStandardCfParameter( CFStandardNames.GRID_LATITUDE );
 
     @CFParameter
-    public static final Phenomenon GRID_LONGITUDE = createStandardCfParameter( CFStandardNames.GRID_LONGITUDE );
+    public final Phenomenon GRID_LONGITUDE = createStandardCfParameter( CFStandardNames.GRID_LONGITUDE );
     
     @CFParameter
-    public static final Phenomenon HEIGHT = createStandardCfParameter( CFStandardNames.HEIGHT );        
+    public final Phenomenon HEIGHT = createStandardCfParameter( CFStandardNames.HEIGHT );        
     
     @CFParameter
-    public static final Phenomenon LWE_THICKNESS_OF_PRECIPITATION_AMOUNT = createCfParameterWithAlternateName(
+    public final Phenomenon LWE_THICKNESS_OF_PRECIPITATION_AMOUNT = createCfParameterWithAlternateName(
          CFStandardNames.LWE_THICKNESS_OF_PRECIPITATION_AMOUNT
         ,"Precipitation"
     );    
 
     @CFParameter
-    public static final Phenomenon MASS_CONCENTRATION_OF_CARBON_DIOXIDE_IN_AIR =
+    public final Phenomenon MASS_CONCENTRATION_OF_CARBON_DIOXIDE_IN_AIR =
         createStandardCfParameter( CFStandardNames.MASS_CONCENTRATION_OF_CARBON_DIOXIDE_IN_AIR );    
     
     @HomelessParameter(description="",source="")
-    public static final Phenomenon MASS_CONCENTRATION_OF_CARBON_DIOXIDE_IN_SEA_WATER = new PhenomenonImp(
+    public final Phenomenon MASS_CONCENTRATION_OF_CARBON_DIOXIDE_IN_SEA_WATER = createPhenomenon(
         "Mass Concentration of Carbon Dioxide in Sea Water"
        ,FAKE_MMI_URL_PREFIX + "mass_concentration_of_carbon_dioxide_in_sea_water"
-       ,SI.KILOGRAM.getSymbol() + "/" + SI.METER.getSymbol() + "³"
+       ,CustomUnits.instance().KILOGRAMS_PER_CUBIC_METER
     );
     
     @CFParameter
-    public static final Phenomenon MASS_CONCENTRATION_OF_CHLOROPHYLL_IN_SEA_WATER =
+    public final Phenomenon MASS_CONCENTRATION_OF_CHLOROPHYLL_IN_SEA_WATER =
         createStandardCfParameter( CFStandardNames.MASS_CONCENTRATION_OF_CHLOROPHYLL_IN_SEA_WATER );
 
     @CFParameter
-    public static final Phenomenon MASS_CONCENTRATION_OF_OXYGEN_IN_SEA_WATER =
+    public final Phenomenon MASS_CONCENTRATION_OF_OXYGEN_IN_SEA_WATER =
         createStandardCfParameter( CFStandardNames.MASS_CONCENTRATION_OF_OXYGEN_IN_SEA_WATER );
     
     @IOOSParameter
-    public static final Phenomenon NITRATE =
+    public final Phenomenon NITRATE =
         createStandardIoosParameter( IoosParameter.nitrate );
     
     @IOOSParameter
-    public static final Phenomenon NITRITE =
+    public final Phenomenon NITRITE =
         createStandardIoosParameter( IoosParameter.nitrite );
     
     @IOOSParameter
-    public static final Phenomenon NITRITE_PLUS_NITRATE =
+    public final Phenomenon NITRITE_PLUS_NITRATE =
         createStandardIoosParameter( IoosParameter.nitrite_plus_nitrate );
     
     @HomelessParameter(description="",source="")
-    public static final Phenomenon PANEL_TEMPERATURE = new PhenomenonImp(
+    public final Phenomenon PANEL_TEMPERATURE = createPhenomenon(
          "Panel Temperature"
         ,FAKE_MMI_URL_PREFIX + "panel_temperature"
-        ,SI.DEGREE_CELSIUS.getSymbol()
+        ,CustomUnits.instance().DEGREES_CELSIUS
     );
     
     @IOOSParameter
-    public static final Phenomenon PEAK_WAVE_DIRECTION =
+    public final Phenomenon PEAK_WAVE_DIRECTION =
         createStandardIoosParameter( IoosParameter.peak_wave_direction );
 
     @IOOSParameter
-    public static final Phenomenon PEAK_WAVE_PERIOD =
+    public final Phenomenon PEAK_WAVE_PERIOD =
         createStandardIoosParameter( IoosParameter.peak_wave_period );
 
     @IOOSParameter
-    public static final Phenomenon PHOSPHATE =
-        createStandardIoosParameter( IoosParameter.phosphate );
+    public final Phenomenon PHOSPHATE = createStandardIoosParameter( IoosParameter.phosphate );
     
     @HomelessParameter(description="Solar radiation from 400 to 700 nanometers",source="HADS")
-    public static final Phenomenon PHOTOSYNTHETICALLY_ACTIVE_RADIATION = new PhenomenonImp(
+    public final Phenomenon PHOTOSYNTHETICALLY_ACTIVE_RADIATION = createPhenomenon(
          "Photosynthetically Active Radiation"
         ,FAKE_MMI_URL_PREFIX + "photosynthetically_active_radiation"
-        ,SI.WATT.getSymbol() + "/" + SI.METER.getSymbol() + "²"
+        ,CustomUnits.instance().WATTS_PER_SQUARE_METER
     );
     
     @HomelessParameter(description="",source="")
-    public static final Phenomenon PHYCOERYTHRIN = new PhenomenonImp(
+    public final Phenomenon PHYCOERYTHRIN = createPhenomenon(
          "Phycoerythrin"
         ,FAKE_MMI_URL_PREFIX + "phycoerythrin"
-        ,"RFU"
+        ,"rfu"
     );
 
     @IOOSParameter
-    public static final Phenomenon PRECIPITATION_ACCUMULATED =
+    public final Phenomenon PRECIPITATION_ACCUMULATED =
         createStandardIoosParameter( IoosParameter.precipitation_accumulated );
 
     @HomelessParameter(description="",source="HADS, NERRS, SnoTel")
-    public static final Phenomenon PRECIPITATION_INCREMENT = new PhenomenonImp(
+    public final Phenomenon PRECIPITATION_INCREMENT = createPhenomenon(
         "Precipitation Increment"
        ,FAKE_MMI_URL_PREFIX + "precipitation_increment"
-       ,SI.METER.getSymbol()
+       ,SI.METER
     );
 
     @CFParameter
-    public static final Phenomenon PRODUCT_OF_AIR_TEMPERATURE_AND_SPECIFIC_HUMIDITY =
+    public final Phenomenon PRODUCT_OF_AIR_TEMPERATURE_AND_SPECIFIC_HUMIDITY =
         createStandardCfParameter( CFStandardNames.PRODUCT_OF_AIR_TEMPERATURE_AND_SPECIFIC_HUMIDITY );
 
     @CFParameter
-    public static final Phenomenon RADIAL_SEA_WATER_VELOCITY_AWAY_FROM_INSTRUMENT =
+    public final Phenomenon RADIAL_SEA_WATER_VELOCITY_AWAY_FROM_INSTRUMENT =
         createStandardCfParameter( CFStandardNames.RADIAL_SEA_WATER_VELOCITY_AWAY_FROM_INSTRUMENT );
-    
-    @HomelessParameter(description="",source="SnoTel")
-    public static final Phenomenon REAL_DIELECTRIC_CONSTANT = new PhenomenonImp(
-        "Real Dielectric constant"
-       ,FAKE_MMI_URL_PREFIX + "real_dielectric_constant"
-       ,"units"
-    );
-    
+
     @CFParameter
     @NonStandardUnits
-    public static final Phenomenon RELATIVE_HUMIDITY = createCfParameterWithAlternateUnits(
+    public final Phenomenon RELATIVE_HUMIDITY = createCfParameterWithAlternateUnits(
          CFStandardNames.RELATIVE_HUMIDITY
-        ,PERCENT
+        ,CustomUnits.instance().PERCENTAGE
     );
 
     @HomelessParameter(description="",source="NERRS, RAWS, SnoTel")
-    public static final Phenomenon RELATIVE_HUMIDITY_AVERAGE = new PhenomenonImp(
+    public final Phenomenon RELATIVE_HUMIDITY_AVERAGE = createPhenomenon(
         "Relative Humidity Average"
        ,FAKE_MMI_URL_PREFIX + "relative_humidity_average"
-       ,PERCENT
+       ,CustomUnits.instance().PERCENTAGE
     );
     
     @HomelessParameter(description="",source="RAWS, SnoTel")
-    public static final Phenomenon RELATIVE_HUMIDITY_MAXIMUM = new PhenomenonImp(
+    public final Phenomenon RELATIVE_HUMIDITY_MAXIMUM = createPhenomenon(
         "Relative Humidity Maximum"
        ,FAKE_MMI_URL_PREFIX + "relative_humidity_maximum"
-       ,PERCENT
+       ,CustomUnits.instance().PERCENTAGE       
     );
     
     @HomelessParameter(description="",source="RAWS, SnoTel")
-    public static final Phenomenon RELATIVE_HUMIDITY_MINIMUM = new PhenomenonImp(
+    public final Phenomenon RELATIVE_HUMIDITY_MINIMUM = createPhenomenon(
         "Relative Humidity Minimum"
        ,FAKE_MMI_URL_PREFIX + "relative_humidity_minimum"
-       ,PERCENT
+       ,CustomUnits.instance().PERCENTAGE       
     );
     
-    @HomelessParameter(description="",source="")
-    public static final Phenomenon RELATIVE_PERMITTIVITY = new PhenomenonImp(
+    //aka dielectric constant
+    @HomelessParameter(description="",source="SnoTel")
+    public final Phenomenon RELATIVE_PERMITTIVITY = createPhenomenon(
          "Relative Permittivity"
         ,FAKE_MMI_URL_PREFIX + "relative_permittivity"
+        ,CustomUnits.instance().PERCENTAGE        
     );
 
-    @IOOSParameter
-    @EnglishUnits
-    public static final Phenomenon RIVER_DISCHARGE = createIoosParameterWithAlternateUnits(
+    @IOOSParameter    
+    public final Phenomenon RIVER_DISCHARGE = createIoosParameterWithAlternateUnits(
          IoosParameter.river_discharge
-        ,"cfs"
+        ,CustomUnits.instance().CUBIC_METERS_PER_SECOND
     );
 
     @CFParameter
-    public static final Phenomenon SEA_FLOOR_DEPTH_BELOW_SEA_SURFACE =
+    public final Phenomenon SEA_FLOOR_DEPTH_BELOW_SEA_SURFACE =
         createStandardCfParameter( CFStandardNames.SEA_FLOOR_DEPTH_BELOW_SEA_SURFACE );
 
     @CFParameter
-    public static final Phenomenon SEA_SURFACE_HEIGHT_ABOVE_SEA_LEVEL =
+    public final Phenomenon SEA_SURFACE_HEIGHT_ABOVE_SEA_LEVEL =
         createStandardCfParameter( CFStandardNames.SEA_SURFACE_HEIGHT_ABOVE_SEA_LEVEL );
     
     //not used in the sensor-web-harvester
     @HomelessParameter(description="",source="")
-    public static final Phenomenon SEA_SURFACE_HEIGHT_ABOVE_SEA_LEVEL_PREDICTIONS = new PhenomenonImp(
+    public final Phenomenon SEA_SURFACE_HEIGHT_ABOVE_SEA_LEVEL_PREDICTIONS = createPhenomenon(
         "Sea Surface Height Above Sea Level Predictions"
        ,FAKE_MMI_URL_PREFIX + "sea_surface_height_above_sea_level_predictions"
-       ,SI.METER.getSymbol()
+       ,SI.METER
     );
     
     @HomelessParameter(description="",source="")
-    public static final Phenomenon SEA_SURFACE_MAXIMUM_WAVE_HEIGHT = new PhenomenonImp(
+    public final Phenomenon SEA_SURFACE_MAXIMUM_WAVE_HEIGHT = createPhenomenon(
          "Sea Surface Maximum Wave Height"
         ,FAKE_MMI_URL_PREFIX + "sea_surface_maximum_wave_height"
-        ,SI.METER.getSymbol()
+        ,SI.METER
     ); 
     
     @CFParameter
-    public static final Phenomenon SEA_SURFACE_SWELL_WAVE_PERIOD =
+    public final Phenomenon SEA_SURFACE_SWELL_WAVE_PERIOD =
         createStandardCfParameter( CFStandardNames.SEA_SURFACE_SWELL_WAVE_PERIOD );
 
     @CFParameter
-    public static final Phenomenon SEA_SURFACE_SWELL_WAVE_SIGNIFICANT_HEIGHT =
+    public final Phenomenon SEA_SURFACE_SWELL_WAVE_SIGNIFICANT_HEIGHT =
         createStandardCfParameter( CFStandardNames.SEA_SURFACE_SWELL_WAVE_SIGNIFICANT_HEIGHT );
     
     @CFParameter
-    public static final Phenomenon SEA_SURFACE_SWELL_WAVE_TO_DIRECTION =
+    public final Phenomenon SEA_SURFACE_SWELL_WAVE_TO_DIRECTION =
         createStandardCfParameter( CFStandardNames.SEA_SURFACE_SWELL_WAVE_TO_DIRECTION );
     
 	@HomelessParameter(description = "", source = "NOAA NOS CO-OPS")
-	public static final Phenomenon SEA_SURFACE_DOMINANT_WAVE_TO_DIRECTION = new PhenomenonImp(
-			"Sea Surface Dominant Wave To Direction"
-			,FAKE_MMI_URL_PREFIX + "sea_surface_dominant_wave_to_direction"
-			,DEGREE
+	public final Phenomenon SEA_SURFACE_DOMINANT_WAVE_TO_DIRECTION = createPhenomenon(
+		"Sea Surface Dominant Wave To Direction"
+		,FAKE_MMI_URL_PREFIX + "sea_surface_dominant_wave_to_direction"
+		,SI.ARC_DEGREE
 	);
     
     @CFParameter
-    public static final Phenomenon SEA_SURFACE_WAVE_FROM_DIRECTION =
+    public final Phenomenon SEA_SURFACE_WAVE_FROM_DIRECTION =
         createStandardCfParameter( CFStandardNames.SEA_SURFACE_WAVE_FROM_DIRECTION );
     
     @HomelessParameter(description="",source="NOAA NOS CO-OPS")
-    public static final Phenomenon SEA_SURFACE_WAVE_MEAN_PERIOD = new PhenomenonImp(
+    public final Phenomenon SEA_SURFACE_WAVE_MEAN_HEIGHT = createPhenomenon(
+         "Sea Surface Wave Mean Height"
+        ,FAKE_MMI_URL_PREFIX + "sea_surface_wave_mean_height"
+        ,SI.METER
+    );
+    
+    @HomelessParameter(description="",source="")
+    public final Phenomenon SEA_SURFACE_WAVE_MEAN_PERIOD = createPhenomenon(
         "Sea Surface Wave Mean Period"
         ,FAKE_MMI_URL_PREFIX + "sea_surface_wave_mean_period"
-        ,SI.SECOND.getSymbol()
+        ,SI.SECOND
     );
     
     @CFParameter
-    public static final Phenomenon SEA_SURFACE_WAVE_SIGNIFICANT_HEIGHT =
+    public final Phenomenon SEA_SURFACE_WAVE_SIGNIFICANT_HEIGHT =
         createStandardCfParameter( CFStandardNames.SEA_SURFACE_WAVE_SIGNIFICANT_HEIGHT );
     
     @CFParameter
-    public static final Phenomenon SEA_SURFACE_WIND_WAVE_PERIOD =
+    public final Phenomenon SEA_SURFACE_WIND_WAVE_PERIOD =
         createStandardCfParameter( CFStandardNames.SEA_SURFACE_WIND_WAVE_PERIOD );
         
     @CFParameter
-    public static final Phenomenon SEA_SURFACE_WIND_WAVE_SIGNIFICANT_HEIGHT =
+    public final Phenomenon SEA_SURFACE_WIND_WAVE_SIGNIFICANT_HEIGHT =
         createStandardCfParameter( CFStandardNames.SEA_SURFACE_WIND_WAVE_SIGNIFICANT_HEIGHT );
 
     @CFParameter
-    public static final Phenomenon SEA_SURFACE_WIND_WAVE_TO_DIRECTION =
+    public final Phenomenon SEA_SURFACE_WIND_WAVE_TO_DIRECTION =
         createStandardCfParameter( CFStandardNames.SEA_SURFACE_WIND_WAVE_TO_DIRECTION );
 
     @CFParameter
-    public static final Phenomenon SEA_WATER_ELECTRICAL_CONDUCTIVITY =
+    public final Phenomenon SEA_WATER_ELECTRICAL_CONDUCTIVITY =
         createStandardCfParameter( CFStandardNames.SEA_WATER_ELECTRICAL_CONDUCTIVITY );
     
     @CFParameter
-    public static final Phenomenon SEA_WATER_PH_REPORTED_ON_TOTAL_SCALE = createCfParameterWithAlternateName(
+    public final Phenomenon SEA_WATER_PH_REPORTED_ON_TOTAL_SCALE = createCfParameterWithAlternateName(
          CFStandardNames.SEA_WATER_PH_REPORTED_ON_TOTAL_SCALE
         ,"Sea Water Acidity"
     );
     
     @CFParameter
-    @NonStandardUnits
-    public static final Phenomenon SEA_WATER_PRACTICAL_SALINITY = createCfParameterWithAlternateUnits(
-         CFStandardNames.SEA_WATER_PRACTICAL_SALINITY
-        ,"PSU"
-    );
+    public final Phenomenon SEA_WATER_PRACTICAL_SALINITY
+        = createStandardCfParameter( CFStandardNames.SEA_WATER_PRACTICAL_SALINITY );
     
     @CFParameter
-    public static final Phenomenon SEA_WATER_SPEED =
+    public final Phenomenon SEA_WATER_SPEED =
         createStandardCfParameter( CFStandardNames.SEA_WATER_SPEED );
     
     @CFParameter
     @NonStandardUnits
-    public static final Phenomenon SEA_WATER_TEMPERATURE =
-        createCfParameterWithAlternateUnits(
-             CFStandardNames.SEA_WATER_TEMPERATURE
-            ,SI.DEGREE_CELSIUS.getSymbol()
+    public final Phenomenon SEA_WATER_TEMPERATURE = createCfParameterWithAlternateUnits(
+         CFStandardNames.SEA_WATER_TEMPERATURE
+        ,CustomUnits.instance().DEGREES_CELSIUS
     );
 
     @HomelessParameter(description="",source="HADS, RAWS, SnoTel")
-    public static final Phenomenon SNOW_DEPTH = new PhenomenonImp(
+    public final Phenomenon SNOW_DEPTH = createPhenomenon(
         "Snow Depth"
        ,FAKE_MMI_URL_PREFIX + "snow_depth"
-       ,SI.METER.getSymbol()
+       ,SI.METER
     );
 
     @HomelessParameter(description="",source="RAWS")
-    public static final Phenomenon SNOW_PILLOW = new PhenomenonImp(
+    public final Phenomenon SNOW_PILLOW = createPhenomenon(
         "Snow Pillow"
        ,FAKE_MMI_URL_PREFIX + "snow_pillow"
-       ,SI.METER.getSymbol()
+       ,SI.METER
     );
     
     @HomelessParameter(description="",source="HADS, SnoTel")
-    public static final Phenomenon SNOW_WATER_EQUIVALENT = new PhenomenonImp(
+    public final Phenomenon SNOW_WATER_EQUIVALENT = createPhenomenon(
         "Snow Water Equivalent"
        ,FAKE_MMI_URL_PREFIX + "snow_water_equivalent"
-       ,SI.METER.getSymbol()
+       ,SI.METER
     );
 
     @HomelessParameter(description="",source="RAWS, SnoTel")
-    public static final Phenomenon SOIL_MOISTURE_PERCENT = new PhenomenonImp(
+    public final Phenomenon SOIL_MOISTURE_PERCENT = createPhenomenon(
          "Soil Moisture Percent"
         ,FAKE_MMI_URL_PREFIX + "soil_moisture_percent"
-        ,PERCENT
+        ,CustomUnits.instance().PERCENTAGE
     );
 
     @CFParameter
     @NonStandardUnits
-    public static final Phenomenon SOIL_TEMPERATURE = createCfParameterWithAlternateUnits(
+    public final Phenomenon SOIL_TEMPERATURE = createCfParameterWithAlternateUnits(
          CFStandardNames.SOIL_TEMPERATURE
-        ,SI.DEGREE_CELSIUS.getSymbol()
+        ,CustomUnits.instance().DEGREES_CELSIUS
     );
     
     @HomelessParameter(description="",source="HADS, NERRS, RAWS, SnoTel")
-    public static final Phenomenon SOLAR_RADIATION = new PhenomenonImp(
+    public final Phenomenon SOLAR_RADIATION = createPhenomenon(
         "Solar Radiation"
        ,FAKE_MMI_URL_PREFIX + "solar_radiation"
-       ,SI.WATT.getSymbol() + "/" + SI.METER.getSymbol() + "²"
+       ,CustomUnits.instance().WATTS_PER_METER
     );
     
     @HomelessParameter(description="",source="SnoTel")
-    public static final Phenomenon SOLAR_RADIATION_AVERAGE = new PhenomenonImp(
+    public final Phenomenon SOLAR_RADIATION_AVERAGE = createPhenomenon(
         "Solar Radiation Average"
        ,FAKE_MMI_URL_PREFIX + "solar_radiation_average"
-       ,SI.WATT.getSymbol() + "/" + SI.METER.getSymbol() + "²"
+       ,CustomUnits.instance().WATTS_PER_METER
     );
     
     @HomelessParameter(description="",source="SnoTel")
-    public static final Phenomenon SOLAR_RADIATION_MAXIMUM = new PhenomenonImp(
+    public final Phenomenon SOLAR_RADIATION_MAXIMUM = createPhenomenon(
         "Solar Radiation Maximum"
        ,FAKE_MMI_URL_PREFIX + "solar_radiation_maximum"
-       ,SI.WATT.getSymbol() + "/" + SI.METER.getSymbol() + "²"
+       ,CustomUnits.instance().WATTS_PER_METER
     );
     
     @HomelessParameter(description="",source="SnoTel")
-    public static final Phenomenon SOLAR_RADIATION_MINIMUM = new PhenomenonImp(
+    public final Phenomenon SOLAR_RADIATION_MINIMUM = createPhenomenon(
         "Solar Radiation Maximum"
        ,FAKE_MMI_URL_PREFIX + "solar_radiation_minimum"
-       ,SI.WATT.getSymbol() + "/" + SI.METER.getSymbol() + "²"
-    );
-    
-    @HomelessParameter(description="",source="USGS WATER")
-    public static final Phenomenon STREAMFLOW = new PhenomenonImp(
-        "Streamflow"
-       ,FAKE_MMI_URL_PREFIX + "streamflow"
-       ,"cfs"
-    );
-    
-    @HomelessParameter(description="",source="USGS WATER, SnoTel, HADS")
-    public static final Phenomenon STREAM_GAGE_HEIGHT = new PhenomenonImp(
-        "Stream Gage Height"
-       ,FAKE_MMI_URL_PREFIX + "stream_gage_height"
-       ,SI.METER.getSymbol()
+       ,CustomUnits.instance().WATTS_PER_METER
     );
     
     @CFParameter
-    public static final Phenomenon TOA_INCOMING_SHORTWAVE_FLUX =
+    public final Phenomenon TOA_INCOMING_SHORTWAVE_FLUX =
         createStandardCfParameter( CFStandardNames.TOA_INCOMING_SHORTWAVE_FLUX );
     
     @CFParameter
-    public static final Phenomenon TOA_OUTGOING_SHORTWAVE_FLUX =
+    public final Phenomenon TOA_OUTGOING_SHORTWAVE_FLUX =
         createStandardCfParameter( CFStandardNames.TOA_OUTGOING_SHORTWAVE_FLUX );
 
     @IOOSParameter
-    public static final Phenomenon TURBIDITY =
+    public final Phenomenon TURBIDITY =
         createStandardIoosParameter( IoosParameter.turbidity );
-        
+
     @CFParameter
-    public static final Phenomenon VISIBILITY_IN_AIR =
+    public final Phenomenon VISIBILITY_IN_AIR =
         createStandardCfParameter( CFStandardNames.VISIBILITY_IN_AIR );
-    
+
     @CFParameter
-    public static final Phenomenon WATER_SURFACE_HEIGHT_ABOVE_REFERENCE_DATUM =
+    public final Phenomenon WATER_SURFACE_HEIGHT_ABOVE_REFERENCE_DATUM =
         createStandardCfParameter( CFStandardNames.WATER_SURFACE_HEIGHT_ABOVE_REFERENCE_DATUM );
 
     @HomelessParameter(description="",source="USGS")
-    public static final Phenomenon WATER_TEMPERATURE_INTRAGRAVEL = new PhenomenonImp(
+    public final Phenomenon WATER_TEMPERATURE_INTRAGRAVEL = createPhenomenon(
         "Water Temperature Intragravel"
        ,FAKE_MMI_URL_PREFIX + "water_temperature_intragravel"
-       ,SI.DEGREE_CELSIUS.getSymbol()
+       ,CustomUnits.instance().DEGREES_CELSIUS
     );
     
     @CFParameter
-    public static final Phenomenon WATER_VOLUME_TRANSPORT_INTO_SEA_WATER_FROM_RIVERS =
+    public final Phenomenon WATER_VOLUME_TRANSPORT_INTO_SEA_WATER_FROM_RIVERS =
         createStandardCfParameter( CFStandardNames.WATER_VOLUME_TRANSPORT_INTO_SEA_WATER_FROM_RIVERS );
     
     @IOOSParameter
-    public static final Phenomenon WAVE_DIRECTIONAL_SPREAD =
+    public final Phenomenon WAVE_DIRECTIONAL_SPREAD =
         createStandardIoosParameter( IoosParameter.wave_directional_spread );
     
     //Used in AOOS
     @HomelessParameter(description="",source="")
-    public static final Phenomenon WEBCAM = new PhenomenonImp(
+    public final Phenomenon WEBCAM = createPhenomenon(
         "Webcam"
         ,FAKE_MMI_URL_PREFIX + "webcam"
     );
     
     @CFParameter
-    public static final Phenomenon WIND_FROM_DIRECTION =
+    public final Phenomenon WIND_FROM_DIRECTION =
         createStandardCfParameter( CFStandardNames.WIND_FROM_DIRECTION );
     
     //Used in AOOS
     @HomelessParameter(description="",source="")
-    public static final Phenomenon WIND_GENERATOR_CURRENT = new PhenomenonImp(
+    public final Phenomenon WIND_GENERATOR_CURRENT = createPhenomenon(
          "Wind Generator Current"
         ,FAKE_MMI_URL_PREFIX + "wind_generator_current"
-        ,SI.AMPERE.getSymbol() + "/" + SI.HOUR.getSymbol()
+        ,CustomUnits.instance().AMPERES_PER_HOUR
     );
 
     @IOOSParameter
-    public static final Phenomenon WIND_GUST_FROM_DIRECTION =
+    public final Phenomenon WIND_GUST_FROM_DIRECTION =
         createStandardIoosParameter( IoosParameter.wind_gust_from_direction );
-    
+
     @CFParameter
-    public static final Phenomenon WIND_SPEED =
+    public final Phenomenon WIND_SPEED =
         createStandardCfParameter( CFStandardNames.WIND_SPEED );
     
     @CFParameter
-    public static final Phenomenon WIND_SPEED_OF_GUST =
+    public final Phenomenon WIND_SPEED_OF_GUST =
         createStandardCfParameter( CFStandardNames.WIND_SPEED_OF_GUST );
     
     @HomelessParameter(description="",source="NOAA NOS CO-OPS")
-    public static final Phenomenon WIND_VERTICAL_VELOCITY = new PhenomenonImp(
+    public final Phenomenon WIND_VERTICAL_VELOCITY = createPhenomenon(
         "Wind Vertical Velocity"
        ,FAKE_MMI_URL_PREFIX + "wind_vertical_velocity"
-       ,SI.METER.getSymbol() + "/" + SI.SECOND.getSymbol()
+       ,CustomUnits.instance().METERS_PER_SECOND
     );
 }

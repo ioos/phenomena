@@ -1,5 +1,7 @@
 package com.axiomalaska.phenomena;
 
+import ucar.units.Unit;
+
 public class PhenomenonImp implements Phenomenon {
 	// -------------------------------------------------------------------------
 	// Private Data
@@ -7,7 +9,7 @@ public class PhenomenonImp implements Phenomenon {
 
 	private String name = "";
 	private String id = "";
-	private String units = "";
+	private Unit unit = null;
 
 	// -------------------------------------------------------------------------
 	// Constructors
@@ -15,11 +17,11 @@ public class PhenomenonImp implements Phenomenon {
 	public PhenomenonImp() {
 	}
 	
-	public PhenomenonImp(String name, String id, String units) {
+	public PhenomenonImp(String name, String id, Unit unit) {
 		super();
 		this.name = name;
 		this.id = id;
-		this.units = units;
+		this.unit = unit;
 	}	
 
 	//dimensionless phenomenon
@@ -53,14 +55,10 @@ public class PhenomenonImp implements Phenomenon {
 	}
 
 	/**
-	 * The units that observations are measured in. For example 'm/s'
-	 * 
-	 * Maximum characters 30
-	 * 
-	 * If characters are over 30 they will be truncated to 30
+	 * The ucar.units.Unit that observations are measured in. For example 'm.s-1' 
 	 */
-	public String getUnits() {
-		return units;
+	public Unit getUnit() {
+		return unit;
 	}
 
 	public void setName(String name) {
@@ -71,8 +69,8 @@ public class PhenomenonImp implements Phenomenon {
 		this.id = id;
 	}
 
-	public void setUnits(String units) {
-		this.units = units;
+	public void setUnit(Unit unit) {
+		this.unit = unit;
 	}
 	
 	public String toString(){

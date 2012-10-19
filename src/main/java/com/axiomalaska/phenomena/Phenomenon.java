@@ -1,5 +1,7 @@
 package com.axiomalaska.phenomena;
 
+import ucar.units.Unit;
+
 /**
  * Contains information for a phenomenon. 
  * 
@@ -28,11 +30,7 @@ public interface Phenomenon {
 	public String getId();
 
 	/**
-	 * The units that observations are measured in. For example 'm/s'
-	 * 
-	 * Maximum characters 30
-	 * 
-	 * If characters are over 30 they will be truncated to 30
+	 * The ucar.units.Unit that observations are measured in. For example 'm.s-1'
 	 */
-	public String getUnits();
+	public Unit getUnit();
 }

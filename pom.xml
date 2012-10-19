@@ -7,11 +7,22 @@
   <packaging>jar</packaging>
 
   <name>phenomena</name>
-
+  <description>Java library organizing Phenomenon objects.</description>
+  <url>http://axiomalaska.github.com/phenomena</url>
+  
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <github.global.server>github</github.global.server>    
   </properties>
 
+  <licenses>
+    <license>
+      <name>GNU Lesser General Public License</name>
+      <url>http://www.gnu.org/licenses/lgpl.html</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  
   <dependencies>
     <dependency>
       <groupId>org.apache.jena</groupId>
@@ -173,5 +184,24 @@
         http://nexus.axiomalaska.com/nexus/content/repositories/public-snapshots
       </url>
     </snapshotRepository>
-  </distributionManagement>  
+  </distributionManagement>
+  
+  <scm>
+    <connection>scm:git:git@github.com:axiomalaska/phenomena.git</connection>
+    <url>scm:git:git@github.com:axiomalaska/phenomena.git</url>
+    <developerConnection>scm:git:git@github.com:axiomalaska/phenomena.git</developerConnection>
+  </scm>  
+
+  <developers>
+    <developer>
+      <id>shane-axiom</id>
+      <name>Shane StClair</name>
+      <email>shane@axiomalaska.com</email>
+    </developer>
+  </developers>
+
+  <issueManagement>
+    <url>https://github.com/axiomalaska/phenomena/issues</url>
+    <system>GitHub</system>
+  </issueManagement>  
 </project>

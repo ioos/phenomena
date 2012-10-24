@@ -5,14 +5,13 @@ import ucar.units.OffsetUnit;
 import ucar.units.SI;
 import ucar.units.ScaledUnit;
 import ucar.units.Unit;
-import ucar.units.UnitFormat;
-import ucar.units.UnitFormatManager;
 import ucar.units.UnitName;
 
 public class CustomUnits {
     
     //convention is to make the unit names plural...because singular sounds weird
     public Unit PERCENTAGE;
+    public Unit PARTS_PER_THOUSAND;
     public Unit FEET;
     public Unit METERS_PER_SECOND;
     public Unit CUBIC_METERS_PER_SECOND;
@@ -26,8 +25,6 @@ public class CustomUnits {
     public Unit MICROGRAMS_PER_LITER;
     public Unit DEGREES_CELSIUS;
     public Unit MILLIMETERS;
-    
-    private static final UnitFormat UNIT_FORMAT = UnitFormatManager.instance();
     
     private static CustomUnits instance;
     
@@ -44,6 +41,9 @@ public class CustomUnits {
             PERCENTAGE = new ScaledUnit( 100, BaseUnit.DIMENSIONLESS )
                 .clone( UnitName.newUnitName("percent", "percent", "%") );;
 
+            PARTS_PER_THOUSAND = new ScaledUnit( 1e-3, BaseUnit.DIMENSIONLESS )
+                .clone( UnitName.newUnitName("part per thousand", "parts per thousand", "ppt") );;
+                
             FEET = new ScaledUnit( 0.3048006096, SI.METER )
                     .clone( UnitName.newUnitName("foot", "feet", "ft") );
             

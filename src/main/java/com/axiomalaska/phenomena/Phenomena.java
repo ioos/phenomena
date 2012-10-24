@@ -251,9 +251,12 @@ public class Phenomena {
         createStandardCfParameter( CFStandardNames.DOWNWELLING_PHOTOSYNTHETIC_RADIATIVE_FLUX_IN_SEA_WATER );
     
     @CFParameter
-    public final Phenomenon FRACTIONAL_SATURATION_OF_OXYGEN_IN_SEA_WATER =
-        createStandardCfParameter( CFStandardNames.FRACTIONAL_SATURATION_OF_OXYGEN_IN_SEA_WATER );
-    
+    @NonStandardUnits
+    public final Phenomenon FRACTIONAL_SATURATION_OF_OXYGEN_IN_SEA_WATER = createCfParameterWithAlternateUnits(
+         CFStandardNames.FRACTIONAL_SATURATION_OF_OXYGEN_IN_SEA_WATER
+        ,CustomUnits.instance().PERCENTAGE
+    );
+
     @HomelessParameter(description="",source="HADS, RAWS")
     public final Phenomenon FUEL_MOISTURE = createPhenomenon(
          "Fuel Moisture"
@@ -494,13 +497,15 @@ public class Phenomena {
     );
     
     @CFParameter
-    public final Phenomenon SEA_WATER_PRACTICAL_SALINITY
-        = createStandardCfParameter( CFStandardNames.SEA_WATER_PRACTICAL_SALINITY );
+    public final Phenomenon SEA_WATER_PRACTICAL_SALINITY = createCfParameterWithAlternateUnits(
+         CFStandardNames.SEA_WATER_PRACTICAL_SALINITY
+        ,CustomUnits.instance().PARTS_PER_THOUSAND
+    );
     
     @CFParameter
     public final Phenomenon SEA_WATER_SPEED =
         createStandardCfParameter( CFStandardNames.SEA_WATER_SPEED );
-    
+
     @CFParameter
     @NonStandardUnits
     public final Phenomenon SEA_WATER_TEMPERATURE = createCfParameterWithAlternateUnits(

@@ -552,28 +552,28 @@ public class Phenomena {
     public final Phenomenon SOLAR_RADIATION = createPhenomenon(
         "Solar Radiation"
        ,FAKE_MMI_URL_PREFIX + "solar_radiation"
-       ,CustomUnits.instance().WATTS_PER_METER
+       ,CustomUnits.instance().WATTS_PER_SQUARE_METER
     );
     
     @HomelessParameter(description="",source="SnoTel")
     public final Phenomenon SOLAR_RADIATION_AVERAGE = createPhenomenon(
         "Solar Radiation Average"
        ,FAKE_MMI_URL_PREFIX + "solar_radiation_average"
-       ,CustomUnits.instance().WATTS_PER_METER
+       ,CustomUnits.instance().WATTS_PER_SQUARE_METER
     );
     
     @HomelessParameter(description="",source="SnoTel")
     public final Phenomenon SOLAR_RADIATION_MAXIMUM = createPhenomenon(
         "Solar Radiation Maximum"
        ,FAKE_MMI_URL_PREFIX + "solar_radiation_maximum"
-       ,CustomUnits.instance().WATTS_PER_METER
+       ,CustomUnits.instance().WATTS_PER_SQUARE_METER
     );
     
     @HomelessParameter(description="",source="SnoTel")
     public final Phenomenon SOLAR_RADIATION_MINIMUM = createPhenomenon(
         "Solar Radiation Maximum"
        ,FAKE_MMI_URL_PREFIX + "solar_radiation_minimum"
-       ,CustomUnits.instance().WATTS_PER_METER
+       ,CustomUnits.instance().WATTS_PER_SQUARE_METER
     );
     
     @CFParameter

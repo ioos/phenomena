@@ -418,8 +418,7 @@ public class Phenomena {
     public final Phenomenon SEA_SURFACE_HEIGHT_ABOVE_SEA_LEVEL =
         createStandardCfParameter( CFStandardNames.SEA_SURFACE_HEIGHT_ABOVE_SEA_LEVEL );
     
-    //not used in the sensor-web-harvester
-    @HomelessParameter(description="",source="")
+    @HomelessParameter(description="Tide Prediction",source="NOAA-CO-OPS")
     public final Phenomenon SEA_SURFACE_HEIGHT_ABOVE_SEA_LEVEL_PREDICTIONS = createPhenomenon(
         "Sea Surface Height Above Sea Level Predictions"
        ,FAKE_MMI_URL_PREFIX + "sea_surface_height_above_sea_level_predictions"

@@ -9,7 +9,7 @@
   <name>phenomena</name>
   <description>Java library organizing Phenomenon objects.</description>
   <url>http://axiomalaska.github.com/phenomena</url>
-  
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <github.global.server>github</github.global.server>    
@@ -22,7 +22,7 @@
       <distribution>repo</distribution>
     </license>
   </licenses>
-  
+
   <dependencies>
     <dependency>
       <groupId>org.apache.jena</groupId>
@@ -59,6 +59,14 @@
   </dependencies>
 
   <build>
+    <resources>
+      <resource>
+        <directory>src/main/vocabs</directory>
+        <includes>
+          <include>**/*.rdf</include>
+        </includes>
+      </resource>
+    </resources>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -118,32 +126,32 @@
       </plugin>
     </plugins>
     <pluginManagement>
-    	<plugins>
-    		<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
-    		<plugin>
-    			<groupId>org.eclipse.m2e</groupId>
-    			<artifactId>lifecycle-mapping</artifactId>
-    			<version>1.0.0</version>
-    			<configuration>
-    				<lifecycleMappingMetadata>
-    					<pluginExecutions>
-    						<pluginExecution>
-    							<pluginExecutionFilter>
-    								<groupId>
-    									org.openjena.tools
-    								</groupId>
-    								<artifactId>schemagen</artifactId>
-    								<versionRange>
-    									[0.2-SNAPSHOT,)
-    								</versionRange>
-    								<goals>
-    									<goal>translate</goal>
-    								</goals>
-    							</pluginExecutionFilter>
-    							<action>
-    								<ignore></ignore>
-    							</action>
-    						</pluginExecution>
+      <plugins>
+        <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+        <plugin>
+          <groupId>org.eclipse.m2e</groupId>
+          <artifactId>lifecycle-mapping</artifactId>
+          <version>1.0.0</version>
+          <configuration>
+            <lifecycleMappingMetadata>
+              <pluginExecutions>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>
+                      org.openjena.tools
+                    </groupId>
+                    <artifactId>schemagen</artifactId>
+                    <versionRange>
+                      [0.2-SNAPSHOT,)
+                    </versionRange>
+                    <goals>
+                      <goal>translate</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore></ignore>
+                  </action>
+                </pluginExecution>
                 <pluginExecution>
                   <pluginExecutionFilter>
                     <groupId>org.codehaus.mojo</groupId>
@@ -159,14 +167,14 @@
                     <ignore />
                   </action>
                 </pluginExecution>
-    					</pluginExecutions>
-    				</lifecycleMappingMetadata>
-    			</configuration>
-    		</plugin>
-    	</plugins>
+              </pluginExecutions>
+            </lifecycleMappingMetadata>
+          </configuration>
+        </plugin>
+      </plugins>
     </pluginManagement>
   </build>  
-  
+
   <profiles>
     <profile>
       <id>release-sign-artifacts</id>
@@ -196,7 +204,7 @@
       </build>
     </profile>    
   </profiles>
-  
+
   <distributionManagement>
     <repository>
       <id>axiom_public_releases</id>
@@ -215,7 +223,7 @@
       </url>
     </snapshotRepository>
   </distributionManagement>
-  
+
   <scm>
     <connection>scm:git:git://github.com/axiomalaska/phenomena.git</connection>
     <url>scm:git:git://github.com/axiomalaska/phenomena.git</url>
@@ -233,5 +241,12 @@
   <issueManagement>
     <url>https://github.com/axiomalaska/phenomena/issues</url>
     <system>GitHub</system>
-  </issueManagement>  
+  </issueManagement>
+  
+  <pluginRepositories>
+    <pluginRepository>
+      <id>axiom-public</id>
+      <url>http://nexus.axiomalaska.com/nexus/content/repositories/public</url>
+    </pluginRepository>
+  </pluginRepositories>
 </project>

@@ -10,7 +10,7 @@ import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.util.FileManager;
 
 public class IoosParameterUtil {
-	private static final String PARAMETER_RDF = "src/main/vocabs/parameter.rdf";
+	private static final String PARAMETER_RDF = "parameter.rdf";
 	
 	private static IoosParameterUtil instance;
 	private OntModel model;

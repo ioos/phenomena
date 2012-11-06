@@ -25,6 +25,8 @@ public class CustomUnits {
     public Unit MICROGRAMS_PER_LITER;
     public Unit DEGREES_CELSIUS;
     public Unit MILLIMETERS;
+    public Unit MILLIGRAMS;
+    public Unit MILLIGRAMS_PER_LITER;
     
     private static CustomUnits instance;
     
@@ -83,6 +85,15 @@ public class CustomUnits {
             
             MILLIMETERS = new ScaledUnit( 1e-3, SI.METER )
                 .clone( UnitName.newUnitName("millimeter", null, "mm") );
+            
+            // added by Sean Cowan for ASA GLOS PROJECT ---
+            MILLIGRAMS = new ScaledUnit(1e-6, SI.KILOGRAM)
+                .clone(UnitName.newUnitName("milligram", null, "mg") );
+            
+            MILLIGRAMS_PER_LITER = MILLIGRAMS.divideBy(SI.LITER)
+                .clone(UnitName.newUnitName("milligram per liter", null, "mg.L-1") );
+                    
+            //-----
         } catch( Exception e ){
             throw new UnitCreationException( e );
         }

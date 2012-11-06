@@ -17,6 +17,8 @@ import com.axiomalaska.cf4j.CFStandardName;
 import com.axiomalaska.cf4j.CFStandardNames;
 import com.axiomalaska.ioos.parameter.IoosParameter;
 import com.hp.hpl.jena.ontology.Individual;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Phenomena {
     @Target(ElementType.FIELD)
@@ -54,6 +56,7 @@ public class Phenomena {
     public static final String IOOS_MMI_URL_PREFIX = IoosParameter.NS;    
     public static final String FAKE_MMI_URL_PREFIX = "http://mmisw.org/ont/aoos/parameter/";
     public static final String CF_MMI_URL_PREFIX = "http://mmisw.org/ont/cf/parameter/";
+    public static final String GLOS_FAKE_MMI_URL_PREFIX = "http://mmisw.org/ont/glos/parameter/";
 
     public List<Phenomenon> getAllPhenomena(){
         return allPhenomena;
@@ -647,4 +650,37 @@ public class Phenomena {
        ,FAKE_MMI_URL_PREFIX + "wind_vertical_velocity"
        ,CustomUnits.instance().METERS_PER_SECOND
     );
+    
+    /*
+     * PHENOM FROM STORET
+     * Putting under HomelessParameter since not entirely sure if they fall
+     * under CF or IOOS conventions - like different units used - even though I
+     * am using those parameters *shrug*
+     */
+    
+    public final Phenomenon createHomelessParameter(String name, String units) {
+        try {
+            return createPhenomenon(name, GLOS_FAKE_MMI_URL_PREFIX + name, units);
+        } catch (Exception ex) {
+            System.out.println("exception in createHomelessParameter: " + ex.toString());
+            try {
+                return createPhenomenon(name, GLOS_FAKE_MMI_URL_PREFIX + name, "");
+            } catch (UnitCreationException ex1) {
+                Logger.getLogger(Phenomena.class.getName()).log(Level.SEVERE, null, ex1);
+                return null;
+            }
+        }
+    }
+    
+    /*
+     * Allows for the phenomenon stored in the SOS DB to be loaded into the phenomena list
+     */
+    public void loadPhenomenonFromList(java.util.List<Phenomenon> listToLoad) {
+        for (Phenomenon phenom : listToLoad) {
+            // check to make sure this isn't already in the phenomenon list
+            if (!allPhenomena.contains(phenom))
+                allPhenomena.add(phenom);
+        }
+    }
+    
 }

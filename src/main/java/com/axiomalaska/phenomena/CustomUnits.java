@@ -27,6 +27,10 @@ public class CustomUnits {
     public Unit MILLIMETERS;
     public Unit MILLIGRAMS;
     public Unit MILLIGRAMS_PER_LITER;
+    public Unit MILLILITRE;
+    public Unit MILLILITRE_100;
+    public Unit PARTS_PER_100_MILLILITRES;
+    public Unit CFU_PER_100_MILLILITRES;
     
     private static CustomUnits instance;
     
@@ -77,7 +81,7 @@ public class CustomUnits {
                 .clone( UnitName.newUnitName("microgram", null, "µg") );
             
             MICROGRAMS_PER_LITER = MICROGRAMS.divideBy( SI.LITER )
-                .clone( UnitName.newUnitName("microgram per liter", "micrograms per liter", "µg.L-1") );
+                .clone( UnitName.newUnitName("microgram per liter", "micrograms per liter", "10e-1mg.L-1") );
                         
             //use this instead of SI.DEGREE_CELSIUS because the plural of that one is degree celsiuses
             DEGREES_CELSIUS = new OffsetUnit( SI.KELVIN, 273.15 )
@@ -92,6 +96,18 @@ public class CustomUnits {
             
             MILLIGRAMS_PER_LITER = MILLIGRAMS.divideBy(SI.LITER)
                 .clone(UnitName.newUnitName("milligram per liter", null, "mg.L-1") );
+            
+            MILLILITRE = new ScaledUnit(1e-3, SI.LITRE)
+                .clone(UnitName.newUnitName("millilitre", "millilitres", "mL"));
+            
+            MILLILITRE_100 = new ScaledUnit(1e-1, SI.LITRE)
+                .clone(UnitName.newUnitName("100 millilitres", null, "100mL"));
+
+            PARTS_PER_100_MILLILITRES = BaseUnit.DIMENSIONLESS.divideBy(MILLILITRE_100)
+                .clone(UnitName.newUnitName("parts per 100 millilitres", null, "#.100mL-1"));
+            
+            CFU_PER_100_MILLILITRES = BaseUnit.DIMENSIONLESS.divideBy(MILLILITRE_100)
+                .clone(UnitName.newUnitName("cfu per 100 millilitre", null, "cfu.100mL-1"));
                     
             //-----
         } catch( Exception e ){

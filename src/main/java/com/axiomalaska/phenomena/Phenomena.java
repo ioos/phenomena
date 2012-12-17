@@ -334,6 +334,10 @@ public class Phenomena {
     @IOOSParameter
     public final Phenomenon PEAK_WAVE_PERIOD =
         createStandardIoosParameter( IoosParameter.peak_wave_period );
+    
+    @IOOSParameter
+    public final Phenomenon PHOSPHORUS = 
+        createStandardIoosParameter(IoosParameter.total_phosphorus);
 
     @IOOSParameter
     public final Phenomenon PHOSPHATE = createStandardIoosParameter( IoosParameter.phosphate );
@@ -774,6 +778,14 @@ public class Phenomena {
     @IOOSParameter
     public final Phenomenon CHLOROPHYLL =
         createStandardIoosParameter( IoosParameter.chlorophyll_a );
+    
+    @IOOSParameter
+    public final Phenomenon SIGNIFICANT_WAVE_HEIGHT = 
+        createStandardIoosParameter( IoosParameter.significant_wave_height );
+    
+    @IOOSParameter
+    public final Phenomenon MEAN_WAVE_PERIOD = 
+        createStandardIoosParameter( IoosParameter.mean_wave_period );
     
     // below will not work, i think due to the units string being ambiguous
 //    @IOOSParameter

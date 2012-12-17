@@ -425,12 +425,9 @@ public class Phenomena {
     public final Phenomenon SEA_SURFACE_HEIGHT_ABOVE_SEA_LEVEL =
         createStandardCfParameter( CFStandardNames.SEA_SURFACE_HEIGHT_ABOVE_SEA_LEVEL );
     
-    @HomelessParameter(description="Tide Prediction",source="NOAA-CO-OPS")
-    public final Phenomenon SEA_SURFACE_HEIGHT_ABOVE_SEA_LEVEL_PREDICTIONS = createPhenomenon(
-        "Sea Surface Height Above Sea Level Predictions"
-       ,FAKE_MMI_URL_PREFIX + "sea_surface_height_above_sea_level_predictions"
-       ,SI.METER
-    );
+    @CFParameter
+    public final Phenomenon SEA_SURFACE_HEIGHT_AMPLITUDE_DUE_TO_GEOCENTRIC_OCEAN_TIDE = 
+            createStandardCfParameter( CFStandardNames.SEA_SURFACE_HEIGHT_AMPLITUDE_DUE_TO_GEOCENTRIC_OCEAN_TIDE );
     
     @HomelessParameter(description="",source="")
     public final Phenomenon SEA_SURFACE_MAXIMUM_WAVE_HEIGHT = createPhenomenon(

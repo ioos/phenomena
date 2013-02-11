@@ -79,15 +79,20 @@ public class Phenomena {
      */
 
     private final Phenomenon createPhenomenon( String name, String id, Unit unit ){
-        Phenomenon phenomenon = new PhenomenonImp( name, id, unit );
+        String tag = name;
+        try {
+            int index = id.lastIndexOf("/") + 1;
+            tag = id.substring(index);
+        } catch (Exception ex) {}
+        
+        Phenomenon phenomenon = new PhenomenonImp( name, id, tag, unit );
         allPhenomena.add( phenomenon );
         return phenomenon;
     }
 
     private final Phenomenon createPhenomenon( String name, String id ){
-        Phenomenon phenomenon = new PhenomenonImp( name, id, null );
-        allPhenomena.add( phenomenon );
-        return phenomenon;
+        Unit unit = null;
+        return createPhenomenon(name, id, unit);
     }
     
     private final Phenomenon createPhenomenon( String name, String id, String unit )

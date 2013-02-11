@@ -9,6 +9,7 @@ public class PhenomenonImp implements Phenomenon {
 
 	private String name = "";
 	private String id = "";
+        private String tag = "";
 	private Unit unit = null;
 
 	// -------------------------------------------------------------------------
@@ -16,6 +17,14 @@ public class PhenomenonImp implements Phenomenon {
 	// -------------------------------------------------------------------------
 	public PhenomenonImp() {
 	}
+        
+        public PhenomenonImp(String name, String id, String tag, Unit unit) {
+            super();
+            this.name = name;
+            this.id = id;
+            this.tag = tag;
+            this.unit = unit;
+        }
 	
 	public PhenomenonImp(String name, String id, Unit unit) {
 		super();
@@ -60,6 +69,10 @@ public class PhenomenonImp implements Phenomenon {
 	public Unit getUnit() {
 		return unit;
 	}
+        
+        public String getTag() {
+            return tag;
+        }
 
 	public void setName(String name) {
 		this.name = name;

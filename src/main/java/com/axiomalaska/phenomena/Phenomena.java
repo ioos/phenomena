@@ -683,6 +683,20 @@ public class Phenomena {
         }
     }
     
+    public final Phenomenon createHomelessParameter(String name, String url, String units) {
+        try {
+            return createPhenomenon(name, url + name, units);
+        } catch (Exception ex) {
+            System.err.println(ex.toString());
+            try {
+                return createPhenomenon(name, url + name, "");
+            } catch (UnitCreationException ex1) {
+                System.err.println(ex1.toString());
+                return null;
+            }
+        }
+    }
+    
     public final Phenomenon createPhenomenonWithugL(String name) {
         try {
             return createPhenomenon(name, GLOS_FAKE_MMI_URL_PREFIX + name, CustomUnits.instance().MICROGRAMS_PER_LITER);

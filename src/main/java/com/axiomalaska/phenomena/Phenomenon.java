@@ -33,4 +33,6 @@ public interface Phenomenon {
 	 * The ucar.units.Unit that observations are measured in. For example 'm.s-1'
 	 */
 	public Unit getUnit();
+        
+        public String getTag();
 }

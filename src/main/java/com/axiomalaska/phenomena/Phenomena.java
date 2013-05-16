@@ -17,6 +17,8 @@ import com.axiomalaska.cf4j.CFStandardName;
 import com.axiomalaska.cf4j.CFStandardNames;
 import com.axiomalaska.ioos.parameter.IoosParameter;
 import com.hp.hpl.jena.ontology.Individual;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Phenomena {
     @Target(ElementType.FIELD)
@@ -54,6 +56,7 @@ public class Phenomena {
     public static final String IOOS_MMI_URL_PREFIX = IoosParameter.NS;    
     public static final String FAKE_MMI_URL_PREFIX = "http://mmisw.org/ont/aoos/parameter/";
     public static final String CF_MMI_URL_PREFIX = "http://mmisw.org/ont/cf/parameter/";
+    public static final String GLOS_FAKE_MMI_URL_PREFIX = "http://mmisw.org/ont/glos/parameter/";
 
     public List<Phenomenon> getAllPhenomena(){
         return allPhenomena;
@@ -76,15 +79,20 @@ public class Phenomena {
      */
 
     private final Phenomenon createPhenomenon( String name, String id, Unit unit ){
-        Phenomenon phenomenon = new PhenomenonImp( name, id, unit );
+        String tag = name;
+        try {
+            int index = id.lastIndexOf("/") + 1;
+            tag = id.substring(index);
+        } catch (Exception ex) {}
+        
+        Phenomenon phenomenon = new PhenomenonImp( name, id, tag, unit );
         allPhenomena.add( phenomenon );
         return phenomenon;
     }
 
     private final Phenomenon createPhenomenon( String name, String id ){
-        Phenomenon phenomenon = new PhenomenonImp( name, id, null );
-        allPhenomena.add( phenomenon );
-        return phenomenon;
+        Unit unit = null;
+        return createPhenomenon(name, id, unit);
     }
     
     private final Phenomenon createPhenomenon( String name, String id, String unit )
@@ -162,6 +170,9 @@ public class Phenomena {
     
     @CFParameter
     public final Phenomenon AIR_PRESSURE = createStandardCfParameter( CFStandardNames.AIR_PRESSURE );
+    
+    @CFParameter
+    public final Phenomenon AIR_PRESSURE_AT_SEA_LEVEL = createStandardCfParameter( CFStandardNames.AIR_PRESSURE_AT_SEA_LEVEL );
     
     @CFParameter
     @NonStandardUnits
@@ -331,6 +342,10 @@ public class Phenomena {
     @IOOSParameter
     public final Phenomenon PEAK_WAVE_PERIOD =
         createStandardIoosParameter( IoosParameter.peak_wave_period );
+    
+    @IOOSParameter
+    public final Phenomenon PHOSPHORUS = 
+        createStandardIoosParameter(IoosParameter.total_phosphorus);
 
     @IOOSParameter
     public final Phenomenon PHOSPHATE = createStandardIoosParameter( IoosParameter.phosphate );
@@ -644,4 +659,155 @@ public class Phenomena {
        ,FAKE_MMI_URL_PREFIX + "wind_vertical_velocity"
        ,CustomUnits.instance().METERS_PER_SECOND
     );
+    
+    /*
+     * PHENOM FROM STORET
+     * Putting under HomelessParameter since not entirely sure if they fall
+     * under CF or IOOS conventions - like different units used - even though I
+     * am using those parameters *shrug*
+     */
+    
+    public final Phenomenon createHomelessParameter(String name, String units) {
+        try {
+            return createPhenomenon(name, GLOS_FAKE_MMI_URL_PREFIX + name, units);
+        } catch (Exception ex) {
+            System.err.println("exception in createHomelessParameter: " + ex.toString());
+            for (int i=0; i<ex.getStackTrace().length && i < 20; i++) {
+                System.err.println(ex.getStackTrace()[i]);
+            }
+            try {
+                return createPhenomenon(name, GLOS_FAKE_MMI_URL_PREFIX + name, "");
+            } catch (UnitCreationException ex1) {
+                return null;
+            }
+        }
+    }
+    
+    public final Phenomenon createHomelessParameter(String name, String url, String units) {
+        try {
+            return createPhenomenon(name, url + name, units);
+        } catch (Exception ex) {
+            System.err.println(ex.toString());
+            try {
+                return createPhenomenon(name, url + name, "");
+            } catch (UnitCreationException ex1) {
+                System.err.println(ex1.toString());
+                return null;
+            }
+        }
+    }
+    
+    public final Phenomenon createPhenomenonWithugL(String name) {
+        try {
+            return createPhenomenon(name, GLOS_FAKE_MMI_URL_PREFIX + name, CustomUnits.instance().MICROGRAMS_PER_LITER);
+        } catch (Exception ex) {
+            System.err.println("exception in createPhenomenonWithugL: " + ex.toString());
+            for (int i=0; i<ex.getStackTrace().length && i < 20; i++) {
+                System.err.println(ex.getStackTrace()[i]);
+            }
+            try {
+                return createPhenomenon(name, GLOS_FAKE_MMI_URL_PREFIX + name, "");
+            } catch (UnitCreationException ex1) {
+                return null;
+            }
+        }
+    }
+    
+    public final Phenomenon createPhenomenonWithPPmL(String name) {
+        try {
+            return createPhenomenon(name, GLOS_FAKE_MMI_URL_PREFIX + name, CustomUnits.instance().PARTS_PER_100_MILLILITRES);
+        } catch (UnitCreationException ex) {
+            System.err.println("exception in createPhenomenonWithPPmL: " + ex.toString());
+            for (int i=0; i<ex.getStackTrace().length && i < 20; i++) {
+                System.err.println(ex.getStackTrace()[i]);
+            }
+            try {
+                return createPhenomenon(name, GLOS_FAKE_MMI_URL_PREFIX + name, "");
+            } catch (UnitCreationException ex1) {
+                return null;
+            }
+        }
+    }
+    
+    public final Phenomenon createPhenonmenonWithCFU(String name) {
+        try {
+            return createPhenomenon(name, GLOS_FAKE_MMI_URL_PREFIX + name, CustomUnits.instance().CFU_PER_100_MILLILITRES);
+        } catch (UnitCreationException ex) {
+            System.err.println("exception in createPhenonmenonWithCFU: " + ex.toString());
+            for (int i=0; i<ex.getStackTrace().length && i < 20; i++) {
+                System.err.println(ex.getStackTrace()[i]);
+            }
+            try {
+                return createPhenomenon(name, GLOS_FAKE_MMI_URL_PREFIX + name, "");
+            } catch (UnitCreationException ex1) {
+                return null;
+            }
+        }
+    }
+    
+    @HomelessParameter(description="",source="STORET")
+    public final Phenomenon PARTS_PER_100_ML = createPhenomenon(
+            "Parts Per 100 mL",
+            GLOS_FAKE_MMI_URL_PREFIX + "parts_per_100_ml",
+            CustomUnits.instance().PARTS_PER_100_MILLILITRES);
+    
+    /*
+     * Allows for the phenomenon stored in the SOS DB to be loaded into the phenomena list
+     */
+    public void loadPhenomenonFromList(java.util.List<Phenomenon> listToLoad) {
+        for (Phenomenon phenom : listToLoad) {
+            // check to make sure this isn't already in the phenomenon list
+            if (!allPhenomena.contains(phenom))
+                allPhenomena.add(phenom);
+        }
+    }
+    
+    /*
+     * Other parameters not previously added
+     * @author Sean Cowan
+     */
+    @IOOSParameter
+    public final Phenomenon DISSOLVED_OXYGEN =
+        createStandardIoosParameter( IoosParameter.dissolved_oxygen );
+    
+    @IOOSParameter
+    public final Phenomenon DISSOLVED_OXYGEN_SATURATION =
+        createStandardIoosParameter( IoosParameter.dissolved_oxygen_saturation );
+    
+    @IOOSParameter
+    public final Phenomenon SALINITY =
+        createStandardIoosParameter( IoosParameter.salinity );
+    
+    @IOOSParameter
+    public final Phenomenon ALKALINITY =
+        createStandardIoosParameter( IoosParameter.total_alkalinity );
+    
+    @IOOSParameter
+    public final Phenomenon CURRENT_DIRECTION =
+        createStandardIoosParameter( IoosParameter.current_to_direction );
+    
+    @IOOSParameter
+    public final Phenomenon CURRENT_SPEED =
+        createStandardIoosParameter( IoosParameter.current_speed );
+    
+    @IOOSParameter
+    public final Phenomenon CURRENT_VELOCITY =
+        createStandardIoosParameter( IoosParameter.current_velocity );
+    
+    @IOOSParameter
+    public final Phenomenon CHLOROPHYLL =
+        createStandardIoosParameter( IoosParameter.chlorophyll_a );
+    
+    @IOOSParameter
+    public final Phenomenon SIGNIFICANT_WAVE_HEIGHT = 
+        createStandardIoosParameter( IoosParameter.significant_wave_height );
+    
+    @IOOSParameter
+    public final Phenomenon MEAN_WAVE_PERIOD = 
+        createStandardIoosParameter( IoosParameter.mean_wave_period );
+    
+    // below will not work, i think due to the units string being ambiguous
+//    @IOOSParameter
+//    public final Phenomenon SPECIFIC_CONDUCTANCE =
+//        createStandardIoosParameter( IoosParameter.conductivity );
 }

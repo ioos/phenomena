@@ -17,8 +17,6 @@ import com.axiomalaska.cf4j.CFStandardName;
 import com.axiomalaska.cf4j.CFStandardNames;
 import com.axiomalaska.ioos.parameter.IoosParameter;
 import com.hp.hpl.jena.ontology.Individual;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Phenomena {
     @Target(ElementType.FIELD)

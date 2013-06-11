@@ -176,7 +176,7 @@ public class Phenomena {
     @NonStandardUnits
     public final Phenomenon AIR_TEMPERATURE = createCfParameterWithAlternateUnits(
          CFStandardNames.AIR_TEMPERATURE
-        ,CustomUnits.instance().DEGREES_CELSIUS
+        ,SI.DEGREE_CELSIUS
     );
     
 
@@ -184,21 +184,21 @@ public class Phenomena {
     public final Phenomenon AIR_TEMPERATURE_AVERAGE = createPhenomenon(
         "Air Temperature Average"
        ,FAKE_MMI_URL_PREFIX + "air_temperature_average"
-       ,CustomUnits.instance().DEGREES_CELSIUS
+       ,SI.DEGREE_CELSIUS
     );
     
     @HomelessParameter(description="",source="HADS, RAWS, SnoTel")
     public final Phenomenon AIR_TEMPERATURE_MAXIMUM = createPhenomenon(
         "Air Temperature Maximum"
        ,FAKE_MMI_URL_PREFIX + "air_temperature_maximum"
-       ,CustomUnits.instance().DEGREES_CELSIUS
+       ,SI.DEGREE_CELSIUS
     );
 
     @HomelessParameter(description="",source="HADS, RAWS, SnoTel")
     public final Phenomenon AIR_TEMPERATURE_MINIMUM = createPhenomenon(
         "Air Temperature Minimum"
        ,FAKE_MMI_URL_PREFIX + "air_temperature_minimum"
-       ,CustomUnits.instance().DEGREES_CELSIUS
+       ,SI.DEGREE_CELSIUS
     );
 
     @CFParameter
@@ -241,7 +241,7 @@ public class Phenomena {
     @NonStandardUnits
     public final Phenomenon DEW_POINT_TEMPERATURE = createCfParameterWithAlternateUnits(
          CFStandardNames.DEW_POINT_TEMPERATURE
-        ,CustomUnits.instance().DEGREES_CELSIUS
+        ,SI.DEGREE_CELSIUS
     );
 
     @CFParameter
@@ -277,7 +277,7 @@ public class Phenomena {
     public final Phenomenon FUEL_TEMPERATURE = createPhenomenon(
          "Fuel Temperature"
         ,FAKE_MMI_URL_PREFIX + "fuel_temperature"
-        ,CustomUnits.instance().DEGREES_CELSIUS
+        ,SI.DEGREE_CELSIUS
     );
 
     @CFParameter
@@ -330,7 +330,7 @@ public class Phenomena {
     public final Phenomenon PANEL_TEMPERATURE = createPhenomenon(
          "Panel Temperature"
         ,FAKE_MMI_URL_PREFIX + "panel_temperature"
-        ,CustomUnits.instance().DEGREES_CELSIUS
+        ,SI.DEGREE_CELSIUS
     );
     
     @IOOSParameter
@@ -519,7 +519,7 @@ public class Phenomena {
     @NonStandardUnits
     public final Phenomenon SEA_WATER_TEMPERATURE = createCfParameterWithAlternateUnits(
          CFStandardNames.SEA_WATER_TEMPERATURE
-        ,CustomUnits.instance().DEGREES_CELSIUS
+        ,SI.DEGREE_CELSIUS
     );
 
     @HomelessParameter(description="",source="HADS, RAWS, SnoTel")
@@ -554,7 +554,7 @@ public class Phenomena {
     @NonStandardUnits
     public final Phenomenon SOIL_TEMPERATURE = createCfParameterWithAlternateUnits(
          CFStandardNames.SOIL_TEMPERATURE
-        ,CustomUnits.instance().DEGREES_CELSIUS
+        ,SI.DEGREE_CELSIUS
     );
     
     @HomelessParameter(description="",source="HADS, NERRS, RAWS, SnoTel")
@@ -609,7 +609,7 @@ public class Phenomena {
     public final Phenomenon WATER_TEMPERATURE_INTRAGRAVEL = createPhenomenon(
         "Water Temperature Intragravel"
        ,FAKE_MMI_URL_PREFIX + "water_temperature_intragravel"
-       ,CustomUnits.instance().DEGREES_CELSIUS
+       ,SI.DEGREE_CELSIUS
     );
     
     @CFParameter

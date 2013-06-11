@@ -13,10 +13,8 @@ public class CustomUnits {
     //convention is to make the unit names plural...because singular sounds weird
     public Unit PERCENTAGE;
     public Unit PARTS_PER_THOUSAND;
-    public Unit FEET;
     public Unit METERS_PER_SECOND;
     public Unit CUBIC_METERS_PER_SECOND;
-    public Unit CUBIC_FEET_PER_SECOND;
     public Unit KILOGRAMS_PER_CUBIC_METER;
     public Unit AMPERES_PER_HOUR;
     public Unit WATTS_PER_METER;    
@@ -24,7 +22,6 @@ public class CustomUnits {
     public Unit SIEMENS_PER_METER;
     public Unit MICROGRAMS;
     public Unit MICROGRAMS_PER_LITER;
-    public Unit DEGREES_CELSIUS;
     public Unit MILLIMETERS;
     public Unit MILLIGRAMS;
     public Unit MILLIGRAMS_PER_LITER;
@@ -57,20 +54,14 @@ public class CustomUnits {
             PERCENTAGE = addUnit(StandardUnitDB.instance().getByName("percent"));
             StandardUnitDB.instance().addAlias("percentage", "percent", "%", "percent");
 
-            PARTS_PER_THOUSAND = addUnit(new ScaledUnit( 1e-3, BaseUnit.DIMENSIONLESS )
-                .clone( UnitName.newUnitName("part per thousand", "parts per thousand", "ppt")));
+            PARTS_PER_THOUSAND = addUnit(StandardUnitDB.instance().getByName("ppt"));
+            StandardUnitDB.instance().addAlias("part per thousand", "ppt", "ppt", "parts per thousand");
                 
-            FEET = addUnit(StandardUnitDB.instance().getByName("international foot"));
-            StandardUnitDB.instance().addSymbol("ft", "international foot");
-            
             METERS_PER_SECOND = addUnit(SI.METER.divideBy( SI.SECOND )
                 .clone( UnitName.newUnitName("meter per second", "meters per second", "m.s-1")));
 
             CUBIC_METERS_PER_SECOND = addUnit(SI.METER.raiseTo( 3 ).divideBy( SI.SECOND )
                     .clone( UnitName.newUnitName("cubic meter per second", "cubic meters per second", "m3.s-1")));
-
-            CUBIC_FEET_PER_SECOND = addUnit(StandardUnitDB.instance().getByName("foot").raiseTo( 3 ).divideBy( SI.SECOND )
-                    .clone( UnitName.newUnitName("cubic foot per second", "cubic feet per second", "ft3.s-1")));
             
             KILOGRAMS_PER_CUBIC_METER = addUnit(SI.KILOGRAM.divideBy( SI.METER.raiseTo( 3 ) )
                 .clone( UnitName.newUnitName("kilogram per cubic meter", "kilograms per cubic meter", "kg.m-3")));
@@ -92,10 +83,6 @@ public class CustomUnits {
             
             MICROGRAMS_PER_LITER = addUnit(MICROGRAMS.divideBy( SI.LITER )
                 .clone( UnitName.newUnitName("microgram per liter", "micrograms per liter", "10e-1mg.L-1")));
-                        
-            //use this instead of SI.DEGREE_CELSIUS because the plural of that one is degree celsiuses
-            DEGREES_CELSIUS = addUnit(new OffsetUnit( SI.KELVIN, 273.15 )
-                .clone( UnitName.newUnitName("degree celsius", "degrees celsius", "Cel")));
             
             MILLIMETERS = addUnit(new ScaledUnit( 1e-3, SI.METER )
                 .clone( UnitName.newUnitName("millimeter", null, "mm")));

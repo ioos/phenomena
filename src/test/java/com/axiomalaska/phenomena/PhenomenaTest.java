@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 
+import ucar.units.ConversionException;
 import ucar.units.Unit;
 
 import com.axiomalaska.phenomena.Phenomena.HomelessParameter;
@@ -75,7 +76,14 @@ public class PhenomenaTest {
             }
 
             LOG.info( phenomenon.getId() + ": " + unitString );
-        }
-	    
+        }	    
+	}
+	
+	@Test
+	public void testConversion() throws UnitCreationException, ConversionException{
+	    Unit cubicFeetPerSecond = UnitResolver.instance().resolveUnit("feet3.s-1");
+	    Unit cubicMetersPerSecond = CustomUnits.instance().CUBIC_METERS_PER_SECOND;
+	    LOG.info("10 cubic feet per second = " +
+	            cubicFeetPerSecond.convertTo(10f, cubicMetersPerSecond) + " " + cubicMetersPerSecond.getSymbol());
 	}
 }

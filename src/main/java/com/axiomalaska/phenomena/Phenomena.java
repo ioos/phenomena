@@ -258,7 +258,11 @@ public class Phenomena {
     @CFParameter
     public final Phenomenon DOWNWELLING_PHOTOSYNTHETIC_RADIATIVE_FLUX_IN_SEA_WATER =
         createStandardCfParameter( CFStandardNames.DOWNWELLING_PHOTOSYNTHETIC_RADIATIVE_FLUX_IN_SEA_WATER );
-    
+
+    @CFParameter
+    public final Phenomenon EASTWARD_SEA_WATER_VELOCITY =
+            createStandardCfParameter( CFStandardNames.EASTWARD_SEA_WATER_VELOCITY );
+
     @CFParameter
     @NonStandardUnits
     public final Phenomenon FRACTIONAL_SATURATION_OF_OXYGEN_IN_SEA_WATER = createCfParameterWithAlternateUnits(
@@ -325,7 +329,11 @@ public class Phenomena {
     @IOOSParameter
     public final Phenomenon NITRITE_PLUS_NITRATE =
         createStandardIoosParameter( IoosParameter.nitrite_plus_nitrate );
-    
+
+    @CFParameter
+    public final Phenomenon NORTHWARD_SEA_WATER_VELOCITY =
+            createStandardCfParameter( CFStandardNames.NORTHWARD_SEA_WATER_VELOCITY );
+
     @HomelessParameter(description="",source="")
     public final Phenomenon PANEL_TEMPERATURE = createPhenomenon(
          "Panel Temperature"

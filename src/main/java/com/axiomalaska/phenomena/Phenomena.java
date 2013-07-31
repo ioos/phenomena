@@ -52,7 +52,6 @@ public class Phenomena {
     }
 
     public static final String IOOS_MMI_URL_PREFIX = IoosParameter.NS;    
-    public static final String FAKE_MMI_URL_PREFIX = "http://mmisw.org/ont/aoos/parameter/";
     public static final String CF_MMI_URL_PREFIX = "http://mmisw.org/ont/cf/parameter/";
     public static final String GENERIC_FAKE_MMI_URL_PREFIX = "http://mmisw.org/ont/fake/parameter/";
 
@@ -183,21 +182,21 @@ public class Phenomena {
     @HomelessParameter(description="",source="NERRS, RAWS, SnoTel")
     public final Phenomenon AIR_TEMPERATURE_AVERAGE = createPhenomenon(
         "Air Temperature Average"
-       ,FAKE_MMI_URL_PREFIX + "air_temperature_average"
+       ,GENERIC_FAKE_MMI_URL_PREFIX + "air_temperature_average"
        ,SI.DEGREE_CELSIUS
     );
     
     @HomelessParameter(description="",source="HADS, RAWS, SnoTel")
     public final Phenomenon AIR_TEMPERATURE_MAXIMUM = createPhenomenon(
         "Air Temperature Maximum"
-       ,FAKE_MMI_URL_PREFIX + "air_temperature_maximum"
+       ,GENERIC_FAKE_MMI_URL_PREFIX + "air_temperature_maximum"
        ,SI.DEGREE_CELSIUS
     );
 
     @HomelessParameter(description="",source="HADS, RAWS, SnoTel")
     public final Phenomenon AIR_TEMPERATURE_MINIMUM = createPhenomenon(
         "Air Temperature Minimum"
-       ,FAKE_MMI_URL_PREFIX + "air_temperature_minimum"
+       ,GENERIC_FAKE_MMI_URL_PREFIX + "air_temperature_minimum"
        ,SI.DEGREE_CELSIUS
     );
 
@@ -215,14 +214,14 @@ public class Phenomena {
     @HomelessParameter(description="",source="SnoTel")
     public final Phenomenon BATTERY_VOLTAGE_MAXIMUM = createPhenomenon(
         "Battery Voltage Maximum"
-       ,FAKE_MMI_URL_PREFIX + "battery_voltage_maximum"
+       ,GENERIC_FAKE_MMI_URL_PREFIX + "battery_voltage_maximum"
        ,SI.VOLT       
     );
     
     @HomelessParameter(description="",source="SnoTel")
     public final Phenomenon BATTERY_VOLTAGE_MINIMUM = createPhenomenon(
         "Battery Voltage Maximum"
-       ,FAKE_MMI_URL_PREFIX + "battery_voltage_minimum"
+       ,GENERIC_FAKE_MMI_URL_PREFIX + "battery_voltage_minimum"
        ,SI.VOLT
     );
     
@@ -233,7 +232,7 @@ public class Phenomena {
     @HomelessParameter(description="",source="USGS")
     public final Phenomenon DEPTH_TO_WATER_LEVEL = createPhenomenon(
          "Depth to Water Level"
-        ,FAKE_MMI_URL_PREFIX + "depth_to_water_level"
+        ,GENERIC_FAKE_MMI_URL_PREFIX + "depth_to_water_level"
         ,SI.METER
     );
 
@@ -251,7 +250,7 @@ public class Phenomena {
     @HomelessParameter(description="",source="NOAA NOS CO-OPS, NDBC")
     public final Phenomenon DOMINANT_WAVE_PERIOD = createPhenomenon(
          "Sea Surface Dominant Wave Period"
-        ,FAKE_MMI_URL_PREFIX + "sea_surface_dominant_wave_period"
+        ,GENERIC_FAKE_MMI_URL_PREFIX + "sea_surface_dominant_wave_period"
         ,SI.SECOND
     );
     
@@ -273,14 +272,14 @@ public class Phenomena {
     @HomelessParameter(description="",source="HADS, RAWS")
     public final Phenomenon FUEL_MOISTURE = createPhenomenon(
          "Fuel Moisture"
-        ,FAKE_MMI_URL_PREFIX + "fuel_moisture"
+        ,GENERIC_FAKE_MMI_URL_PREFIX + "fuel_moisture"
         ,CustomUnits.instance().PERCENTAGE
     );
 
     @HomelessParameter(description="",source="HADS, RAWS")
     public final Phenomenon FUEL_TEMPERATURE = createPhenomenon(
          "Fuel Temperature"
-        ,FAKE_MMI_URL_PREFIX + "fuel_temperature"
+        ,GENERIC_FAKE_MMI_URL_PREFIX + "fuel_temperature"
         ,SI.DEGREE_CELSIUS
     );
 
@@ -306,7 +305,7 @@ public class Phenomena {
     @HomelessParameter(description="",source="")
     public final Phenomenon MASS_CONCENTRATION_OF_CARBON_DIOXIDE_IN_SEA_WATER = createPhenomenon(
         "Mass Concentration of Carbon Dioxide in Sea Water"
-       ,FAKE_MMI_URL_PREFIX + "mass_concentration_of_carbon_dioxide_in_sea_water"
+       ,GENERIC_FAKE_MMI_URL_PREFIX + "mass_concentration_of_carbon_dioxide_in_sea_water"
        ,CustomUnits.instance().KILOGRAMS_PER_CUBIC_METER
     );
     
@@ -337,7 +336,7 @@ public class Phenomena {
     @HomelessParameter(description="",source="")
     public final Phenomenon PANEL_TEMPERATURE = createPhenomenon(
          "Panel Temperature"
-        ,FAKE_MMI_URL_PREFIX + "panel_temperature"
+        ,GENERIC_FAKE_MMI_URL_PREFIX + "panel_temperature"
         ,SI.DEGREE_CELSIUS
     );
     
@@ -359,14 +358,14 @@ public class Phenomena {
     @HomelessParameter(description="Solar radiation from 400 to 700 nanometers",source="HADS")
     public final Phenomenon PHOTOSYNTHETICALLY_ACTIVE_RADIATION = createPhenomenon(
          "Photosynthetically Active Radiation"
-        ,FAKE_MMI_URL_PREFIX + "photosynthetically_active_radiation"
+        ,GENERIC_FAKE_MMI_URL_PREFIX + "photosynthetically_active_radiation"
         ,CustomUnits.instance().WATTS_PER_SQUARE_METER
     );
     
     @HomelessParameter(description="",source="")
     public final Phenomenon PHYCOERYTHRIN = createPhenomenon(
          "Phycoerythrin"
-        ,FAKE_MMI_URL_PREFIX + "phycoerythrin"
+        ,GENERIC_FAKE_MMI_URL_PREFIX + "phycoerythrin"
         ,"rfu"
     );
 
@@ -377,7 +376,7 @@ public class Phenomena {
     @HomelessParameter(description="",source="HADS, NERRS, SnoTel")
     public final Phenomenon PRECIPITATION_INCREMENT = createPhenomenon(
         "Precipitation Increment"
-       ,FAKE_MMI_URL_PREFIX + "precipitation_increment"
+       ,GENERIC_FAKE_MMI_URL_PREFIX + "precipitation_increment"
        ,SI.METER
     );
 
@@ -399,21 +398,21 @@ public class Phenomena {
     @HomelessParameter(description="",source="NERRS, RAWS, SnoTel")
     public final Phenomenon RELATIVE_HUMIDITY_AVERAGE = createPhenomenon(
         "Relative Humidity Average"
-       ,FAKE_MMI_URL_PREFIX + "relative_humidity_average"
+       ,GENERIC_FAKE_MMI_URL_PREFIX + "relative_humidity_average"
        ,CustomUnits.instance().PERCENTAGE
     );
     
     @HomelessParameter(description="",source="RAWS, SnoTel")
     public final Phenomenon RELATIVE_HUMIDITY_MAXIMUM = createPhenomenon(
         "Relative Humidity Maximum"
-       ,FAKE_MMI_URL_PREFIX + "relative_humidity_maximum"
+       ,GENERIC_FAKE_MMI_URL_PREFIX + "relative_humidity_maximum"
        ,CustomUnits.instance().PERCENTAGE       
     );
     
     @HomelessParameter(description="",source="RAWS, SnoTel")
     public final Phenomenon RELATIVE_HUMIDITY_MINIMUM = createPhenomenon(
         "Relative Humidity Minimum"
-       ,FAKE_MMI_URL_PREFIX + "relative_humidity_minimum"
+       ,GENERIC_FAKE_MMI_URL_PREFIX + "relative_humidity_minimum"
        ,CustomUnits.instance().PERCENTAGE       
     );
     
@@ -421,7 +420,7 @@ public class Phenomena {
     @HomelessParameter(description="",source="SnoTel")
     public final Phenomenon RELATIVE_PERMITTIVITY = createPhenomenon(
          "Relative Permittivity"
-        ,FAKE_MMI_URL_PREFIX + "relative_permittivity"
+        ,GENERIC_FAKE_MMI_URL_PREFIX + "relative_permittivity"
         ,CustomUnits.instance().PERCENTAGE        
     );
 
@@ -446,7 +445,7 @@ public class Phenomena {
     @HomelessParameter(description="",source="")
     public final Phenomenon SEA_SURFACE_MAXIMUM_WAVE_HEIGHT = createPhenomenon(
          "Sea Surface Maximum Wave Height"
-        ,FAKE_MMI_URL_PREFIX + "sea_surface_maximum_wave_height"
+        ,GENERIC_FAKE_MMI_URL_PREFIX + "sea_surface_maximum_wave_height"
         ,SI.METER
     ); 
     
@@ -465,7 +464,7 @@ public class Phenomena {
 	@HomelessParameter(description = "", source = "NOAA NOS CO-OPS")
 	public final Phenomenon SEA_SURFACE_DOMINANT_WAVE_TO_DIRECTION = createPhenomenon(
 		"Sea Surface Dominant Wave To Direction"
-		,FAKE_MMI_URL_PREFIX + "sea_surface_dominant_wave_to_direction"
+		,GENERIC_FAKE_MMI_URL_PREFIX + "sea_surface_dominant_wave_to_direction"
 		,SI.ARC_DEGREE
 	);
     
@@ -476,14 +475,14 @@ public class Phenomena {
     @HomelessParameter(description="",source="NOAA NOS CO-OPS")
     public final Phenomenon SEA_SURFACE_WAVE_MEAN_HEIGHT = createPhenomenon(
          "Sea Surface Wave Mean Height"
-        ,FAKE_MMI_URL_PREFIX + "sea_surface_wave_mean_height"
+        ,GENERIC_FAKE_MMI_URL_PREFIX + "sea_surface_wave_mean_height"
         ,SI.METER
     );
     
     @HomelessParameter(description="",source="")
     public final Phenomenon SEA_SURFACE_WAVE_MEAN_PERIOD = createPhenomenon(
         "Sea Surface Wave Mean Period"
-        ,FAKE_MMI_URL_PREFIX + "sea_surface_wave_mean_period"
+        ,GENERIC_FAKE_MMI_URL_PREFIX + "sea_surface_wave_mean_period"
         ,SI.SECOND
     );
     
@@ -533,28 +532,28 @@ public class Phenomena {
     @HomelessParameter(description="",source="HADS, RAWS, SnoTel")
     public final Phenomenon SNOW_DEPTH = createPhenomenon(
         "Snow Depth"
-       ,FAKE_MMI_URL_PREFIX + "snow_depth"
+       ,GENERIC_FAKE_MMI_URL_PREFIX + "snow_depth"
        ,SI.METER
     );
 
     @HomelessParameter(description="",source="RAWS")
     public final Phenomenon SNOW_PILLOW = createPhenomenon(
         "Snow Pillow"
-       ,FAKE_MMI_URL_PREFIX + "snow_pillow"
+       ,GENERIC_FAKE_MMI_URL_PREFIX + "snow_pillow"
        ,SI.METER
     );
     
     @HomelessParameter(description="",source="HADS, SnoTel")
     public final Phenomenon SNOW_WATER_EQUIVALENT = createPhenomenon(
         "Snow Water Equivalent"
-       ,FAKE_MMI_URL_PREFIX + "snow_water_equivalent"
+       ,GENERIC_FAKE_MMI_URL_PREFIX + "snow_water_equivalent"
        ,SI.METER
     );
 
     @HomelessParameter(description="",source="RAWS, SnoTel")
     public final Phenomenon SOIL_MOISTURE_PERCENT = createPhenomenon(
          "Soil Moisture Percent"
-        ,FAKE_MMI_URL_PREFIX + "soil_moisture_percent"
+        ,GENERIC_FAKE_MMI_URL_PREFIX + "soil_moisture_percent"
         ,CustomUnits.instance().PERCENTAGE
     );
 
@@ -568,28 +567,28 @@ public class Phenomena {
     @HomelessParameter(description="",source="HADS, NERRS, RAWS, SnoTel")
     public final Phenomenon SOLAR_RADIATION = createPhenomenon(
         "Solar Radiation"
-       ,FAKE_MMI_URL_PREFIX + "solar_radiation"
+       ,GENERIC_FAKE_MMI_URL_PREFIX + "solar_radiation"
        ,CustomUnits.instance().WATTS_PER_SQUARE_METER
     );
     
     @HomelessParameter(description="",source="SnoTel")
     public final Phenomenon SOLAR_RADIATION_AVERAGE = createPhenomenon(
         "Solar Radiation Average"
-       ,FAKE_MMI_URL_PREFIX + "solar_radiation_average"
+       ,GENERIC_FAKE_MMI_URL_PREFIX + "solar_radiation_average"
        ,CustomUnits.instance().WATTS_PER_SQUARE_METER
     );
     
     @HomelessParameter(description="",source="SnoTel")
     public final Phenomenon SOLAR_RADIATION_MAXIMUM = createPhenomenon(
         "Solar Radiation Maximum"
-       ,FAKE_MMI_URL_PREFIX + "solar_radiation_maximum"
+       ,GENERIC_FAKE_MMI_URL_PREFIX + "solar_radiation_maximum"
        ,CustomUnits.instance().WATTS_PER_SQUARE_METER
     );
     
     @HomelessParameter(description="",source="SnoTel")
     public final Phenomenon SOLAR_RADIATION_MINIMUM = createPhenomenon(
         "Solar Radiation Maximum"
-       ,FAKE_MMI_URL_PREFIX + "solar_radiation_minimum"
+       ,GENERIC_FAKE_MMI_URL_PREFIX + "solar_radiation_minimum"
        ,CustomUnits.instance().WATTS_PER_SQUARE_METER
     );
     
@@ -616,7 +615,7 @@ public class Phenomena {
     @HomelessParameter(description="",source="USGS")
     public final Phenomenon WATER_TEMPERATURE_INTRAGRAVEL = createPhenomenon(
         "Water Temperature Intragravel"
-       ,FAKE_MMI_URL_PREFIX + "water_temperature_intragravel"
+       ,GENERIC_FAKE_MMI_URL_PREFIX + "water_temperature_intragravel"
        ,SI.DEGREE_CELSIUS
     );
     
@@ -632,7 +631,7 @@ public class Phenomena {
     @HomelessParameter(description="",source="")
     public final Phenomenon WEBCAM = createPhenomenon(
         "Webcam"
-        ,FAKE_MMI_URL_PREFIX + "webcam"
+        ,GENERIC_FAKE_MMI_URL_PREFIX + "webcam"
     );
     
     @CFParameter
@@ -643,7 +642,7 @@ public class Phenomena {
     @HomelessParameter(description="",source="")
     public final Phenomenon WIND_GENERATOR_CURRENT = createPhenomenon(
          "Wind Generator Current"
-        ,FAKE_MMI_URL_PREFIX + "wind_generator_current"
+        ,GENERIC_FAKE_MMI_URL_PREFIX + "wind_generator_current"
         ,CustomUnits.instance().AMPERES_PER_HOUR
     );
 
@@ -662,7 +661,7 @@ public class Phenomena {
     @HomelessParameter(description="",source="NOAA NOS CO-OPS")
     public final Phenomenon WIND_VERTICAL_VELOCITY = createPhenomenon(
         "Wind Vertical Velocity"
-       ,FAKE_MMI_URL_PREFIX + "wind_vertical_velocity"
+       ,GENERIC_FAKE_MMI_URL_PREFIX + "wind_vertical_velocity"
        ,CustomUnits.instance().METERS_PER_SECOND
     );
     

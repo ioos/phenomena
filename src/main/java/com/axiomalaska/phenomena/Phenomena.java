@@ -54,7 +54,7 @@ public class Phenomena {
     public static final String IOOS_MMI_URL_PREFIX = IoosParameter.NS;    
     public static final String FAKE_MMI_URL_PREFIX = "http://mmisw.org/ont/aoos/parameter/";
     public static final String CF_MMI_URL_PREFIX = "http://mmisw.org/ont/cf/parameter/";
-    public static final String GLOS_FAKE_MMI_URL_PREFIX = "http://mmisw.org/ont/glos/parameter/";
+    public static final String GENERIC_FAKE_MMI_URL_PREFIX = "http://mmisw.org/ont/fake/parameter/";
 
     public List<Phenomenon> getAllPhenomena(){
         return allPhenomena;
@@ -667,25 +667,27 @@ public class Phenomena {
     );
     
     /*
-     * PHENOM FROM STORET
-     * Putting under HomelessParameter since not entirely sure if they fall
-     * under CF or IOOS conventions - like different units used - even though I
-     * am using those parameters *shrug*
-     */
-    
+    * Phenomenon from sources that will never map to IOOS sources need a public interface for
+    * creating a Parameter.
+    */
+
     public final Phenomenon createHomelessParameter(String name, String units) {
         try {
-            return createPhenomenon(name, GLOS_FAKE_MMI_URL_PREFIX + name, units);
+            return createPhenomenon(name, GENERIC_FAKE_MMI_URL_PREFIX + name, units);
         } catch (Exception ex) {
-            System.err.println("exception in createHomelessParameter: " + ex.toString());
-            for (int i=0; i<ex.getStackTrace().length && i < 20; i++) {
-                System.err.println(ex.getStackTrace()[i]);
-            }
             try {
-                return createPhenomenon(name, GLOS_FAKE_MMI_URL_PREFIX + name, "");
+                return createPhenomenon(name, GENERIC_FAKE_MMI_URL_PREFIX + name, "");
             } catch (UnitCreationException ex1) {
                 return null;
             }
+        }
+    }
+
+    public final Phenomenon createHomelessParameter(String name, Unit units) {
+        try {
+            return createPhenomenon(name, GENERIC_FAKE_MMI_URL_PREFIX + name, units);
+        } catch (Exception ex) {
+            return null;
         }
     }
     
@@ -693,70 +695,22 @@ public class Phenomena {
         try {
             return createPhenomenon(name, url + name, units);
         } catch (Exception ex) {
-            System.err.println(ex.toString());
             try {
                 return createPhenomenon(name, url + name, "");
             } catch (UnitCreationException ex1) {
-                System.err.println(ex1.toString());
                 return null;
             }
         }
     }
-    
-    public final Phenomenon createPhenomenonWithugL(String name) {
+
+    public final Phenomenon createHomelessParameter(String name, String url, Unit units) {
         try {
-            return createPhenomenon(name, GLOS_FAKE_MMI_URL_PREFIX + name, CustomUnits.instance().MICROGRAMS_PER_LITER);
+            return createPhenomenon(name, url + name, units);
         } catch (Exception ex) {
-            System.err.println("exception in createPhenomenonWithugL: " + ex.toString());
-            for (int i=0; i<ex.getStackTrace().length && i < 20; i++) {
-                System.err.println(ex.getStackTrace()[i]);
-            }
-            try {
-                return createPhenomenon(name, GLOS_FAKE_MMI_URL_PREFIX + name, "");
-            } catch (UnitCreationException ex1) {
-                return null;
-            }
+            return null;
         }
     }
-    
-    public final Phenomenon createPhenomenonWithPPmL(String name) {
-        try {
-            return createPhenomenon(name, GLOS_FAKE_MMI_URL_PREFIX + name, CustomUnits.instance().PARTS_PER_100_MILLILITRES);
-        } catch (UnitCreationException ex) {
-            System.err.println("exception in createPhenomenonWithPPmL: " + ex.toString());
-            for (int i=0; i<ex.getStackTrace().length && i < 20; i++) {
-                System.err.println(ex.getStackTrace()[i]);
-            }
-            try {
-                return createPhenomenon(name, GLOS_FAKE_MMI_URL_PREFIX + name, "");
-            } catch (UnitCreationException ex1) {
-                return null;
-            }
-        }
-    }
-    
-    public final Phenomenon createPhenonmenonWithCFU(String name) {
-        try {
-            return createPhenomenon(name, GLOS_FAKE_MMI_URL_PREFIX + name, CustomUnits.instance().CFU_PER_100_MILLILITRES);
-        } catch (UnitCreationException ex) {
-            System.err.println("exception in createPhenonmenonWithCFU: " + ex.toString());
-            for (int i=0; i<ex.getStackTrace().length && i < 20; i++) {
-                System.err.println(ex.getStackTrace()[i]);
-            }
-            try {
-                return createPhenomenon(name, GLOS_FAKE_MMI_URL_PREFIX + name, "");
-            } catch (UnitCreationException ex1) {
-                return null;
-            }
-        }
-    }
-    
-    @HomelessParameter(description="",source="STORET")
-    public final Phenomenon PARTS_PER_100_ML = createPhenomenon(
-            "Parts Per 100 mL",
-            GLOS_FAKE_MMI_URL_PREFIX + "parts_per_100_ml",
-            CustomUnits.instance().PARTS_PER_100_MILLILITRES);
-    
+
     /*
      * Allows for the phenomenon stored in the SOS DB to be loaded into the phenomena list
      */

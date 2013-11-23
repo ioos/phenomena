@@ -472,6 +472,10 @@ public class Phenomena {
     public final Phenomenon SEA_SURFACE_WAVE_FROM_DIRECTION =
         createStandardCfParameter( CFStandardNames.SEA_SURFACE_WAVE_FROM_DIRECTION );
     
+    @CFParameter
+    public final Phenomenon SEA_SURFACE_WAVE_TO_DIRECTION =
+        createStandardCfParameter( CFStandardNames.SEA_SURFACE_WAVE_TO_DIRECTION );
+    
     @HomelessParameter(description="",source="NOAA NOS CO-OPS")
     public final Phenomenon SEA_SURFACE_WAVE_MEAN_HEIGHT = createPhenomenon(
          "Sea Surface Wave Mean Height"
@@ -517,6 +521,11 @@ public class Phenomena {
          CFStandardNames.SEA_WATER_PRACTICAL_SALINITY
         ,CustomUnits.instance().PARTS_PER_THOUSAND
     );
+    
+    @CFParameter
+    public final Phenomenon SEA_WATER_PRESSURE = createStandardCfParameter( 
+    		CFStandardNames.SEA_WATER_PRESSURE);
+    
     
     @CFParameter
     public final Phenomenon SEA_WATER_SPEED =

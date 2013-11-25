@@ -14,6 +14,7 @@ import ucar.units.Unit;
 import com.axiomalaska.cf4j.CFStandardName;
 import com.axiomalaska.cf4j.CFStandardNames;
 import com.axiomalaska.ioos.parameter.IoosParameter;
+import com.axiomalaska.ioos.sos.IoosSosUtil;
 import com.hp.hpl.jena.ontology.Individual;
 
 public class Phenomena {
@@ -105,7 +106,7 @@ public class Phenomena {
     private final Phenomenon createCfParameterWithAlternateUnits(
             CFStandardName cfStandardName, String unitString ) throws UnitCreationException{
         return createPhenomenon(
-             PhenomenaUtil.convertUnderscoredNameToTitleCase(cfStandardName.getName())
+             IoosSosUtil.convertUnderscoredNameToTitleCase(cfStandardName.getName())
             ,CF_MMI_URL_PREFIX + cfStandardName.getName()
             ,unitResolver.resolveUnit( unitString )
         );
@@ -114,7 +115,7 @@ public class Phenomena {
     private final Phenomenon createCfParameterWithAlternateUnits(
             CFStandardName cfStandardName, Unit unit ){
         return createPhenomenon(
-             PhenomenaUtil.convertUnderscoredNameToTitleCase(cfStandardName.getName())
+             IoosSosUtil.convertUnderscoredNameToTitleCase(cfStandardName.getName())
             ,CF_MMI_URL_PREFIX + cfStandardName.getName()
             ,unit
         );
@@ -124,7 +125,7 @@ public class Phenomena {
     private final Phenomenon createIoosParameterWithAlternateUnits(
             Individual ioosParameter, String unitString ) throws UnitCreationException{
         return createPhenomenon(
-             PhenomenaUtil.convertUnderscoredNameToTitleCase(ioosParameter.getLocalName())
+             IoosSosUtil.convertUnderscoredNameToTitleCase(ioosParameter.getLocalName())
             ,ioosParameter.getURI()
             ,unitResolver.resolveUnit( unitString )
         );
@@ -133,7 +134,7 @@ public class Phenomena {
     private final Phenomenon createIoosParameterWithAlternateUnits(
             Individual ioosParameter, Unit unit ){
         return createPhenomenon(
-             PhenomenaUtil.convertUnderscoredNameToTitleCase(ioosParameter.getLocalName())
+             IoosSosUtil.convertUnderscoredNameToTitleCase(ioosParameter.getLocalName())
             ,ioosParameter.getURI()
             ,unit
         );
@@ -142,7 +143,7 @@ public class Phenomena {
     private final Phenomenon createStandardCfParameter( CFStandardName cfStandardName )
             throws UnitCreationException{
         return createPhenomenon(
-             PhenomenaUtil.convertUnderscoredNameToTitleCase(cfStandardName.getName())
+             IoosSosUtil.convertUnderscoredNameToTitleCase(cfStandardName.getName())
             ,CF_MMI_URL_PREFIX + cfStandardName.getName()
             ,unitResolver.resolveUnit( cfStandardName.getCanonicalUnits() )
         );
@@ -154,7 +155,7 @@ public class Phenomena {
                 ioosParameter, IoosParameter.Units );
         Unit unit = unitString != null ? unitResolver.resolveUnit( unitString ) : BaseUnit.DIMENSIONLESS;
         return createPhenomenon(
-             PhenomenaUtil.convertUnderscoredNameToTitleCase(ioosParameter.getLocalName())
+             IoosSosUtil.convertUnderscoredNameToTitleCase(ioosParameter.getLocalName())
             ,ioosParameter.getURI()
             ,unit
         );

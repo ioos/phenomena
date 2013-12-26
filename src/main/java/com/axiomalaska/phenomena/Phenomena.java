@@ -528,6 +528,10 @@ public class Phenomena {
         createStandardCfParameter( CFStandardNames.SEA_WATER_SPEED );
 
     @CFParameter
+    public final Phenomenon SURFACE_SNOW_THICKNESS = createStandardCfParameter( 
+    		CFStandardNames.SURFACE_SNOW_THICKNESS);
+    
+    @CFParameter
     @NonStandardUnits
     public final Phenomenon SEA_WATER_TEMPERATURE = createCfParameterWithAlternateUnits(
          CFStandardNames.SEA_WATER_TEMPERATURE

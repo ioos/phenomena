@@ -1,7 +1,6 @@
 package com.axiomalaska.phenomena;
 
 import ucar.units.BaseUnit;
-import ucar.units.OffsetUnit;
 import ucar.units.SI;
 import ucar.units.ScaledUnit;
 import ucar.units.StandardUnitDB;
@@ -105,8 +104,6 @@ public class CustomUnits {
             
             CFU_PER_100_MILLILITRES = addUnit(BaseUnit.DIMENSIONLESS.divideBy(MILLILITRE_100)
                 .clone(UnitName.newUnitName("cfu per 100 millilitre", null, "cfu.100mL-1")));
-                    
-            //-----
         } catch( Exception e ){
             throw new UnitCreationException( e );
         }

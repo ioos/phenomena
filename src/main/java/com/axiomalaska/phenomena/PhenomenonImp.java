@@ -70,9 +70,9 @@ public class PhenomenonImp implements Phenomenon {
 		return unit;
 	}
         
-        public String getTag() {
-            return tag;
-        }
+    public String getTag() {
+        return tag;
+    }
 
 	public void setName(String name) {
 		this.name = name;
@@ -85,7 +85,11 @@ public class PhenomenonImp implements Phenomenon {
 	public void setUnit(Unit unit) {
 		this.unit = unit;
 	}
-	
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
 	public String toString(){
 		return id;
 	}

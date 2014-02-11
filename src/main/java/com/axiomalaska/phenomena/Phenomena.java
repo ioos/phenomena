@@ -71,10 +71,10 @@ public class Phenomena {
 
     private final Phenomenon createPhenomenon( String name, String id, Unit unit ){
         String tag = name;
-        try {
-            int index = id.lastIndexOf("/") + 1;
-            tag = id.substring(index);
-        } catch (Exception ex) {}
+        String parsedTag = IoosSosUtil.getNameFromUri(id);
+        if (!parsedTag.equals(id)) {
+            tag = parsedTag;
+        }
         
         Phenomenon phenomenon = new PhenomenonImp( name, id, tag, unit );
         allPhenomena.add( phenomenon );

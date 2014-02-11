@@ -1,10 +1,13 @@
 package com.axiomalaska.phenomena;
 
+import static org.junit.Assert.assertEquals;
+
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import ucar.units.ConversionException;
@@ -86,4 +89,20 @@ public class PhenomenaTest {
 	    LOG.info("10 cubic feet per second = " +
 	            cubicFeetPerSecond.convertTo(10f, cubicMetersPerSecond) + " " + cubicMetersPerSecond.getSymbol());
 	}
+	
+    @Test
+    public void testUnitParsing() throws UnitCreationException, ConversionException{
+        Unit metersPerSecondSlash = UnitResolver.instance().resolveUnit("m/s");
+        Unit metersPerSecondDot = UnitResolver.instance().resolveUnit("m.s-1");
+        assertEquals(metersPerSecondSlash, metersPerSecondDot);
+    }
+
+    @Test
+    @Ignore
+    public void testUnitParsing2() throws UnitCreationException, ConversionException{
+        Unit degCel = UnitResolver.instance().resolveUnit("Cel");
+        Unit degCelDegree = UnitResolver.instance().resolveUnit("°C");
+        assertEquals(degCel, degCelDegree);
+    }
+    
 }

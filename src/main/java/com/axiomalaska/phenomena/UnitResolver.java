@@ -7,6 +7,7 @@ import ucar.units.SI;
 import ucar.units.Unit;
 import ucar.units.UnitFormat;
 import ucar.units.UnitFormatManager;
+import ucar.units.UnitName;
 
 /**
  * Class for resolving a string to a ucar.units.Unit. String parsing isn't always reliable in ucar.unit
@@ -14,7 +15,7 @@ import ucar.units.UnitFormatManager;
  * based on degree), so we detect certain special cases here before falling back to string parsing.
  */
 public class UnitResolver {    
-    private final UnitFormat unitFormat = UnitFormatManager.instance();
+    private static final UnitFormat unitFormat = UnitFormatManager.instance();
     private final CustomUnits customUnits;
     private final Map<String,Unit> unitMap;
     
@@ -69,5 +70,37 @@ public class UnitResolver {
             throw new UnitCreationException( e );            
         }
         return unit;
+    }
+
+    
+    public static Unit parseUnit(String unitString) throws UnitCreationException {
+        return parseUnit(unitString, unitString, null, null);
+    }
+    
+    public static Unit parseUnit(String unitString, String symbol) throws UnitCreationException {
+        return parseUnit(unitString, unitString, symbol);
+    }
+
+    public static Unit parseUnit(String unitString, String name, String symbol) throws UnitCreationException {
+        return parseUnit(unitString, name, null, symbol);
+    }
+    
+    /**
+     * Parse a unit string using the StandardUnitFormat, but also manually set the name and optionally plural name and symbol.
+     * 
+     * @param unitString Unit string to parse
+     * @param name Unit's name
+     * @param plural Unit's plural name
+     * @param symbol Unit's symbol
+     * @return The unit
+     * @throws UnitCreationException
+     */
+    public static Unit parseUnit(String unitString, String name, String plural, String symbol) throws UnitCreationException {
+        try{
+            return unitFormat.parse(unitString).clone(UnitName.newUnitName(name, plural, symbol)); 
+        } catch( Exception e ){
+            throw new UnitCreationException( e );            
+        }
+        
     }
 }

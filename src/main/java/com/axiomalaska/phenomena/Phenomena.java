@@ -305,6 +305,13 @@ public class Phenomena {
        ,CustomUnits.instance().KILOGRAMS_PER_CUBIC_METER
     );
     
+    @HomelessParameter(description="",source="LOBO, HADS, KBNERR")
+    public final Phenomenon PPM_OF_OXYGEN_IN_SEA_WATER = createPhenomenon(
+         "Oxygen in sea Water PPM"
+        ,GENERIC_FAKE_MMI_URL_PREFIX + "ppm_of_oxygen_in_sea_water"
+        ,"ppm"
+    );
+    
     @CFParameter
     public final Phenomenon MASS_CONCENTRATION_OF_CHLOROPHYLL_IN_SEA_WATER =
         createStandardCfParameter( CFStandardNames.MASS_CONCENTRATION_OF_CHLOROPHYLL_IN_SEA_WATER );

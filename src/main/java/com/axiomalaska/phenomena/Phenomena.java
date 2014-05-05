@@ -520,9 +520,8 @@ public class Phenomena {
     );
     
     @CFParameter
-    public final Phenomenon SEA_WATER_PRACTICAL_SALINITY = createCfParameterWithAlternateUnits(
+    public final Phenomenon SEA_WATER_PRACTICAL_SALINITY = createStandardCfParameter(
          CFStandardNames.SEA_WATER_PRACTICAL_SALINITY
-        ,CustomUnits.instance().PARTS_PER_THOUSAND
     );
     
     @CFParameter

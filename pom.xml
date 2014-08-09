@@ -3,12 +3,12 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.axiomalaska</groupId>
   <artifactId>phenomena</artifactId>
-  <version>0.2-SNAPSHOT</version>
+  <version>1.0.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>phenomena</name>
-  <description>Java library organizing Phenomenon objects.</description>
-  <url>http://axiomalaska.github.com/phenomena</url>
+  <description>Java library organizing a library of observable phenomena</description>
+  <url>http://github.com/ioos/phenomena</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -31,13 +31,8 @@
     </dependency>
     <dependency>
       <groupId>com.axiomalaska</groupId>
-      <artifactId>cf4j</artifactId>
-      <version>26.1-SNAPSHOT</version>
-    </dependency>
-    <dependency>
-      <groupId>com.axiomalaska</groupId>
       <artifactId>ioos-sos-common</artifactId>
-      <version>0.1-SNAPSHOT</version>
+      <version>1.0.0</version>
     </dependency>
     <dependency>
       <groupId>org.apache.commons</groupId>
@@ -189,9 +184,9 @@
   </distributionManagement>
 
   <scm>
-    <connection>scm:git:git://github.com/axiomalaska/phenomena.git</connection>
-    <url>scm:git:git://github.com/axiomalaska/phenomena.git</url>
-    <developerConnection>scm:git:git://github.com/axiomalaska/phenomena.git</developerConnection>
+    <connection>scm:git:https://github.com/ioos/phenomena.git</connection>
+    <url>scm:git:https://github.com/ioos/phenomena.git</url>
+    <developerConnection>scm:git:https://github.com/ioos/phenomena.git</developerConnection>
   </scm>  
 
   <developers>
@@ -203,7 +198,7 @@
   </developers>
 
   <issueManagement>
-    <url>https://github.com/axiomalaska/phenomena/issues</url>
+    <url>https://github.com/ioos/phenomena/issues</url>
     <system>GitHub</system>
   </issueManagement>
 

@@ -86,7 +86,7 @@
       <plugin>
         <groupId>org.apache.jena</groupId>
         <artifactId>jena-maven-tools</artifactId>
-        <version>0.3-SNAPSHOT</version>
+        <version>0.4</version>
         <configuration>
           <includes>
             <!-- <include>http://mmisw.org/ont?form=rdf&amp;uri=http://mmisw.org/ont/ioos/parameter</include>-->

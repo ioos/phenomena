@@ -296,7 +296,14 @@ public class Phenomena {
 
     @CFParameter
     public final Phenomenon MASS_CONCENTRATION_OF_CARBON_DIOXIDE_IN_AIR =
-        createStandardCfParameter( CFStandardNames.MASS_CONCENTRATION_OF_CARBON_DIOXIDE_IN_AIR );    
+        createStandardCfParameter( CFStandardNames.MASS_CONCENTRATION_OF_CARBON_DIOXIDE_IN_AIR );
+    
+    @HomelessParameter(description="",source="NOAA PMEL")
+    public final Phenomenon PPM_OF_CARBON_DIOXIDE_IN_AIR= createPhenomenon(
+         "Carbon Dioxide in air PPM"
+        ,GENERIC_FAKE_MMI_URL_PREFIX + "ppm_of_carbon_dioxide_in_air"
+        ,"ppm"
+    );
     
     @HomelessParameter(description="",source="")
     public final Phenomenon MASS_CONCENTRATION_OF_CARBON_DIOXIDE_IN_SEA_WATER = createPhenomenon(
@@ -513,9 +520,8 @@ public class Phenomena {
     );
     
     @CFParameter
-    public final Phenomenon SEA_WATER_PRACTICAL_SALINITY = createCfParameterWithAlternateUnits(
+    public final Phenomenon SEA_WATER_PRACTICAL_SALINITY = createStandardCfParameter(
          CFStandardNames.SEA_WATER_PRACTICAL_SALINITY
-        ,CustomUnits.instance().PARTS_PER_THOUSAND
     );
     
     @CFParameter

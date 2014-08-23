@@ -31,7 +31,7 @@
     <dependency>
       <groupId>com.axiomalaska</groupId>
       <artifactId>ioos-sos-common</artifactId>
-      <version>1.0.0</version>
+      <version>1.0.2</version>
     </dependency>
     <dependency>
       <groupId>org.apache.commons</groupId>
@@ -41,7 +41,7 @@
     <dependency>
       <groupId>edu.ucar</groupId>
       <artifactId>netcdf</artifactId>
-      <version>4.3.20</version>
+      <version>4.3.22</version>
     </dependency>   
     <dependency>
       <groupId>junit</groupId>

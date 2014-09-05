@@ -195,6 +195,13 @@ public class Phenomena {
        ,GENERIC_FAKE_MMI_URL_PREFIX + "air_temperature_minimum"
        ,SI.DEGREE_CELSIUS
     );
+    
+    @HomelessParameter(description="",source="NERRS, RAWS, SnoTel")
+    public final Phenomenon FLUORESCENCE = createPhenomenon(
+        "Fluorescence"
+       ,GENERIC_FAKE_MMI_URL_PREFIX + "fluorescence"
+       ,"RFU"
+    );
 
     @CFParameter
     public final Phenomenon ALTITUDE = createStandardCfParameter( CFStandardNames.ALTITUDE );

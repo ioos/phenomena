@@ -180,6 +180,10 @@
     <repository>
       <id>unidata-releases</id>
       <url>https://artifacts.unidata.ucar.edu/content/repositories/unidata-releases/</url>
+    </repository>
+    <repository>
+      <id>axiom</id>
+      <url>http://nexus.axiomalaska.com/nexus/content/repositories/public-releases/</url>
     </repository>    
   </repositories>
   

@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.axiomalaska</groupId>
   <artifactId>phenomena</artifactId>
-  <version>1.0.2-SNAPSHOT</version>
+  <version>1.0.2</version>
   <packaging>jar</packaging>
 
   <name>phenomena</name>
@@ -156,7 +156,7 @@
     <connection>scm:git:https://github.com/ioos/phenomena.git</connection>
     <url>scm:git:https://github.com/ioos/phenomena.git</url>
     <developerConnection>scm:git:https://github.com/ioos/phenomena.git</developerConnection>
-    <tag>HEAD</tag>
+    <tag>phenomena-1.0.2</tag>
   </scm>  
 
   <developers>

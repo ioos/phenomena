@@ -50,7 +50,7 @@ public class Phenomena {
         return instance;
     }
 
-    public static final String IOOS_MMI_URL_PREFIX = IoosParameter.NS;    
+    public static final String IOOS_MMI_URL_PREFIX = IoosParameter.NS;
     public static final String CF_MMI_URL_PREFIX = "http://mmisw.org/ont/cf/parameter/";
     public static final String GENERIC_FAKE_MMI_URL_PREFIX = "http://mmisw.org/ont/fake/parameter/";
 
@@ -213,6 +213,24 @@ public class Phenomena {
     @IOOSParameter
     public final Phenomenon BATTERY_VOLTAGE =
         createStandardIoosParameter( IoosParameter.battery_voltage );
+
+    @IOOSParameter
+    public final Phenomenon PCO2 =
+        createStandardIoosParameter( IoosParameter.pCO2 );
+    
+    @IOOSParameter
+    public final Phenomenon OMEGA_ARAGONITE =
+    		createPhenomenon(
+    		        "Omega Aragonite"
+    		       ,IOOS_MMI_URL_PREFIX + "omega_aragonite"
+    		       ,"uatm");
+    
+    @IOOSParameter
+    public final Phenomenon DISSOLVED_CO2 =
+    		createPhenomenon(
+    		        "Dissolved CO2"
+    		       ,IOOS_MMI_URL_PREFIX + "dissolved_carbon_dioxide_co2"
+    		       ,CustomUnits.instance().MICROMOL_PER_KILOGRAM);
 
     @HomelessParameter(description="",source="SnoTel")
     public final Phenomenon BATTERY_VOLTAGE_MAXIMUM = createPhenomenon(
@@ -761,7 +779,8 @@ public class Phenomena {
     
     @IOOSParameter
     public final Phenomenon ALKALINITY =
-        createStandardIoosParameter( IoosParameter.total_alkalinity );
+    		createIoosParameterWithAlternateUnits( IoosParameter.total_alkalinity, 
+    				CustomUnits.instance().MICROMOL_PER_KILOGRAM);
     
     @IOOSParameter
     public final Phenomenon CURRENT_DIRECTION =

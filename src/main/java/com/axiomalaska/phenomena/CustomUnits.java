@@ -28,6 +28,8 @@ public class CustomUnits {
     public Unit MILLILITRE_100;
     public Unit PARTS_PER_100_MILLILITRES;
     public Unit CFU_PER_100_MILLILITRES;
+    public Unit MICROMOL_PER_KILOGRAM;
+    public Unit MICROMOL;
     
     private static CustomUnits instance;
     
@@ -61,6 +63,12 @@ public class CustomUnits {
 
             CUBIC_METERS_PER_SECOND = addUnit(SI.METER.raiseTo( 3 ).divideBy( SI.SECOND )
                     .clone( UnitName.newUnitName("cubic meter per second", "cubic meters per second", "m3.s-1")));
+            //umol.kg-1
+            MICROMOL = addUnit(new ScaledUnit( 1e-6, SI.MOLE )
+            .clone( UnitName.newUnitName("micromol", null, "µmol")));
+            
+            MICROMOL_PER_KILOGRAM = addUnit(MICROMOL.divideBy( SI.KILOGRAM )
+                    .clone( UnitName.newUnitName("micomol per kilogram", "micromol per kilogram", "micromol.kg-1")));
             
             KILOGRAMS_PER_CUBIC_METER = addUnit(SI.KILOGRAM.divideBy( SI.METER.raiseTo( 3 ) )
                 .clone( UnitName.newUnitName("kilogram per cubic meter", "kilograms per cubic meter", "kg.m-3")));

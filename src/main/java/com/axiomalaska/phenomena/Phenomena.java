@@ -281,7 +281,11 @@ public class Phenomena {
     @CFParameter
     public final Phenomenon DOWNWELLING_PHOTOSYNTHETIC_RADIATIVE_FLUX_IN_SEA_WATER =
         createStandardCfParameter( CFStandardNames.DOWNWELLING_PHOTOSYNTHETIC_RADIATIVE_FLUX_IN_SEA_WATER );
-
+    
+    @CFParameter
+    public final Phenomenon DOWNWELLING_LONGWAVE_FLUX_IN_AIR =
+        createStandardCfParameter( CFStandardNames.DOWNWELLING_LONGWAVE_FLUX_IN_AIR );
+    
     @CFParameter
     public final Phenomenon EASTWARD_SEA_WATER_VELOCITY =
             createStandardCfParameter( CFStandardNames.EASTWARD_SEA_WATER_VELOCITY );

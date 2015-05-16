@@ -168,6 +168,9 @@ public class Phenomena {
     public final Phenomenon AIR_PRESSURE_AT_SEA_LEVEL = createStandardCfParameter( CFStandardNames.AIR_PRESSURE_AT_SEA_LEVEL );
     
     @CFParameter
+    public final Phenomenon DOWNWELLING_SHORTWAVE_FLUX_IN_AIR = createStandardCfParameter( CFStandardNames.DOWNWELLING_SHORTWAVE_FLUX_IN_AIR );
+    
+    @CFParameter
     @NonStandardUnits
     public final Phenomenon AIR_TEMPERATURE = createCfParameterWithAlternateUnits(
          CFStandardNames.AIR_TEMPERATURE

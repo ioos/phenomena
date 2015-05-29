@@ -233,7 +233,7 @@ public class Phenomena {
     		createPhenomenon(
     		        "Dissolved CO2"
     		       ,IOOS_MMI_URL_PREFIX + "dissolved_carbon_dioxide_co2"
-    		       ,CustomUnits.instance().MICROMOL_PER_KILOGRAM);
+    		       ,CustomUnits.instance().MILLIGRAMS_PER_LITER);
 
     @HomelessParameter(description="",source="SnoTel")
     public final Phenomenon BATTERY_VOLTAGE_MAXIMUM = createPhenomenon(

@@ -168,21 +168,21 @@ public class Phenomena {
     public final Phenomenon AIR_PRESSURE_AT_SEA_LEVEL = createStandardCfParameter( CFStandardNames.AIR_PRESSURE_AT_SEA_LEVEL );
     
     @CFParameter
-    public final Phenomenon DOWNWELLING_SHORTWAVE_FLUX_IN_AIR = createStandardCfParameter( CFStandardNames.DOWNWELLING_SHORTWAVE_FLUX_IN_AIR );
+    public final Phenomenon DOWNWELLING_SHORTWAVE_FLUX_IN_AIR = createStandardCfParameter(CFStandardNames.DOWNWELLING_SHORTWAVE_FLUX_IN_AIR);
     
     @CFParameter
     @NonStandardUnits
     public final Phenomenon AIR_TEMPERATURE = createCfParameterWithAlternateUnits(
-         CFStandardNames.AIR_TEMPERATURE
-        ,SI.DEGREE_CELSIUS
+            CFStandardNames.AIR_TEMPERATURE
+            , SI.DEGREE_CELSIUS
     );
     
 
     @HomelessParameter(description="",source="NERRS, RAWS, SnoTel")
     public final Phenomenon AIR_TEMPERATURE_AVERAGE = createPhenomenon(
-        "Air Temperature Average"
-       ,GENERIC_FAKE_MMI_URL_PREFIX + "air_temperature_average"
-       ,SI.DEGREE_CELSIUS
+            "Air Temperature Average"
+            , GENERIC_FAKE_MMI_URL_PREFIX + "air_temperature_average"
+            , SI.DEGREE_CELSIUS
     );
     
     @HomelessParameter(description="",source="HADS, RAWS, SnoTel")
@@ -201,17 +201,20 @@ public class Phenomena {
     
     @HomelessParameter(description="",source="NERRS, RAWS, SnoTel")
     public final Phenomenon FLUORESCENCE = createPhenomenon(
-        "Fluorescence"
-       ,GENERIC_FAKE_MMI_URL_PREFIX + "fluorescence"
-       ,"RFU"
+            "Fluorescence"
+            , GENERIC_FAKE_MMI_URL_PREFIX + "fluorescence"
+            , "RFU"
     );
 
     @CFParameter
-    public final Phenomenon ALTITUDE = createStandardCfParameter( CFStandardNames.ALTITUDE );
+    public final Phenomenon ALTITUDE = createStandardCfParameter(CFStandardNames.ALTITUDE);
+
+    @CFParameter
+    public final Phenomenon SEA_WATER_DENSITY = createStandardCfParameter( CFStandardNames.SEA_WATER_DENSITY);
     
     @IOOSParameter
     public final Phenomenon AMMONIUM =
-        createStandardIoosParameter( IoosParameter.ammonium );
+        createStandardIoosParameter(IoosParameter.ammonium);
     
     @IOOSParameter
     public final Phenomenon BATTERY_VOLTAGE =
@@ -224,9 +227,9 @@ public class Phenomena {
     @IOOSParameter
     public final Phenomenon OMEGA_ARAGONITE =
     		createPhenomenon(
-    		        "Omega Aragonite"
-    		       ,IOOS_MMI_URL_PREFIX + "omega_aragonite"
-    		       ,"uatm");
+                    "Omega Aragonite"
+                    , IOOS_MMI_URL_PREFIX + "omega_aragonite"
+                    , "uatm");
     
     @IOOSParameter
     public final Phenomenon DISSOLVED_CO2 =
@@ -240,6 +243,13 @@ public class Phenomena {
         "Battery Voltage Maximum"
        ,GENERIC_FAKE_MMI_URL_PREFIX + "battery_voltage_maximum"
        ,SI.VOLT       
+    );
+
+    @HomelessParameter(description="",source="Marine Calpoly Shore")
+    public final Phenomenon BIOLUMINESCENCE = createPhenomenon(
+            "Bioluminescence"
+            ,GENERIC_FAKE_MMI_URL_PREFIX + "bioluminescence"
+            ,"photon.s-1"
     );
     
     @HomelessParameter(description="",source="SnoTel")

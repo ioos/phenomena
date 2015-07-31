@@ -184,6 +184,20 @@ public class Phenomena {
             , GENERIC_FAKE_MMI_URL_PREFIX + "air_temperature_average"
             , SI.DEGREE_CELSIUS
     );
+
+    @HomelessParameter(description="",source="Cal Poly Met")
+    public final Phenomenon ATMOSPHERE_NET_RATE_OF_ABSORPTION_OF_ENERGY = createPhenomenon(
+            "Atmosphere Net Rate Of Absorption of Energy"
+            , GENERIC_FAKE_MMI_URL_PREFIX + "atmosphere_net_rate_of_absorption_of_energy"
+            , CustomUnits.instance().WATTS_PER_SQUARE_METER
+    );
+
+    @HomelessParameter(description="",source="Cal Poly Shore")
+    public final Phenomenon TRANSMISSOMETER = createPhenomenon(
+            "transmissometer"
+            , GENERIC_FAKE_MMI_URL_PREFIX + "transmissometer"
+            , SI.VOLT
+    );
     
     @HomelessParameter(description="",source="HADS, RAWS, SnoTel")
     public final Phenomenon AIR_TEMPERATURE_MAXIMUM = createPhenomenon(

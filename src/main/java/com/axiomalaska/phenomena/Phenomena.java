@@ -198,7 +198,7 @@ public class Phenomena {
             , GENERIC_FAKE_MMI_URL_PREFIX + "transmissometer"
             , SI.VOLT
     );
-    
+
     @HomelessParameter(description="",source="HADS, RAWS, SnoTel")
     public final Phenomenon AIR_TEMPERATURE_MAXIMUM = createPhenomenon(
         "Air Temperature Maximum"
@@ -282,6 +282,18 @@ public class Phenomena {
          "Depth to Water Level"
         ,GENERIC_FAKE_MMI_URL_PREFIX + "depth_to_water_level"
         ,SI.METER
+    );
+
+    //http://mmisw.org/ont/cf/parameter/downwelling_photosynthetic_photon_flux_in_air micromol.m-2.s-1
+
+    @CFParameter
+    public final Phenomenon SURFACE_DOWNWELLING_PHOTOSYNTHETIC_PHOTON_FLUX_IN_AIR = createCfParameterWithAlternateUnits(
+            CFStandardNames.SURFACE_DOWNWELLING_PHOTOSYNTHETIC_PHOTON_FLUX_IN_AIR, "mol.m-2.s-1"
+    );
+
+    @CFParameter
+    public final Phenomenon SURFACE_DOWNWELLING_SHORTWAVE_FLUX_IN_AIR = createStandardCfParameter(
+            CFStandardNames.SURFACE_DOWNWELLING_SHORTWAVE_FLUX_IN_AIR
     );
 
     @CFParameter

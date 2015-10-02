@@ -225,6 +225,9 @@ public class Phenomena {
 
     @CFParameter
     public final Phenomenon SEA_WATER_DENSITY = createStandardCfParameter( CFStandardNames.SEA_WATER_DENSITY);
+
+    @CFParameter
+    public final Phenomenon SURFACE_TEMPERATURE = createStandardCfParameter( CFStandardNames.SURFACE_TEMPERATURE);
     
     @IOOSParameter
     public final Phenomenon AMMONIUM =

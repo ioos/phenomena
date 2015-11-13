@@ -596,8 +596,8 @@ public class Phenomena {
     );
     
     @CFParameter
-    public final Phenomenon SEA_WATER_PRESSURE = createStandardCfParameter( 
-    		CFStandardNames.SEA_WATER_PRESSURE);
+    public final Phenomenon SEA_WATER_PRESSURE = createCfParameterWithAlternateUnits(
+    		CFStandardNames.SEA_WATER_PRESSURE, "decibars");
     
     
     @CFParameter
@@ -613,6 +613,20 @@ public class Phenomena {
     public final Phenomenon SEA_WATER_TEMPERATURE = createCfParameterWithAlternateUnits(
          CFStandardNames.SEA_WATER_TEMPERATURE
         ,SI.DEGREE_CELSIUS
+    );
+
+    @HomelessParameter(description="",source="")
+    public final Phenomenon FREEZING_POINT = createPhenomenon(
+            "Freezing Point"
+            ,GENERIC_FAKE_MMI_URL_PREFIX + "freezing_point"
+            ,SI.DEGREE_CELSIUS
+    );
+
+    @HomelessParameter(description="",source="")
+    public final Phenomenon DIFFERENCE_BETWEEN_SEA_WATER_TEMPERATURE_AND_FREEZING_POINT = createPhenomenon(
+            "difference_between_sea_water_temperature_and_freezing_point"
+            ,GENERIC_FAKE_MMI_URL_PREFIX + "difference_between_sea_water_temperature_and_freezing_point"
+            ,"degree_Celsius_difference"
     );
 
     @HomelessParameter(description="",source="HADS, RAWS, SnoTel")

@@ -390,7 +390,10 @@ public class Phenomena {
     @CFParameter
     public final Phenomenon MASS_CONCENTRATION_OF_OXYGEN_IN_SEA_WATER =
         createStandardCfParameter( CFStandardNames.MASS_CONCENTRATION_OF_OXYGEN_IN_SEA_WATER );
-    
+
+    @CFParameter
+    public final Phenomenon MOLE_CONCENTRATION_OF_NITRATE_IN_SEA_WATER = createStandardCfParameter( CFStandardNames.MOLE_CONCENTRATION_OF_NITRATE_IN_SEA_WATER);
+
     @IOOSParameter
     public final Phenomenon NITRATE =
         createStandardIoosParameter( IoosParameter.nitrate );
@@ -452,6 +455,69 @@ public class Phenomena {
         "Precipitation Increment"
        ,GENERIC_FAKE_MMI_URL_PREFIX + "precipitation_increment"
        ,SI.METER
+    );
+
+    @HomelessParameter(description="",source="")
+    public final Phenomenon WIND_CHILL_TEMPERATURE = createPhenomenon(
+            "wind chill temperature"
+            ,GENERIC_FAKE_MMI_URL_PREFIX + "wind_chill_temperature "
+            ,SI.DEGREE_CELSIUS
+    );
+
+    @HomelessParameter(description="",source="Alaska Department of Fish and Game")
+    public final Phenomenon ABUNDANCE_OF_ONCORHYNCHUS_MYKISS = createPhenomenon(
+            "abundance of oncorhynchus mykiss"
+            ,GENERIC_FAKE_MMI_URL_PREFIX + "abundance_of_oncorhynchus_mykiss"
+            ,"individuals"
+    );
+
+    @HomelessParameter(description="",source="Alaska Department of Fish and Game")
+    public final Phenomenon ABUNDANCE_OF_ONCORHYNCHUS_NERKA = createPhenomenon(
+            "abundance of oncorhynchus nerka"
+            ,GENERIC_FAKE_MMI_URL_PREFIX + "abundance_of_oncorhynchus_nerka"
+            ,"individuals"
+    );
+
+    @HomelessParameter(description="",source="Alaska Department of Fish and Game")
+    public final Phenomenon ABUNDANCE_OF_ONCORHYNCHUS_GORBUSCHA = createPhenomenon(
+            "abundance of oncorhynchus gorbuscha"
+            ,GENERIC_FAKE_MMI_URL_PREFIX + "abundance_of_oncorhynchus_gorbuscha"
+            ,"individuals"
+    );
+
+    @HomelessParameter(description="",source="Alaska Department of Fish and Game")
+    public final Phenomenon ABUNDANCE_OF_ONCORHYNCHUS_KETA = createPhenomenon(
+            "abundance of oncorhynchus keta"
+            ,GENERIC_FAKE_MMI_URL_PREFIX + "abundance_of_oncorhynchus_keta"
+            ,"individuals"
+    );
+
+    @HomelessParameter(description="",source="Alaska Department of Fish and Game")
+    public final Phenomenon ABUNDANCE_OF_ONCORHYNCHUS_TSHAWYTSCHA = createPhenomenon(
+            "abundance of oncorhynchus tshawytscha"
+            ,GENERIC_FAKE_MMI_URL_PREFIX + "abundance_of_oncorhynchus_tshawytscha"
+            ,"individuals"
+    );
+
+    @HomelessParameter(description="",source="Alaska Department of Fish and Game")
+    public final Phenomenon ABUNDANCE_OF_ONCORHYNCHUS_KISUTCH = createPhenomenon(
+            "abundance of oncorhynchus kisutch"
+            ,GENERIC_FAKE_MMI_URL_PREFIX + "abundance_of_oncorhynchus_kisutch"
+            ,"individuals"
+    );
+
+    @HomelessParameter(description="",source="Alaska Department of Fish and Game")
+    public final Phenomenon ABUNDANCE_OF_SALVELINUS_MALMA = createPhenomenon(
+            "aabundance of salvelinus malma"
+            ,GENERIC_FAKE_MMI_URL_PREFIX + "abundance_of_salvelinus_malma"
+            ,"individuals"
+    );
+
+    @HomelessParameter(description="",source="Alaska Department of Fish and Game")
+    public final Phenomenon ABUNDANCE_OF_FISH_SPECIES_UNKNOWN = createPhenomenon(
+            "abundance of fish species unknown"
+            ,GENERIC_FAKE_MMI_URL_PREFIX + "abundance_of_fish_species_unknown"
+            ,"individuals"
     );
 
     @CFParameter

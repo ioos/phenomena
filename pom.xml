@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.axiomalaska</groupId>
   <artifactId>phenomena</artifactId>
-  <version>1.0.13</version>
+  <version>1.0.14</version>
   <packaging>jar</packaging>
 
   <name>phenomena</name>
@@ -40,9 +40,9 @@
     </dependency>
     <dependency>
       <groupId>edu.ucar</groupId>
-      <artifactId>netcdf</artifactId>
-      <version>4.3.22</version>
-    </dependency>   
+      <artifactId>cdm</artifactId>
+      <version>4.5.5</version>
+    </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>

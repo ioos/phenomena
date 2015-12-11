@@ -460,7 +460,7 @@ public class Phenomena {
     @HomelessParameter(description="",source="")
     public final Phenomenon WIND_CHILL_TEMPERATURE = createPhenomenon(
             "wind chill temperature"
-            ,GENERIC_FAKE_MMI_URL_PREFIX + "wind_chill_temperature "
+            ,GENERIC_FAKE_MMI_URL_PREFIX + "wind_chill_temperature"
             ,SI.DEGREE_CELSIUS
     );
 

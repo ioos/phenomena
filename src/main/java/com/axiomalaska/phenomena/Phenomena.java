@@ -185,6 +185,13 @@ public class Phenomena {
             , SI.DEGREE_CELSIUS
     );
 
+    @HomelessParameter(description="",source="NDBC")
+    public final Phenomenon DEPTH = createPhenomenon(
+            "Depth"
+            , GENERIC_FAKE_MMI_URL_PREFIX + "depth"
+            , SI.METER
+    );
+
     @HomelessParameter(description="",source="Cal Poly Met")
     public final Phenomenon ATMOSPHERE_NET_RATE_OF_ABSORPTION_OF_ENERGY = createPhenomenon(
             "Atmosphere Net Rate Of Absorption of Energy"

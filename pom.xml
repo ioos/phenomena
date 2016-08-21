@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.axiomalaska</groupId>
   <artifactId>phenomena</artifactId>
-  <version>1.0.16</version>
+  <version>1.0.17-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>phenomena</name>
@@ -12,6 +12,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <github.global.server>github</github.global.server>    
+    <jena.version>3.1.0</jena.version>
   </properties>
 
   <licenses>
@@ -26,17 +27,17 @@
     <dependency>
       <groupId>org.apache.jena</groupId>
       <artifactId>jena-core</artifactId>
-      <version>2.11.0</version>
+      <version>${jena.version}</version>
     </dependency>
     <dependency>
       <groupId>com.axiomalaska</groupId>
       <artifactId>ioos-sos-common</artifactId>
-      <version>1.0.3</version>
+      <version>1.0.4</version>
     </dependency>
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
-      <version>3.1</version>
+      <version>3.4</version>
     </dependency>
     <dependency>
       <groupId>edu.ucar</groupId>
@@ -46,7 +47,7 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.8.1</version>
+      <version>4.12</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -55,12 +56,6 @@
       <version>1.2.17</version>
       <scope>test</scope>
     </dependency>
-    <!-- added because of java.lang.NoClassDefFoundError: org/w3c/dom/ElementTraversal -->
-	<dependency>
-      <groupId>org.apache.xmlgraphics</groupId>
-      <artifactId>batik-ext</artifactId>
-      <version>1.7</version>
-     </dependency>
   </dependencies>
 
   <build>
@@ -76,7 +71,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.1</version>
+        <version>3.5.1</version>
         <configuration>
           <source>1.5</source>
           <target>1.5</target>
@@ -85,7 +80,7 @@
       <plugin>
         <groupId>org.apache.jena</groupId>
         <artifactId>jena-maven-tools</artifactId>
-        <version>0.4</version>
+        <version>${jena.version}</version>
         <configuration>
           <includes>
             <!-- <include>http://mmisw.org/ont?form=rdf&amp;uri=http://mmisw.org/ont/ioos/parameter</include>-->
@@ -114,7 +109,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
-        <version>1.7</version>
+        <version>1.12</version>
         <executions>
           <execution>
             <id>add-source</id>
@@ -129,6 +124,11 @@
             </configuration>
           </execution>
         </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-release-plugin</artifactId>
+        <version>2.5.3</version>
       </plugin>
     </plugins>
   </build>

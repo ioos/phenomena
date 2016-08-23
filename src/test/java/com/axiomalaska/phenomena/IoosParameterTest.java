@@ -7,9 +7,9 @@ import org.junit.Test;
 
 import com.axiomalaska.ioos.parameter.IoosParameter;
 import com.axiomalaska.phenomena.IoosParameterUtil;
-import org.apache.jena.ontology.Individual;
-import org.apache.jena.ontology.OntModel;
-import org.apache.jena.util.iterator.ExtendedIterator;
+import com.hp.hpl.jena.ontology.Individual;
+import com.hp.hpl.jena.ontology.OntModel;
+import com.hp.hpl.jena.util.iterator.ExtendedIterator;
 
 public class IoosParameterTest {
 	private static final Logger LOG = Logger.getLogger( IoosParameterTest.class );

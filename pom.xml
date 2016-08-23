@@ -12,7 +12,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <github.global.server>github</github.global.server>    
-    <jena.version>3.1.0</jena.version>
+    <jena.version>2.13.0</jena.version>
   </properties>
 
   <licenses>
@@ -80,7 +80,7 @@
       <plugin>
         <groupId>org.apache.jena</groupId>
         <artifactId>jena-maven-tools</artifactId>
-        <version>${jena.version}</version>
+        <version>0.8</version>
         <configuration>
           <includes>
             <!-- <include>http://mmisw.org/ont?form=rdf&amp;uri=http://mmisw.org/ont/ioos/parameter</include>-->

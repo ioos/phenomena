@@ -2,12 +2,12 @@ package com.axiomalaska.phenomena;
 
 import java.io.InputStream;
 
-import org.apache.jena.ontology.Individual;
-import org.apache.jena.ontology.OntModel;
-import org.apache.jena.rdf.model.ModelFactory;
-import org.apache.jena.rdf.model.Property;
-import org.apache.jena.rdf.model.Statement;
-import org.apache.jena.util.FileManager;
+import com.hp.hpl.jena.ontology.Individual;
+import com.hp.hpl.jena.ontology.OntModel;
+import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.hp.hpl.jena.rdf.model.Property;
+import com.hp.hpl.jena.rdf.model.Statement;
+import com.hp.hpl.jena.util.FileManager;
 
 public class IoosParameterUtil {
     private static final String PARAMETER_RDF = "parameter.rdf";

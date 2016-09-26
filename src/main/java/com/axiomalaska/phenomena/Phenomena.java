@@ -389,6 +389,76 @@ public class Phenomena {
        ,GENERIC_FAKE_MMI_URL_PREFIX + "mass_concentration_of_carbon_dioxide_in_sea_water"
        ,CustomUnits.instance().KILOGRAMS_PER_CUBIC_METER
     );
+
+    @HomelessParameter(description="",source="")
+    public final Phenomenon PPM_OF_CARBON_DIOXIDE_IN_SEA_WATER_IN_WET_GAS = createPhenomenon(
+            "PPM of Carbon Dioxide in Sea Water in wet gas"
+            ,GENERIC_FAKE_MMI_URL_PREFIX + "ppm_of_carbon_dioxide_in_sea_water_in_wet_gas"
+            ,"mg.L-1"
+    );
+
+    @HomelessParameter(description="",source="")
+    public final Phenomenon PPM_OF_CARBON_DIOXIDE_IN_AIR_IN_DRY_GAS = createPhenomenon(
+            "PPM of Carbon Dioxide in air in dry gas"
+            ,GENERIC_FAKE_MMI_URL_PREFIX + "ppm_of_carbon_dioxide_in_air_in_dry_gas"
+            ,"1e-6"
+    );
+
+    @HomelessParameter(description="",source="")
+    public final Phenomenon PPT_OF_WATER_VAPOR_IN_SEA_WATER = createPhenomenon(
+            "PPT of water vapor in sea water"
+            ,GENERIC_FAKE_MMI_URL_PREFIX + "ppt_of_water_vapor_in_sea_water"
+            ,"1e-3"
+    );
+
+    @HomelessParameter(description="",source="")
+    public final Phenomenon PPT_OF_WATER_VAPOR_IN_AIR= createPhenomenon(
+            "PPT of water vapor in air"
+            ,GENERIC_FAKE_MMI_URL_PREFIX + "ppt_of_water_vapor_in_air"
+            ,"1e-3"
+    );
+
+    @HomelessParameter(description="",source="")
+    public final Phenomenon FUGACITY_OF_CARBON_DIOXIDE_IN_SEA_WATER = createPhenomenon(
+            "Fugacity of Carbon Dioxide in Sea Water"
+            ,GENERIC_FAKE_MMI_URL_PREFIX + "fugacity_of_carbon_dioxide_in_sea_water"
+            ,"microatm"
+    );
+
+    @HomelessParameter(description="",source="")
+    public final Phenomenon CARBON_DIOXIDE_FUGACITY_DIFFERENCE_BETWEEN_AIR_AND_SEA_WATER = createPhenomenon(
+            "Carbon Dioxide Fugacity difference between Air and sea water"
+            ,GENERIC_FAKE_MMI_URL_PREFIX + "carbon_dioxide_fugacity_difference_between_air_and_sea_water"
+            ,"microatm"
+    );
+
+    @HomelessParameter(description="",source="")
+    public final Phenomenon FUGACITY_OF_CARBON_DIOXIDE_IN_AIR = createPhenomenon(
+            "Fugacity of Carbon Dioxide in Air"
+            ,GENERIC_FAKE_MMI_URL_PREFIX + "fugacity_of_carbon_dioxide_in_air"
+            ,"microatm"
+    );
+
+    @HomelessParameter(description="",source="")
+    public final Phenomenon PCO2_IN_SEA_WATER = createPhenomenon(
+            "PCO2 in sea water"
+            ,GENERIC_FAKE_MMI_URL_PREFIX + "pCO2_in_sea_water"
+            ,"microatm"
+    );
+
+    @HomelessParameter(description="",source="")
+    public final Phenomenon PCO2_IN_AIR = createPhenomenon(
+            "PCO2 in air"
+            ,GENERIC_FAKE_MMI_URL_PREFIX + "pCO2_in_air"
+            ,"microatm"
+    );
+
+    @HomelessParameter(description="",source="")
+    public final Phenomenon PCO2_DIFFERENCE_BETWEEN_AIR_AND_SEA_WATER = createPhenomenon(
+            "pCO2 difference between air and sea water"
+            ,GENERIC_FAKE_MMI_URL_PREFIX + "pco2_difference_between_air_and_sea_water"
+            ,"microatm"
+    );
     
     @CFParameter
     public final Phenomenon MASS_CONCENTRATION_OF_CHLOROPHYLL_IN_SEA_WATER =

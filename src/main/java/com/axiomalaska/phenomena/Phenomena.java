@@ -456,7 +456,7 @@ public class Phenomena {
     @HomelessParameter(description="",source="")
     public final Phenomenon PCO2_DIFFERENCE_BETWEEN_AIR_AND_SEA_WATER = createPhenomenon(
             "pCO2 difference between air and sea water"
-            ,GENERIC_FAKE_MMI_URL_PREFIX + "pco2_difference_between_air_and_sea_water"
+            ,GENERIC_FAKE_MMI_URL_PREFIX + "pCO2_difference_between_air_and_sea_water"
             ,"microatm"
     );
     

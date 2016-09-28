@@ -331,10 +331,6 @@ public class Phenomena {
     @CFParameter
     public final Phenomenon DOWNWELLING_LONGWAVE_FLUX_IN_AIR =
         createStandardCfParameter( CFStandardNames.DOWNWELLING_LONGWAVE_FLUX_IN_AIR );
-    
-    @CFParameter
-    public final Phenomenon EASTWARD_SEA_WATER_VELOCITY =
-            createStandardCfParameter( CFStandardNames.EASTWARD_SEA_WATER_VELOCITY );
 
     @CFParameter
     @NonStandardUnits
@@ -458,6 +454,20 @@ public class Phenomena {
             "pCO2 difference between air and sea water"
             ,GENERIC_FAKE_MMI_URL_PREFIX + "pCO2_difference_between_air_and_sea_water"
             ,"microatm"
+    );
+
+    @HomelessParameter(description="",source="")
+    public final Phenomenon VOLUME_FRACTION_OF_OXYGEN_IN_SEA_WATER = createPhenomenon(
+            "volume fraction of oxygen in sea water"
+            ,GENERIC_FAKE_MMI_URL_PREFIX + "volume_fraction_of_oxygen_in_sea_water"
+            ,"%"
+    );
+
+    @HomelessParameter(description="",source="")
+    public final Phenomenon TOTAL_DISSOLVED_SOLIDS = createPhenomenon(
+            "total dissolved solids"
+            ,GENERIC_FAKE_MMI_URL_PREFIX + "total_dissolved_solids"
+            ,"g.L-1"
     );
     
     @CFParameter
@@ -595,6 +605,18 @@ public class Phenomena {
             "abundance of fish species unknown"
             ,GENERIC_FAKE_MMI_URL_PREFIX + "abundance_of_fish_species_unknown"
             ,"individuals"
+    );
+
+    @CFParameter
+    public final Phenomenon EASTWARD_SEA_WATER_VELOCITY =
+            createStandardCfParameter( CFStandardNames.EASTWARD_SEA_WATER_VELOCITY );
+
+
+    @HomelessParameter(description="",source="")
+    public final Phenomenon VOLUME_BEAM_ATTENUATION_COEFFICIENT_OF_RADIATIVE_FLUX_IN_SEA_WATER = createPhenomenon(
+            "volume beam attenuation coefficient of radiative flux in sea water"
+            ,GENERIC_FAKE_MMI_URL_PREFIX + "volume_beam_attenuation_coefficient_of_radiative_flux_in_sea_water"
+            ,"m-1"
     );
 
     @CFParameter
